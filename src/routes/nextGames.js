@@ -8,30 +8,88 @@ export default class NextGames extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+
+    var emptyData = { homeTeam: '--', awayTeam: '--' };
+
     this.state = {
-      nextGames: [],
+      nextGames: [<Game gameInfo={emptyData} />]
     };
 
   };
 
-
-  componentDidMount() {
-    repository.getAllGames(function (err, games) {
-      if (err)
-        console.log('error in NextGames ctor');
-      else {
-        var dbData = [];
-        for (var i = 0; i < games.length; i++) {
-          dbData.push(<Game gameInfo={games[i]} />);
-          this.setState({
-            nextGames: dbData
-          });
-          console.log('setState!');
-        }
-      }
-    });
+  onChange(state) {
+    this.setState(state);
   }
 
+  componentWillMount() {
+    console.log('componentDidMount');
+    setTimeout(function () {
+      var games = [
+        { homeTeam: 'Benfica', awayTeam: 'Sporting CP' },
+        { homeTeam: 'Moreirense', awayTeam: 'Porto' }];
+
+      this.setState({
+        nextGames: games
+      });
+      console.log('---------------------------------------------- setState! --------------------------------------------');
+    }.bind(this), 3000);
+    // repository.getAllGames(function (err, games) {
+    //   if (err)
+    //     console.log('error in NextGames ctor');
+    //   else {
+    //     var dbData = [];
+    //     for (var i = 0; i < games.length; i++) {
+    //       dbData.push(<Game gameInfo={games[i]} />);
+    //       this.setState({
+    //         nextGames: dbData
+    //       });
+    //       console.log('setState!');
+    //     }
+    //     render();
+    //   }
+    // });
+  }
+
+  componentDidMount() {
+    console.log('============================================ componentWillMount ===============================');
+  }
+
+  // componentDidMount() {
+  //   console.log('============================================ componentWillUpdate ===============================');
+  // }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('============================================ componentWillReceiveProps ===============================');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('============================================ shouldComponentUpdate ===============================');
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('============================================ componentWillUpdate ===============================');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('============================================ componentDidUpdate ===============================');
+  }
+
+  componentWillUnmount() {
+    console.log('============================================ componentWillUnmount ===============================');
+  }
+
+  fetchData() {
+    setTimeout(function () {
+      var games = [
+        { homeTeam: 'Benfica', awayTeam: 'Sporting CP' },
+        { homeTeam: 'Moreirense', awayTeam: 'Porto' }];
+
+      this.onChange({
+        nextGames: games
+      });
+      console.log('---------------------------------------------- setState! --------------------------------------------');
+    }, 3000);
+  }
 
   render() {
     return (
@@ -55,14 +113,12 @@ export default class NextGames extends React.Component {
           <div className='col-md-4'>
             <hr className='linha2'></hr>
           </div>
-
-          
-
+          <div>
+            {this.state.nextGames}
+          </div>
         </div>
       </div>
     );
   }
 }
-
-
 

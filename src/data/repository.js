@@ -8,9 +8,7 @@ exports.getAllGames = function (callback) {
     game.find(function (err, items) {
         if (err)
             console.log('[Repository.getAllGames] ' + err);
-
-        console.log('------------------------------------------------------------------');
-
+            
         callback(err, items);
     })
 }
