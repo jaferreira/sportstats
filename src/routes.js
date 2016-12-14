@@ -9,6 +9,7 @@ import Header from './common/header';
 import Sidebar from './common/sidebar';
 
 import Home from './routes/home';
+import NextGames from './routes/nextGames';
 
 class App extends React.Component {
   render() {
@@ -31,8 +32,11 @@ class App extends React.Component {
   }
 }
 
+
+
 export default (
   <Route path='/' component={App}>
     <IndexRoute component={Home} />
+    <Route path='nextgames' component={NextGames}></Route>
   </Route>
 );

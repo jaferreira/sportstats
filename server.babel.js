@@ -10,6 +10,15 @@ import routes from './src/routes';
 import { renderHTMLString } from '@sketchpixy/rubix/lib/node/router';
 import RubixAssetMiddleware from '@sketchpixy/rubix/lib/node/RubixAssetMiddleware';
 
+// Aplication Configs
+var config = require('./config');
+
+// MongoDb
+var mongoose = require('mongoose');
+var Game = require('./models/game');
+
+
+
 const port = process.env.PORT || 8080;
 
 let app = express();
