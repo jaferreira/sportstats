@@ -3,7 +3,7 @@ import React from 'react';
 export default class Home extends React.Component {
   render() {
     return (
-      <div>Hello World!</div>
+      <div><a href='/nextgames'>Go to Next Games</a></div>
     );
   }
 }
