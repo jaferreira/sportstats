@@ -17,7 +17,7 @@ var Game = require('./models/game');
 const port = process.env.PORT || 8080;
 
 let app = express();
-
+ 
 mongoose.connect(config.database);
 mongoose.connection.on('error', function () {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
