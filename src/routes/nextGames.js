@@ -11,15 +11,82 @@ import {
 } from '@sketchpixy/rubix';
 
 class Chart extends React.Component {
+
+  componentDidMount() {
+    (() => {
+      var chart = new Rubix('#stacked-multi-series-bar-chart-negative', {
+        // title: 'Stacked bar chart with negative values',
+        // subtitle: 'Profit/Expense chart',
+
+        hideAxisAndGrid: true,
+        hideLegend: true,
+
+        titleColor: '#0080FF',
+        subtitleColor: '#0080FF',
+        height: 300,
+        axis: {
+          x: {
+            type: 'ordinal'
+          },
+          y: {
+            type: 'linear',
+            tickFormat: ',.0f',
+            label: 'Revenue',
+            tickCount: 5
+          }
+        },
+        tooltip: {
+          color: 'white',
+          format: {
+            y: ',.0f'
+          }
+        },
+        show_markers: false
+      });
+
+      var profit = chart.bar_series({
+
+        color: '#0080FF'
+      });
+
+      profit.addData([
+        { x: 'Jan', y: 30000 },
+        { x: 'Feb', y: 25000 },
+        { x: 'Mar', y: 25000 },
+        { x: 'Apr', y: 30000 },
+        { x: 'May', y: 65000 },
+        { x: 'Jun', y: 15000 }
+      ]);
+
+      var expenses = chart.bar_series({
+        name: 'Expense',
+        color: '#FF6666',
+        marker: 'square'
+      });
+
+      expenses.addData([
+        { x: 'Jan', y: -35000 },
+        { x: 'Feb', y: -10000 },
+        { x: 'Mar', y: -10000 },
+        { x: 'Apr', y: -15000 },
+        { x: 'May', y: -15000 },
+        { x: 'Jun', y: -5000 }
+      ]);
+    })();
+  }
+
   render() {
+
+
     return (
-      <PanelContainer>
-        <Panel>
-          <PanelBody style={{padding: 25}}>
-            <div id={this.props.id}></div>
-          </PanelBody>
-        </Panel>
-      </PanelContainer>
+      // <PanelContainer>
+      //   <Panel>
+      //     <PanelBody style={{ padding: 25 }}>
+            
+      //     </PanelBody>
+      //   </Panel>
+      // </PanelContainer>
+      <div id='stacked-multi-series-bar-chart-negative'></div>
     );
   }
 }
@@ -35,63 +102,6 @@ class GameList extends React.Component {
   componentDidMount() {
     GameListStore.listen(this.onChange);
     GameListActions.getNextGames();
-
-    (() => {
-      var chart = new Rubix('#stacked-multi-series-bar-chart-negative', {
-        title: 'Stacked bar chart with negative values',
-        subtitle: 'Profit/Expense chart',
-        titleColor: '#0080FF',
-        subtitleColor: '#0080FF',
-        height: 300,
-        axis: {
-          x: {
-            type: 'ordinal'
-          },
-          y:  {
-            type: 'linear',
-            tickFormat: ',.0f',
-            label: 'Revenue',
-            tickCount: 5
-          }
-        },
-        tooltip: {
-          color: 'white',
-          format: {
-            y: ',.0f'
-          }
-        },
-        show_markers: true
-      });
-
-      var profit = chart.bar_series({
-        name: 'Profit',
-        color: '#0080FF'
-      });
-
-      profit.addData([
-        {x: 'Jan', y: 30000},
-        {x: 'Feb', y: 25000},
-        {x: 'Mar', y: 25000},
-        {x: 'Apr', y: 30000},
-        {x: 'May', y: 65000},
-        {x: 'Jun', y: 15000}
-      ]);
-
-      var expenses = chart.bar_series({
-          name: 'Expense',
-          color: '#FF6666',
-          marker: 'square'
-      });
-
-      expenses.addData([
-        {x: 'Jan', y: -35000},
-        {x: 'Feb', y: -10000},
-        {x: 'Mar', y: -10000},
-        {x: 'Apr', y: -15000},
-        {x: 'May', y: -15000},
-        {x: 'Jun', y: -5000}
-      ]);
-    })();
   }
 
   componentWillUnmount() {
@@ -147,16 +157,17 @@ class GameList extends React.Component {
 
                 <div className='col-md-6'>
                   <div className='row'>
-                    <div className='col-md-4'>
+                    <div className='col-md-1'>
                       <div className='dist'>
                         {gamesBetweenInfo.slice(0, 5)}
                       </div>
                     </div>
 
-                    <div className='col-md-4'>
+                    <div className='col-md-10'>
+                      <Chart id='stacked-multi-series-bar-chart-negative' />
                     </div>
 
-                    <div className='col-md-4'>
+                    <div className='col-md-1'>
                       <div className='res'>
                         {gamesBetween.slice(0, 5)}
                       </div>
@@ -214,13 +225,9 @@ class GameList extends React.Component {
           <div className='col-md-4'>
             <hr className='linha2' />
           </div>
-          { gamesList }
+          {gamesList}
         </div>
-
-        <Chart id='stacked-multi-series-bar-chart-negative' />
       </div>
-      
-       
     );
   }
 }
