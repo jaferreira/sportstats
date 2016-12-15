@@ -54,7 +54,13 @@ require('source-map-support').install({environment: 'node'});
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';var _path=__webpack_require__(2);var _path2=_interopRequireDefault(_path);var _express=__webpack_require__(3);var _express2=_interopRequireDefault(_express);var _compression=__webpack_require__(4);var _compression2=_interopRequireDefault(_compression);var _cookieParser=__webpack_require__(5);var _cookieParser2=_interopRequireDefault(_cookieParser);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _server=__webpack_require__(7);var _server2=_interopRequireDefault(_server);var _routes=__webpack_require__(176);var _routes2=_interopRequireDefault(_routes);var _router=__webpack_require__(596);var _RubixAssetMiddleware=__webpack_require__(609);var _RubixAssetMiddleware2=_interopRequireDefault(_RubixAssetMiddleware);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var port=process.env.PORT||8080;var app=(0,_express2.default)();app.use((0,_compression2.default)());app.use((0,_cookieParser2.default)());app.use(_express2.default.static(_path2.default.join(process.cwd(),'public')));app.set('views',_path2.default.join(process.cwd(),'views'));app.set('view engine','pug');function renderHTML(req,res){(0,_router.renderHTMLString)(_routes2.default,req,function(error,redirectLocation,html){if(error){if(error.message==='Not found'){res.status(404).send(error.message);}else{res.status(500).send(error.message);}}else if(redirectLocation){res.redirect(302,redirectLocation.pathname+redirectLocation.search);}else{res.render('index',{content:html});}});}app.get('*',(0,_RubixAssetMiddleware2.default)('ltr'),function(req,res,next){renderHTML(req,res);});app.listen(port,function(){console.log('Node.js app is running at http://localhost:'+port+'/');});;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(port,'port','c:/WIG/sportstats/server.babel.js');__REACT_HOT_LOADER__.register(app,'app','c:/WIG/sportstats/server.babel.js');__REACT_HOT_LOADER__.register(renderHTML,'renderHTML','c:/WIG/sportstats/server.babel.js');}();;
+	'use strict';var _path=__webpack_require__(2);var _path2=_interopRequireDefault(_path);var _express=__webpack_require__(3);var _express2=_interopRequireDefault(_express);var _compression=__webpack_require__(4);var _compression2=_interopRequireDefault(_compression);var _cookieParser=__webpack_require__(5);var _cookieParser2=_interopRequireDefault(_cookieParser);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _server=__webpack_require__(7);var _server2=_interopRequireDefault(_server);var _routes=__webpack_require__(176);var _routes2=_interopRequireDefault(_routes);var _router=__webpack_require__(606);var _RubixAssetMiddleware=__webpack_require__(619);var _RubixAssetMiddleware2=_interopRequireDefault(_RubixAssetMiddleware);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var mongoose=__webpack_require__(620);var config=__webpack_require__(621);var Game=__webpack_require__(622);var port=process.env.PORT||8080;var app=(0,_express2.default)();mongoose.connect(config.database);mongoose.connection.on('error',function(){console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);});app.use((0,_compression2.default)());app.use((0,_cookieParser2.default)());app.use(_express2.default.static(_path2.default.join(process.cwd(),'public')));app.set('views',_path2.default.join(process.cwd(),'views'));app.set('view engine','pug');function renderHTML(req,res){(0,_router.renderHTMLString)(_routes2.default,req,function(error,redirectLocation,html){if(error){if(error.message==='Not found'){res.status(404).send(error.message);}else{res.status(500).send(error.message);}}else if(redirectLocation){res.redirect(302,redirectLocation.pathname+redirectLocation.search);}else{res.render('index',{content:html});}});}/**
+	 * GET /api/nextgames
+	 * 
+	 */app.get('/api/nextgames',function(req,res,next){console.log('Get ');Game.find().limit(10).exec(function(err,games){if(err){console.log('Get error!!! '+err);return next(err);}console.log('Get returned!!! '+games);return res.send(games);});});/**
+	 * POST /api/game
+	 * Adds new game to the database.
+	 */app.post('/api/game',function(req,res,next){try{var game=new Game({homeTeam:'Benfica',awayTeam:'Sporting CP',gameId:'aasdasdsgasfasgfd'});game.save(function(err){if(err)return next(err);res.send({message:'['+game.homeTeam+' vs '+game.awayTeam+'] has been added successfully!'});});}catch(e){res.status(404).send({message:characterName+' is not a registered citizen of New Eden.'});}});app.get('*',(0,_RubixAssetMiddleware2.default)('ltr'),function(req,res,next){renderHTML(req,res);});app.listen(port,function(){console.log('Node.js app is running at http://localhost:'+port+'/');});;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(port,'port','C:/WIG/sportstats/server.babel.js');__REACT_HOT_LOADER__.register(app,'app','C:/WIG/sportstats/server.babel.js');__REACT_HOT_LOADER__.register(renderHTML,'renderHTML','C:/WIG/sportstats/server.babel.js');}();;
 
 /***/ },
 /* 2 */
@@ -20234,7 +20240,7 @@ require('source-map-support').install({environment: 'node'});
 /* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';exports.__esModule=true;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _classnames=__webpack_require__(255);var _classnames2=_interopRequireDefault(_classnames);var _reactRouter=__webpack_require__(256);var _rubix=__webpack_require__(257);var _footer=__webpack_require__(587);var _footer2=_interopRequireDefault(_footer);var _header=__webpack_require__(588);var _header2=_interopRequireDefault(_header);var _sidebar=__webpack_require__(589);var _sidebar2=_interopRequireDefault(_sidebar);var _home=__webpack_require__(590);var _home2=_interopRequireDefault(_home);var _nextGames=__webpack_require__(591);var _nextGames2=_interopRequireDefault(_nextGames);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var App=function(_React$Component){(0,_inherits3.default)(App,_React$Component);function App(){(0,_classCallCheck3.default)(this,App);return(0,_possibleConstructorReturn3.default)(this,_React$Component.apply(this,arguments));}App.prototype.render=function render(){return _react2.default.createElement(_rubix.MainContainer,this.props,_react2.default.createElement(_sidebar2.default,null),_react2.default.createElement(_header2.default,null),_react2.default.createElement('div',{id:'body'},_react2.default.createElement(_rubix.Grid,null,_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},this.props.children)))),_react2.default.createElement(_footer2.default,null));};return App;}(_react2.default.Component);var _default=_react2.default.createElement(_reactRouter.Route,{path:'/',component:App},_react2.default.createElement(_reactRouter.IndexRoute,{component:_home2.default}),_react2.default.createElement(_reactRouter.Route,{path:'nextgames',component:_nextGames2.default}));exports.default=_default;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(App,'App','c:/WIG/sportstats/src/routes.js');__REACT_HOT_LOADER__.register(_default,'default','c:/WIG/sportstats/src/routes.js');}();;
+	'use strict';exports.__esModule=true;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _classnames=__webpack_require__(255);var _classnames2=_interopRequireDefault(_classnames);var _reactRouter=__webpack_require__(256);var _rubix=__webpack_require__(257);var _footer=__webpack_require__(587);var _footer2=_interopRequireDefault(_footer);var _header=__webpack_require__(588);var _header2=_interopRequireDefault(_header);var _sidebar=__webpack_require__(589);var _sidebar2=_interopRequireDefault(_sidebar);var _home=__webpack_require__(590);var _home2=_interopRequireDefault(_home);var _nextGames=__webpack_require__(591);var _nextGames2=_interopRequireDefault(_nextGames);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var App=function(_React$Component){(0,_inherits3.default)(App,_React$Component);function App(){(0,_classCallCheck3.default)(this,App);return(0,_possibleConstructorReturn3.default)(this,_React$Component.apply(this,arguments));}App.prototype.render=function render(){return _react2.default.createElement(_rubix.MainContainer,this.props,_react2.default.createElement(_sidebar2.default,null),_react2.default.createElement(_header2.default,null),_react2.default.createElement('div',{id:'body'},_react2.default.createElement(_rubix.Grid,null,_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},this.props.children)))),_react2.default.createElement(_footer2.default,null));};return App;}(_react2.default.Component);var _default=_react2.default.createElement(_reactRouter.Route,{path:'/',component:App},_react2.default.createElement(_reactRouter.IndexRoute,{component:_home2.default}),_react2.default.createElement(_reactRouter.Route,{path:'nextgames',component:_nextGames2.default}));exports.default=_default;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(App,'App','C:/WIG/sportstats/src/routes.js');__REACT_HOT_LOADER__.register(_default,'default','C:/WIG/sportstats/src/routes.js');}();;
 
 /***/ },
 /* 177 */
@@ -48389,79 +48395,1407 @@ require('source-map-support').install({environment: 'node'});
 /* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';exports.__esModule=true;exports.default=undefined;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _rubix=__webpack_require__(257);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var Footer=function(_React$Component){(0,_inherits3.default)(Footer,_React$Component);function Footer(){var _temp,_this,_ret;(0,_classCallCheck3.default)(this,Footer);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=(0,_possibleConstructorReturn3.default)(this,_React$Component.call.apply(_React$Component,[this].concat(args))),_this),_this.state={version:0},_temp),(0,_possibleConstructorReturn3.default)(_this,_ret);}Footer.prototype.componentDidMount=function componentDidMount(){this.setState({version:document.body.getAttribute('data-version')});};Footer.prototype.render=function render(){var year=new Date().getFullYear();return _react2.default.createElement('div',{id:'footer-container'},_react2.default.createElement(_rubix.Grid,{id:'footer',className:'text-center'},_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},_react2.default.createElement('div',null,'\xA9 ',year,' SketchPixy Creative - v',this.state.version)))));};return Footer;}(_react2.default.Component);exports.default=Footer;;var _temp2=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(Footer,'Footer','c:/WIG/sportstats/src/common/footer.js');}();;
+	'use strict';exports.__esModule=true;exports.default=undefined;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _rubix=__webpack_require__(257);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var Footer=function(_React$Component){(0,_inherits3.default)(Footer,_React$Component);function Footer(){var _temp,_this,_ret;(0,_classCallCheck3.default)(this,Footer);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=(0,_possibleConstructorReturn3.default)(this,_React$Component.call.apply(_React$Component,[this].concat(args))),_this),_this.state={version:0},_temp),(0,_possibleConstructorReturn3.default)(_this,_ret);}Footer.prototype.componentDidMount=function componentDidMount(){this.setState({version:document.body.getAttribute('data-version')});};Footer.prototype.render=function render(){var year=new Date().getFullYear();return _react2.default.createElement('div',{id:'footer-container'},_react2.default.createElement(_rubix.Grid,{id:'footer',className:'text-center'},_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},_react2.default.createElement('div',null,'\xA9 ',year,' SketchPixy Creative - v',this.state.version)))));};return Footer;}(_react2.default.Component);exports.default=Footer;;var _temp2=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(Footer,'Footer','C:/WIG/sportstats/src/common/footer.js');}();;
 
 /***/ },
 /* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';exports.__esModule=true;exports.default=undefined;var _extends2=__webpack_require__(259);var _extends3=_interopRequireDefault(_extends2);var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _classnames=__webpack_require__(255);var _classnames2=_interopRequireDefault(_classnames);var _rubix=__webpack_require__(257);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var Brand=function(_React$Component){(0,_inherits3.default)(Brand,_React$Component);function Brand(){(0,_classCallCheck3.default)(this,Brand);return(0,_possibleConstructorReturn3.default)(this,_React$Component.apply(this,arguments));}Brand.prototype.render=function render(){return _react2.default.createElement(_rubix.Navbar.Header,this.props,_react2.default.createElement(_rubix.Navbar.Brand,{tabIndex:'-1'},_react2.default.createElement('a',{href:'#'},_react2.default.createElement('img',{src:'/imgs/common/logo.png',alt:'rubix',width:'111',height:'28'}))));};return Brand;}(_react2.default.Component);var HeaderNavigation=function(_React$Component2){(0,_inherits3.default)(HeaderNavigation,_React$Component2);function HeaderNavigation(){(0,_classCallCheck3.default)(this,HeaderNavigation);return(0,_possibleConstructorReturn3.default)(this,_React$Component2.apply(this,arguments));}HeaderNavigation.prototype.render=function render(){var props=(0,_extends3.default)({},this.props,{className:(0,_classnames2.default)('pull-right',this.props.className)});return _react2.default.createElement(_rubix.Nav,props,_react2.default.createElement(_rubix.NavItem,{className:'logout',href:'#'},_react2.default.createElement(_rubix.Icon,{bundle:'fontello',glyph:'off-1'})));};return HeaderNavigation;}(_react2.default.Component);var Header=function(_React$Component3){(0,_inherits3.default)(Header,_React$Component3);function Header(){(0,_classCallCheck3.default)(this,Header);return(0,_possibleConstructorReturn3.default)(this,_React$Component3.apply(this,arguments));}Header.prototype.render=function render(){return _react2.default.createElement(_rubix.Grid,(0,_extends3.default)({id:'navbar'},this.props),_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},_react2.default.createElement(_rubix.Navbar,{fixedTop:true,fluid:true,id:'rubix-nav-header'},_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:3,visible:'xs'},_react2.default.createElement(_rubix.SidebarBtn,null)),_react2.default.createElement(_rubix.Col,{xs:6,sm:4},_react2.default.createElement(Brand,null)),_react2.default.createElement(_rubix.Col,{xs:3,sm:8,collapseRight:true,className:'text-right'},_react2.default.createElement(HeaderNavigation,null)))))));};return Header;}(_react2.default.Component);exports.default=Header;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(Brand,'Brand','c:/WIG/sportstats/src/common/header.js');__REACT_HOT_LOADER__.register(HeaderNavigation,'HeaderNavigation','c:/WIG/sportstats/src/common/header.js');__REACT_HOT_LOADER__.register(Header,'Header','c:/WIG/sportstats/src/common/header.js');}();;
+	'use strict';exports.__esModule=true;exports.default=undefined;var _extends2=__webpack_require__(259);var _extends3=_interopRequireDefault(_extends2);var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _classnames=__webpack_require__(255);var _classnames2=_interopRequireDefault(_classnames);var _rubix=__webpack_require__(257);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var Brand=function(_React$Component){(0,_inherits3.default)(Brand,_React$Component);function Brand(){(0,_classCallCheck3.default)(this,Brand);return(0,_possibleConstructorReturn3.default)(this,_React$Component.apply(this,arguments));}Brand.prototype.render=function render(){return _react2.default.createElement(_rubix.Navbar.Header,this.props,_react2.default.createElement(_rubix.Navbar.Brand,{tabIndex:'-1'},_react2.default.createElement('a',{href:'#'},_react2.default.createElement('img',{src:'/imgs/common/logo.png',alt:'rubix',width:'111',height:'28'}))));};return Brand;}(_react2.default.Component);var HeaderNavigation=function(_React$Component2){(0,_inherits3.default)(HeaderNavigation,_React$Component2);function HeaderNavigation(){(0,_classCallCheck3.default)(this,HeaderNavigation);return(0,_possibleConstructorReturn3.default)(this,_React$Component2.apply(this,arguments));}HeaderNavigation.prototype.render=function render(){var props=(0,_extends3.default)({},this.props,{className:(0,_classnames2.default)('pull-right',this.props.className)});return _react2.default.createElement(_rubix.Nav,props,_react2.default.createElement(_rubix.NavItem,{className:'logout',href:'#'},_react2.default.createElement(_rubix.Icon,{bundle:'fontello',glyph:'off-1'})));};return HeaderNavigation;}(_react2.default.Component);var Header=function(_React$Component3){(0,_inherits3.default)(Header,_React$Component3);function Header(){(0,_classCallCheck3.default)(this,Header);return(0,_possibleConstructorReturn3.default)(this,_React$Component3.apply(this,arguments));}Header.prototype.render=function render(){return _react2.default.createElement(_rubix.Grid,(0,_extends3.default)({id:'navbar'},this.props),_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},_react2.default.createElement(_rubix.Navbar,{fixedTop:true,fluid:true,id:'rubix-nav-header'},_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:3,visible:'xs'},_react2.default.createElement(_rubix.SidebarBtn,null)),_react2.default.createElement(_rubix.Col,{xs:6,sm:4},_react2.default.createElement(Brand,null)),_react2.default.createElement(_rubix.Col,{xs:3,sm:8,collapseRight:true,className:'text-right'},_react2.default.createElement(HeaderNavigation,null)))))));};return Header;}(_react2.default.Component);exports.default=Header;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(Brand,'Brand','C:/WIG/sportstats/src/common/header.js');__REACT_HOT_LOADER__.register(HeaderNavigation,'HeaderNavigation','C:/WIG/sportstats/src/common/header.js');__REACT_HOT_LOADER__.register(Header,'Header','C:/WIG/sportstats/src/common/header.js');}();;
 
 /***/ },
 /* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';exports.__esModule=true;exports.default=undefined;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _class,_class2;var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _rubix=__webpack_require__(257);var _reactRouter=__webpack_require__(256);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var ApplicationSidebar=(0,_reactRouter.withRouter)(_class=function(_React$Component){(0,_inherits3.default)(ApplicationSidebar,_React$Component);function ApplicationSidebar(){(0,_classCallCheck3.default)(this,ApplicationSidebar);return(0,_possibleConstructorReturn3.default)(this,_React$Component.apply(this,arguments));}ApplicationSidebar.prototype.handleChange=function handleChange(e){this._nav.search(e.target.value);};ApplicationSidebar.prototype.render=function render(){var _this2=this;return _react2.default.createElement('div',null,_react2.default.createElement(_rubix.Grid,null,_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},_react2.default.createElement(_rubix.FormControl,{type:'text',placeholder:'Search...',onChange:this.handleChange.bind(this),className:'sidebar-search',style:{border:'none',background:'none',margin:'10px 0 0 0',borderBottom:'1px solid #666',color:'white'}}),_react2.default.createElement('div',{className:'sidebar-nav-container'},_react2.default.createElement(_rubix.SidebarNav,{style:{marginBottom:0},ref:function ref(c){return _this2._nav=c;}},_react2.default.createElement('div',{className:'sidebar-header'},'PAGES'),_react2.default.createElement(_rubix.SidebarNavItem,{glyph:'icon-fontello-gauge',name:'Home',href:'/'}),_react2.default.createElement(_rubix.SidebarNavItem,{glyph:'icon-fontello-gauge',name:'Next Games',href:'/nextgames'})))))));};return ApplicationSidebar;}(_react2.default.Component))||_class;var DummySidebar=function(_React$Component2){(0,_inherits3.default)(DummySidebar,_React$Component2);function DummySidebar(){(0,_classCallCheck3.default)(this,DummySidebar);return(0,_possibleConstructorReturn3.default)(this,_React$Component2.apply(this,arguments));}DummySidebar.prototype.render=function render(){return _react2.default.createElement(_rubix.Grid,null,_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},_react2.default.createElement('div',{className:'sidebar-header'},'DUMMY SIDEBAR'),_react2.default.createElement(_rubix.LoremIpsum,{query:'1p'}))));};return DummySidebar;}(_react2.default.Component);var SidebarContainer=(0,_reactRouter.withRouter)(_class2=function(_React$Component3){(0,_inherits3.default)(SidebarContainer,_React$Component3);function SidebarContainer(){(0,_classCallCheck3.default)(this,SidebarContainer);return(0,_possibleConstructorReturn3.default)(this,_React$Component3.apply(this,arguments));}SidebarContainer.prototype.render=function render(){return _react2.default.createElement('div',{id:'sidebar'},_react2.default.createElement('div',{id:'avatar'},_react2.default.createElement(_rubix.Grid,null,_react2.default.createElement(_rubix.Row,{className:'fg-white'},_react2.default.createElement(_rubix.Col,{xs:4,collapseRight:true},_react2.default.createElement('img',{src:'/imgs/app/avatars/avatar0.png',width:'40',height:'40'})),_react2.default.createElement(_rubix.Col,{xs:8,collapseLeft:true,id:'avatar-col'},_react2.default.createElement('div',{style:{top:23,fontSize:16,lineHeight:1,position:'relative'}},'Anna Sanchez'),_react2.default.createElement('div',null,_react2.default.createElement(_rubix.Progress,{id:'demo-progress',value:30,color:'#ffffff'}),_react2.default.createElement('a',{href:'#'},_react2.default.createElement(_rubix.Icon,{id:'demo-icon',bundle:'fontello',glyph:'lock-5'}))))))),_react2.default.createElement(_rubix.SidebarControls,null,_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'docs',sidebar:0}),_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'chat-1',sidebar:1}),_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'chart-pie-2',sidebar:2}),_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'th-list-2',sidebar:3}),_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'bell-5',sidebar:4})),_react2.default.createElement('div',{id:'sidebar-container'},_react2.default.createElement(_rubix.Sidebar,{sidebar:0},_react2.default.createElement(ApplicationSidebar,null)),_react2.default.createElement(_rubix.Sidebar,{sidebar:1},_react2.default.createElement(DummySidebar,null)),_react2.default.createElement(_rubix.Sidebar,{sidebar:2},_react2.default.createElement(DummySidebar,null)),_react2.default.createElement(_rubix.Sidebar,{sidebar:3},_react2.default.createElement(DummySidebar,null)),_react2.default.createElement(_rubix.Sidebar,{sidebar:4},_react2.default.createElement(DummySidebar,null))));};return SidebarContainer;}(_react2.default.Component))||_class2;exports.default=SidebarContainer;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(ApplicationSidebar,'ApplicationSidebar','c:/WIG/sportstats/src/common/sidebar.js');__REACT_HOT_LOADER__.register(DummySidebar,'DummySidebar','c:/WIG/sportstats/src/common/sidebar.js');__REACT_HOT_LOADER__.register(SidebarContainer,'SidebarContainer','c:/WIG/sportstats/src/common/sidebar.js');}();;
+	'use strict';exports.__esModule=true;exports.default=undefined;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _class,_class2;var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _rubix=__webpack_require__(257);var _reactRouter=__webpack_require__(256);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var ApplicationSidebar=(0,_reactRouter.withRouter)(_class=function(_React$Component){(0,_inherits3.default)(ApplicationSidebar,_React$Component);function ApplicationSidebar(){(0,_classCallCheck3.default)(this,ApplicationSidebar);return(0,_possibleConstructorReturn3.default)(this,_React$Component.apply(this,arguments));}ApplicationSidebar.prototype.handleChange=function handleChange(e){this._nav.search(e.target.value);};ApplicationSidebar.prototype.render=function render(){var _this2=this;return _react2.default.createElement('div',null,_react2.default.createElement(_rubix.Grid,null,_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},_react2.default.createElement(_rubix.FormControl,{type:'text',placeholder:'Search...',onChange:this.handleChange.bind(this),className:'sidebar-search',style:{border:'none',background:'none',margin:'10px 0 0 0',borderBottom:'1px solid #666',color:'white'}}),_react2.default.createElement('div',{className:'sidebar-nav-container'},_react2.default.createElement(_rubix.SidebarNav,{style:{marginBottom:0},ref:function ref(c){return _this2._nav=c;}},_react2.default.createElement('div',{className:'sidebar-header'},'PAGES'),_react2.default.createElement(_rubix.SidebarNavItem,{glyph:'icon-fontello-gauge',name:'Home',href:'/'}),_react2.default.createElement(_rubix.SidebarNavItem,{glyph:'icon-fontello-gauge',name:'Next Games',href:'/nextgames'})))))));};return ApplicationSidebar;}(_react2.default.Component))||_class;var DummySidebar=function(_React$Component2){(0,_inherits3.default)(DummySidebar,_React$Component2);function DummySidebar(){(0,_classCallCheck3.default)(this,DummySidebar);return(0,_possibleConstructorReturn3.default)(this,_React$Component2.apply(this,arguments));}DummySidebar.prototype.render=function render(){return _react2.default.createElement(_rubix.Grid,null,_react2.default.createElement(_rubix.Row,null,_react2.default.createElement(_rubix.Col,{xs:12},_react2.default.createElement('div',{className:'sidebar-header'},'DUMMY SIDEBAR'),_react2.default.createElement(_rubix.LoremIpsum,{query:'1p'}))));};return DummySidebar;}(_react2.default.Component);var SidebarContainer=(0,_reactRouter.withRouter)(_class2=function(_React$Component3){(0,_inherits3.default)(SidebarContainer,_React$Component3);function SidebarContainer(){(0,_classCallCheck3.default)(this,SidebarContainer);return(0,_possibleConstructorReturn3.default)(this,_React$Component3.apply(this,arguments));}SidebarContainer.prototype.render=function render(){return _react2.default.createElement('div',{id:'sidebar'},_react2.default.createElement('div',{id:'avatar'},_react2.default.createElement(_rubix.Grid,null,_react2.default.createElement(_rubix.Row,{className:'fg-white'},_react2.default.createElement(_rubix.Col,{xs:4,collapseRight:true},_react2.default.createElement('img',{src:'/imgs/app/avatars/avatar0.png',width:'40',height:'40'})),_react2.default.createElement(_rubix.Col,{xs:8,collapseLeft:true,id:'avatar-col'},_react2.default.createElement('div',{style:{top:23,fontSize:16,lineHeight:1,position:'relative'}},'Anna Sanchez'),_react2.default.createElement('div',null,_react2.default.createElement(_rubix.Progress,{id:'demo-progress',value:30,color:'#ffffff'}),_react2.default.createElement('a',{href:'#'},_react2.default.createElement(_rubix.Icon,{id:'demo-icon',bundle:'fontello',glyph:'lock-5'}))))))),_react2.default.createElement(_rubix.SidebarControls,null,_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'docs',sidebar:0}),_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'chat-1',sidebar:1}),_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'chart-pie-2',sidebar:2}),_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'th-list-2',sidebar:3}),_react2.default.createElement(_rubix.SidebarControlBtn,{bundle:'fontello',glyph:'bell-5',sidebar:4})),_react2.default.createElement('div',{id:'sidebar-container'},_react2.default.createElement(_rubix.Sidebar,{sidebar:0},_react2.default.createElement(ApplicationSidebar,null)),_react2.default.createElement(_rubix.Sidebar,{sidebar:1},_react2.default.createElement(DummySidebar,null)),_react2.default.createElement(_rubix.Sidebar,{sidebar:2},_react2.default.createElement(DummySidebar,null)),_react2.default.createElement(_rubix.Sidebar,{sidebar:3},_react2.default.createElement(DummySidebar,null)),_react2.default.createElement(_rubix.Sidebar,{sidebar:4},_react2.default.createElement(DummySidebar,null))));};return SidebarContainer;}(_react2.default.Component))||_class2;exports.default=SidebarContainer;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(ApplicationSidebar,'ApplicationSidebar','C:/WIG/sportstats/src/common/sidebar.js');__REACT_HOT_LOADER__.register(DummySidebar,'DummySidebar','C:/WIG/sportstats/src/common/sidebar.js');__REACT_HOT_LOADER__.register(SidebarContainer,'SidebarContainer','C:/WIG/sportstats/src/common/sidebar.js');}();;
 
 /***/ },
 /* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';exports.__esModule=true;exports.default=undefined;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var Home=function(_React$Component){(0,_inherits3.default)(Home,_React$Component);function Home(){(0,_classCallCheck3.default)(this,Home);return(0,_possibleConstructorReturn3.default)(this,_React$Component.apply(this,arguments));}Home.prototype.render=function render(){return _react2.default.createElement('div',null,'Hello World!');};return Home;}(_react2.default.Component);exports.default=Home;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(Home,'Home','c:/WIG/sportstats/src/routes/home.js');}();;
+	'use strict';exports.__esModule=true;exports.default=undefined;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var Home=function(_React$Component){(0,_inherits3.default)(Home,_React$Component);function Home(){(0,_classCallCheck3.default)(this,Home);return(0,_possibleConstructorReturn3.default)(this,_React$Component.apply(this,arguments));}Home.prototype.render=function render(){return _react2.default.createElement('div',null,'Hello World!');};return Home;}(_react2.default.Component);exports.default=Home;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(Home,'Home','C:/WIG/sportstats/src/routes/home.js');}();;
 
 /***/ },
 /* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';exports.__esModule=true;exports.default=undefined;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _game=__webpack_require__(592);var _game2=_interopRequireDefault(_game);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var repository=__webpack_require__(593);var NextGames=function(_React$Component){(0,_inherits3.default)(NextGames,_React$Component);function NextGames(props,context){(0,_classCallCheck3.default)(this,NextGames);var _this=(0,_possibleConstructorReturn3.default)(this,_React$Component.call(this,props,context));var emptyData={homeTeam:'--',awayTeam:'--'};_this.state={nextGames:[_react2.default.createElement(_game2.default,{gameInfo:emptyData})]};return _this;}NextGames.prototype.onChange=function onChange(state){this.setState(state);};NextGames.prototype.componentWillMount=function componentWillMount(){console.log('componentDidMount');setTimeout(function(){var games=[{homeTeam:'Benfica',awayTeam:'Sporting CP'},{homeTeam:'Moreirense',awayTeam:'Porto'}];this.setState({nextGames:games});console.log('---------------------------------------------- setState! --------------------------------------------');}.bind(this),3000);// repository.getAllGames(function (err, games) {
-	//   if (err)
-	//     console.log('error in NextGames ctor');
-	//   else {
-	//     var dbData = [];
-	//     for (var i = 0; i < games.length; i++) {
-	//       dbData.push(<Game gameInfo={games[i]} />);
-	//       this.setState({
-	//         nextGames: dbData
-	//       });
-	//       console.log('setState!');
-	//     }
-	//     render();
-	//   }
-	// });
-	};NextGames.prototype.componentDidMount=function componentDidMount(){console.log('============================================ componentWillMount ===============================');};// componentDidMount() {
-	//   console.log('============================================ componentWillUpdate ===============================');
-	// }
-	NextGames.prototype.componentWillReceiveProps=function componentWillReceiveProps(nextProps){console.log('============================================ componentWillReceiveProps ===============================');};NextGames.prototype.shouldComponentUpdate=function shouldComponentUpdate(nextProps,nextState){console.log('============================================ shouldComponentUpdate ===============================');};NextGames.prototype.componentWillUpdate=function componentWillUpdate(nextProps,nextState){console.log('============================================ componentWillUpdate ===============================');};NextGames.prototype.componentDidUpdate=function componentDidUpdate(prevProps,prevState){console.log('============================================ componentDidUpdate ===============================');};NextGames.prototype.componentWillUnmount=function componentWillUnmount(){console.log('============================================ componentWillUnmount ===============================');};NextGames.prototype.fetchData=function fetchData(){setTimeout(function(){var games=[{homeTeam:'Benfica',awayTeam:'Sporting CP'},{homeTeam:'Moreirense',awayTeam:'Porto'}];this.onChange({nextGames:games});console.log('---------------------------------------------- setState! --------------------------------------------');},3000);};NextGames.prototype.render=function render(){return _react2.default.createElement('div',null,_react2.default.createElement('div',{className:'row'},_react2.default.createElement('div',{className:'col-md-12'},_react2.default.createElement('p',null,'Next Game\'s OLA'))),_react2.default.createElement('div',{className:'row'},_react2.default.createElement('div',{className:'col-md-4'},_react2.default.createElement('hr',{className:'linha'})),_react2.default.createElement('div',{className:'col-md-2'},_react2.default.createElement('p',null,'CASA')),_react2.default.createElement('div',{className:'col-md-2'},_react2.default.createElement('p',null,'FORA')),_react2.default.createElement('div',{className:'col-md-4'},_react2.default.createElement('hr',{className:'linha2'})),_react2.default.createElement('div',null,this.state.nextGames)));};return NextGames;}(_react2.default.Component);exports.default=NextGames;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(NextGames,'NextGames','c:/WIG/sportstats/src/routes/nextGames.js');}();;
+	'use strict';exports.__esModule=true;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);var _GameListStore=__webpack_require__(592);var _GameListStore2=_interopRequireDefault(_GameListStore);var _GameListActions=__webpack_require__(605);var _GameListActions2=_interopRequireDefault(_GameListActions);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var GameList=function(_React$Component){(0,_inherits3.default)(GameList,_React$Component);function GameList(props){(0,_classCallCheck3.default)(this,GameList);console.log('---- CTOR 1 ----');var _this=(0,_possibleConstructorReturn3.default)(this,_React$Component.call(this,props));console.log('---- CTOR 2 ----');_this.state=_GameListStore2.default.getState();console.log('---- CTOR 3 ----');_this.onChange=_this.onChange.bind(_this);console.log('---- CTOR 4 ----');return _this;}GameList.prototype.componentDidMount=function componentDidMount(){console.log('---- componentDidMount ----');_GameListStore2.default.listen(this.onChange);_GameListActions2.default.getNextGames();};GameList.prototype.componentWillUnmount=function componentWillUnmount(){console.log('---- componentWillUnmount ----');_GameListStore2.default.unlisten(this.onChange);};GameList.prototype.componentDidUpdate=function componentDidUpdate(prevProps){// console.log('---- componentDidUpdate ----');
+	// GameListActions.getNextGames();
+	};GameList.prototype.onChange=function onChange(state){console.log(state);this.setState(state);};GameList.prototype.render=function render(){console.log('---- RENDER ----');var gamesList=this.state.games.map(function(game,index){return _react2.default.createElement('div',null,_react2.default.createElement('h3',null,game.nextGame.HomeTeam,' vs ',game.nextGame.AwayTeam,' (',game.nextGame.HomeScores.length,')'));});return _react2.default.createElement('div',{className:'container'},_react2.default.createElement('div',{className:'list-group'},gamesList));};return GameList;}(_react2.default.Component);var _default=GameList;exports.default=_default;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(GameList,'GameList','C:/WIG/sportstats/src/routes/nextGames.js');__REACT_HOT_LOADER__.register(_default,'default','C:/WIG/sportstats/src/routes/nextGames.js');}();;
 
 /***/ },
 /* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';exports.__esModule=true;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _possibleConstructorReturn2=__webpack_require__(178);var _possibleConstructorReturn3=_interopRequireDefault(_possibleConstructorReturn2);var _inherits2=__webpack_require__(247);var _inherits3=_interopRequireDefault(_inherits2);var _react=__webpack_require__(6);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var Game=function(_Component){(0,_inherits3.default)(Game,_Component);function Game(props,context){(0,_classCallCheck3.default)(this,Game);var _this=(0,_possibleConstructorReturn3.default)(this,_Component.call(this,props,context));console.log(props);return _this;}Game.prototype.render=function render(){return _react2.default.createElement('div',null,_react2.default.createElement('a',{href:'/teams/livestats/ {this.state.game.HomeTeam}'},this.props.gameInfo.homeTeam,'vs ',this.props.gameInfo.awayTeam),_react2.default.createElement('hr',{className:'separar'}));};Game.prototype.componentWillMount=function componentWillMount(){console.log('========g==================================== componentWillMount ===============================');};// componentDidMount() {
-	//   console.log('============================================ componentWillUpdate ===============================');
-	// }
-	Game.prototype.componentWillReceiveProps=function componentWillReceiveProps(nextProps){console.log('============g================================ componentWillReceiveProps ===============================');};Game.prototype.shouldComponentUpdate=function shouldComponentUpdate(nextProps,nextState){console.log('===========g================================= shouldComponentUpdate ===============================');};Game.prototype.componentWillUpdate=function componentWillUpdate(nextProps,nextState){console.log('===============g============================= componentWillUpdate ===============================');};Game.prototype.componentDidUpdate=function componentDidUpdate(prevProps,prevState){console.log('===============g============================= componentDidUpdate ===============================');};Game.prototype.componentWillUnmount=function componentWillUnmount(){console.log('===============g============================= componentWillUnmount ===============================');};return Game;}(_react.Component);var _default=Game;exports.default=_default;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(Game,'Game','c:/WIG/sportstats/src/routes/game.js');__REACT_HOT_LOADER__.register(_default,'default','c:/WIG/sportstats/src/routes/game.js');}();;
+	'use strict';exports.__esModule=true;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _alt=__webpack_require__(593);var _alt2=_interopRequireDefault(_alt);var _GameListActions=__webpack_require__(605);var _GameListActions2=_interopRequireDefault(_GameListActions);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var GameListStore=function(){function GameListStore(){(0,_classCallCheck3.default)(this,GameListStore);this.bindActions(_GameListActions2.default);this.games=[];}GameListStore.prototype.onGetGamesSuccess=function onGetGamesSuccess(data){this.games=data;};GameListStore.prototype.onGetGamesFail=function onGetGamesFail(jqXhr){toastr.error(jqXhr.responseJSON.message);};return GameListStore;}();var _default=_alt2.default.createStore(GameListStore);exports.default=_default;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(GameListStore,'GameListStore','C:/WIG/sportstats/src/stores/GameListStore.js');__REACT_HOT_LOADER__.register(_default,'default','C:/WIG/sportstats/src/stores/GameListStore.js');}();;
 
 /***/ },
 /* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';var mongoose=__webpack_require__(594);var game=__webpack_require__(595);mongoose.connect('mongodb://localhost:27017/matches');exports.getAllGames=function(callback){game.find(function(err,items){if(err)console.log('[Repository.getAllGames] '+err);callback(err,items);});};;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}}();;
+	'use strict';var _lib=__webpack_require__(594);var _lib2=_interopRequireDefault(_lib);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var alt=new _lib2.default();module.exports=alt;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(alt,'alt','C:/WIG/sportstats/src/alt.js');}();;
 
 /***/ },
 /* 594 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = require("mongoose");
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _flux = __webpack_require__(595);
+	
+	var _StateFunctions = __webpack_require__(596);
+	
+	var StateFunctions = _interopRequireWildcard(_StateFunctions);
+	
+	var _functions = __webpack_require__(597);
+	
+	var fn = _interopRequireWildcard(_functions);
+	
+	var _store = __webpack_require__(598);
+	
+	var store = _interopRequireWildcard(_store);
+	
+	var _AltUtils = __webpack_require__(599);
+	
+	var utils = _interopRequireWildcard(_AltUtils);
+	
+	var _actions = __webpack_require__(603);
+	
+	var _actions2 = _interopRequireDefault(_actions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /* global window */
+	
+	
+	var Alt = function () {
+	  function Alt() {
+	    var config = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	
+	    _classCallCheck(this, Alt);
+	
+	    this.config = config;
+	    this.serialize = config.serialize || JSON.stringify;
+	    this.deserialize = config.deserialize || JSON.parse;
+	    this.dispatcher = config.dispatcher || new _flux.Dispatcher();
+	    this.batchingFunction = config.batchingFunction || function (callback) {
+	      return callback();
+	    };
+	    this.actions = { global: {} };
+	    this.stores = {};
+	    this.storeTransforms = config.storeTransforms || [];
+	    this.trapAsync = false;
+	    this._actionsRegistry = {};
+	    this._initSnapshot = {};
+	    this._lastSnapshot = {};
+	  }
+	
+	  Alt.prototype.dispatch = function () {
+	    function dispatch(action, data, details) {
+	      var _this = this;
+	
+	      this.batchingFunction(function () {
+	        var id = Math.random().toString(18).substr(2, 16);
+	
+	        // support straight dispatching of FSA-style actions
+	        if (action.hasOwnProperty('type') && action.hasOwnProperty('payload')) {
+	          var fsaDetails = {
+	            id: action.type,
+	            namespace: action.type,
+	            name: action.type
+	          };
+	          return _this.dispatcher.dispatch(utils.fsa(id, action.type, action.payload, fsaDetails));
+	        }
+	
+	        if (action.id && action.dispatch) {
+	          return utils.dispatch(id, action, data, _this);
+	        }
+	
+	        return _this.dispatcher.dispatch(utils.fsa(id, action, data, details));
+	      });
+	    }
+	
+	    return dispatch;
+	  }();
+	
+	  Alt.prototype.createUnsavedStore = function () {
+	    function createUnsavedStore(StoreModel) {
+	      var key = StoreModel.displayName || '';
+	      store.createStoreConfig(this.config, StoreModel);
+	      var Store = store.transformStore(this.storeTransforms, StoreModel);
+	
+	      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	        args[_key - 1] = arguments[_key];
+	      }
+	
+	      return fn.isFunction(Store) ? store.createStoreFromClass.apply(store, [this, Store, key].concat(args)) : store.createStoreFromObject(this, Store, key);
+	    }
+	
+	    return createUnsavedStore;
+	  }();
+	
+	  Alt.prototype.createStore = function () {
+	    function createStore(StoreModel, iden) {
+	      var key = iden || StoreModel.displayName || StoreModel.name || '';
+	      store.createStoreConfig(this.config, StoreModel);
+	      var Store = store.transformStore(this.storeTransforms, StoreModel);
+	
+	      /* istanbul ignore next */
+	      if (false) delete this.stores[key];
+	
+	      if (this.stores[key] || !key) {
+	        if (this.stores[key]) {
+	          utils.warn('A store named ' + String(key) + ' already exists, double check your store ' + 'names or pass in your own custom identifier for each store');
+	        } else {
+	          utils.warn('Store name was not specified');
+	        }
+	
+	        key = utils.uid(this.stores, key);
+	      }
+	
+	      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	        args[_key2 - 2] = arguments[_key2];
+	      }
+	
+	      var storeInstance = fn.isFunction(Store) ? store.createStoreFromClass.apply(store, [this, Store, key].concat(args)) : store.createStoreFromObject(this, Store, key);
+	
+	      this.stores[key] = storeInstance;
+	      StateFunctions.saveInitialSnapshot(this, key);
+	
+	      return storeInstance;
+	    }
+	
+	    return createStore;
+	  }();
+	
+	  Alt.prototype.generateActions = function () {
+	    function generateActions() {
+	      var actions = { name: 'global' };
+	
+	      for (var _len3 = arguments.length, actionNames = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+	        actionNames[_key3] = arguments[_key3];
+	      }
+	
+	      return this.createActions(actionNames.reduce(function (obj, action) {
+	        obj[action] = utils.dispatchIdentity;
+	        return obj;
+	      }, actions));
+	    }
+	
+	    return generateActions;
+	  }();
+	
+	  Alt.prototype.createAction = function () {
+	    function createAction(name, implementation, obj) {
+	      return (0, _actions2['default'])(this, 'global', name, implementation, obj);
+	    }
+	
+	    return createAction;
+	  }();
+	
+	  Alt.prototype.createActions = function () {
+	    function createActions(ActionsClass) {
+	      var _this3 = this;
+	
+	      var exportObj = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	
+	      var actions = {};
+	      var key = utils.uid(this._actionsRegistry, ActionsClass.displayName || ActionsClass.name || 'Unknown');
+	
+	      if (fn.isFunction(ActionsClass)) {
+	        fn.assign(actions, utils.getPrototypeChain(ActionsClass));
+	
+	        var ActionsGenerator = function (_ActionsClass) {
+	          _inherits(ActionsGenerator, _ActionsClass);
+	
+	          function ActionsGenerator() {
+	            _classCallCheck(this, ActionsGenerator);
+	
+	            for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+	              args[_key5] = arguments[_key5];
+	            }
+	
+	            return _possibleConstructorReturn(this, _ActionsClass.call.apply(_ActionsClass, [this].concat(args)));
+	          }
+	
+	          ActionsGenerator.prototype.generateActions = function () {
+	            function generateActions() {
+	              for (var _len6 = arguments.length, actionNames = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+	                actionNames[_key6] = arguments[_key6];
+	              }
+	
+	              actionNames.forEach(function (actionName) {
+	                actions[actionName] = utils.dispatchIdentity;
+	              });
+	            }
+	
+	            return generateActions;
+	          }();
+	
+	          return ActionsGenerator;
+	        }(ActionsClass);
+	
+	        for (var _len4 = arguments.length, argsForConstructor = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+	          argsForConstructor[_key4 - 2] = arguments[_key4];
+	        }
+	
+	        fn.assign(actions, new (Function.prototype.bind.apply(ActionsGenerator, [null].concat(argsForConstructor)))());
+	      } else {
+	        fn.assign(actions, ActionsClass);
+	      }
+	
+	      this.actions[key] = this.actions[key] || {};
+	
+	      fn.eachObject(function (actionName, action) {
+	        if (!fn.isFunction(action)) {
+	          exportObj[actionName] = action;
+	          return;
+	        }
+	
+	        // create the action
+	        exportObj[actionName] = (0, _actions2['default'])(_this3, key, actionName, action, exportObj);
+	
+	        // generate a constant
+	        var constant = utils.formatAsConstant(actionName);
+	        exportObj[constant] = exportObj[actionName].id;
+	      }, [actions]);
+	
+	      return exportObj;
+	    }
+	
+	    return createActions;
+	  }();
+	
+	  Alt.prototype.takeSnapshot = function () {
+	    function takeSnapshot() {
+	      for (var _len7 = arguments.length, storeNames = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+	        storeNames[_key7] = arguments[_key7];
+	      }
+	
+	      var state = StateFunctions.snapshot(this, storeNames);
+	      fn.assign(this._lastSnapshot, state);
+	      return this.serialize(state);
+	    }
+	
+	    return takeSnapshot;
+	  }();
+	
+	  Alt.prototype.rollback = function () {
+	    function rollback() {
+	      StateFunctions.setAppState(this, this.serialize(this._lastSnapshot), function (storeInst) {
+	        storeInst.lifecycle('rollback');
+	        storeInst.emitChange();
+	      });
+	    }
+	
+	    return rollback;
+	  }();
+	
+	  Alt.prototype.recycle = function () {
+	    function recycle() {
+	      for (var _len8 = arguments.length, storeNames = Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
+	        storeNames[_key8] = arguments[_key8];
+	      }
+	
+	      var initialSnapshot = storeNames.length ? StateFunctions.filterSnapshots(this, this._initSnapshot, storeNames) : this._initSnapshot;
+	
+	      StateFunctions.setAppState(this, this.serialize(initialSnapshot), function (storeInst) {
+	        storeInst.lifecycle('init');
+	        storeInst.emitChange();
+	      });
+	    }
+	
+	    return recycle;
+	  }();
+	
+	  Alt.prototype.flush = function () {
+	    function flush() {
+	      var state = this.serialize(StateFunctions.snapshot(this));
+	      this.recycle();
+	      return state;
+	    }
+	
+	    return flush;
+	  }();
+	
+	  Alt.prototype.bootstrap = function () {
+	    function bootstrap(data) {
+	      StateFunctions.setAppState(this, data, function (storeInst, state) {
+	        storeInst.lifecycle('bootstrap', state);
+	        storeInst.emitChange();
+	      });
+	    }
+	
+	    return bootstrap;
+	  }();
+	
+	  Alt.prototype.prepare = function () {
+	    function prepare(storeInst, payload) {
+	      var data = {};
+	      if (!storeInst.displayName) {
+	        throw new ReferenceError('Store provided does not have a name');
+	      }
+	      data[storeInst.displayName] = payload;
+	      return this.serialize(data);
+	    }
+	
+	    return prepare;
+	  }();
+	
+	  // Instance type methods for injecting alt into your application as context
+	
+	  Alt.prototype.addActions = function () {
+	    function addActions(name, ActionsClass) {
+	      for (var _len9 = arguments.length, args = Array(_len9 > 2 ? _len9 - 2 : 0), _key9 = 2; _key9 < _len9; _key9++) {
+	        args[_key9 - 2] = arguments[_key9];
+	      }
+	
+	      this.actions[name] = Array.isArray(ActionsClass) ? this.generateActions.apply(this, ActionsClass) : this.createActions.apply(this, [ActionsClass].concat(args));
+	    }
+	
+	    return addActions;
+	  }();
+	
+	  Alt.prototype.addStore = function () {
+	    function addStore(name, StoreModel) {
+	      for (var _len10 = arguments.length, args = Array(_len10 > 2 ? _len10 - 2 : 0), _key10 = 2; _key10 < _len10; _key10++) {
+	        args[_key10 - 2] = arguments[_key10];
+	      }
+	
+	      this.createStore.apply(this, [StoreModel, name].concat(args));
+	    }
+	
+	    return addStore;
+	  }();
+	
+	  Alt.prototype.getActions = function () {
+	    function getActions(name) {
+	      return this.actions[name];
+	    }
+	
+	    return getActions;
+	  }();
+	
+	  Alt.prototype.getStore = function () {
+	    function getStore(name) {
+	      return this.stores[name];
+	    }
+	
+	    return getStore;
+	  }();
+	
+	  Alt.debug = function () {
+	    function debug(name, alt, win) {
+	      var key = 'alt.js.org';
+	      var context = win;
+	      if (!context && typeof window !== 'undefined') {
+	        context = window;
+	      }
+	      if (typeof context !== 'undefined') {
+	        context[key] = context[key] || [];
+	        context[key].push({ name: name, alt: alt });
+	      }
+	      return alt;
+	    }
+	
+	    return debug;
+	  }();
+	
+	  return Alt;
+	}();
+	
+	exports['default'] = Alt;
+	module.exports = exports['default'];
 
 /***/ },
 /* 595 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';var mongoose=__webpack_require__(594);var gameSchema=new mongoose.Schema({awayTeam:String,homeTeam:String});module.exports=mongoose.model('Game',gameSchema);;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(gameSchema,'gameSchema','c:/WIG/sportstats/models/game.js');}();;
+	module.exports = require("flux");
 
 /***/ },
 /* 596 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.setAppState = setAppState;
+	exports.snapshot = snapshot;
+	exports.saveInitialSnapshot = saveInitialSnapshot;
+	exports.filterSnapshots = filterSnapshots;
+	
+	var _functions = __webpack_require__(597);
+	
+	var fn = _interopRequireWildcard(_functions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	function setAppState(instance, data, onStore) {
+	  var obj = instance.deserialize(data);
+	  fn.eachObject(function (key, value) {
+	    var store = instance.stores[key];
+	    if (store) {
+	      (function () {
+	        var config = store.StoreModel.config;
+	
+	        var state = store.state;
+	        if (config.onDeserialize) obj[key] = config.onDeserialize(value) || value;
+	        if (fn.isMutableObject(state)) {
+	          fn.eachObject(function (k) {
+	            return delete state[k];
+	          }, [state]);
+	          fn.assign(state, obj[key]);
+	        } else {
+	          store.state = obj[key];
+	        }
+	        onStore(store, store.state);
+	      })();
+	    }
+	  }, [obj]);
+	}
+	
+	function snapshot(instance) {
+	  var storeNames = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+	
+	  var stores = storeNames.length ? storeNames : Object.keys(instance.stores);
+	  return stores.reduce(function (obj, storeHandle) {
+	    var storeName = storeHandle.displayName || storeHandle;
+	    var store = instance.stores[storeName];
+	    var config = store.StoreModel.config;
+	
+	    store.lifecycle('snapshot');
+	    var customSnapshot = config.onSerialize && config.onSerialize(store.state);
+	    obj[storeName] = customSnapshot ? customSnapshot : store.getState();
+	    return obj;
+	  }, {});
+	}
+	
+	function saveInitialSnapshot(instance, key) {
+	  var state = instance.deserialize(instance.serialize(instance.stores[key].state));
+	  instance._initSnapshot[key] = state;
+	  instance._lastSnapshot[key] = state;
+	}
+	
+	function filterSnapshots(instance, state, stores) {
+	  return stores.reduce(function (obj, store) {
+	    var storeName = store.displayName || store;
+	    if (!state[storeName]) {
+	      throw new ReferenceError(String(storeName) + ' is not a valid store');
+	    }
+	    obj[storeName] = state[storeName];
+	    return obj;
+	  }, {});
+	}
+
+/***/ },
+/* 597 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.isMutableObject = isMutableObject;
+	exports.eachObject = eachObject;
+	exports.assign = assign;
+	var isFunction = exports.isFunction = function isFunction(x) {
+	  return typeof x === 'function';
+	};
+	
+	function isMutableObject(target) {
+	  var Ctor = target.constructor;
+	
+	  return !!target && Object.prototype.toString.call(target) === '[object Object]' && isFunction(Ctor) && !Object.isFrozen(target) && (Ctor instanceof Ctor || target.type === 'AltStore');
+	}
+	
+	function eachObject(f, o) {
+	  o.forEach(function (from) {
+	    Object.keys(Object(from)).forEach(function (key) {
+	      f(key, from[key]);
+	    });
+	  });
+	}
+	
+	function assign(target) {
+	  for (var _len = arguments.length, source = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	    source[_key - 1] = arguments[_key];
+	  }
+	
+	  eachObject(function (key, value) {
+	    return target[key] = value;
+	  }, source);
+	  return target;
+	}
+
+/***/ },
+/* 598 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.createStoreConfig = createStoreConfig;
+	exports.transformStore = transformStore;
+	exports.createStoreFromObject = createStoreFromObject;
+	exports.createStoreFromClass = createStoreFromClass;
+	
+	var _AltUtils = __webpack_require__(599);
+	
+	var utils = _interopRequireWildcard(_AltUtils);
+	
+	var _functions = __webpack_require__(597);
+	
+	var fn = _interopRequireWildcard(_functions);
+	
+	var _AltStore = __webpack_require__(600);
+	
+	var _AltStore2 = _interopRequireDefault(_AltStore);
+	
+	var _StoreMixin = __webpack_require__(602);
+	
+	var _StoreMixin2 = _interopRequireDefault(_StoreMixin);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	function doSetState(store, storeInstance, state) {
+	  if (!state) {
+	    return;
+	  }
+	
+	  var config = storeInstance.StoreModel.config;
+	
+	
+	  var nextState = fn.isFunction(state) ? state(storeInstance.state) : state;
+	
+	  storeInstance.state = config.setState.call(store, storeInstance.state, nextState);
+	
+	  if (!store.alt.dispatcher.isDispatching()) {
+	    store.emitChange();
+	  }
+	}
+	
+	function createPrototype(proto, alt, key, extras) {
+	  return fn.assign(proto, _StoreMixin2['default'], {
+	    displayName: key,
+	    alt: alt,
+	    dispatcher: alt.dispatcher,
+	    preventDefault: function () {
+	      function preventDefault() {
+	        this.getInstance().preventDefault = true;
+	      }
+	
+	      return preventDefault;
+	    }(),
+	
+	    boundListeners: [],
+	    lifecycleEvents: {},
+	    actionListeners: {},
+	    publicMethods: {},
+	    handlesOwnErrors: false
+	  }, extras);
+	}
+	
+	function createStoreConfig(globalConfig, StoreModel) {
+	  StoreModel.config = fn.assign({
+	    getState: function () {
+	      function getState(state) {
+	        if (Array.isArray(state)) {
+	          return state.slice();
+	        } else if (fn.isMutableObject(state)) {
+	          return fn.assign({}, state);
+	        }
+	
+	        return state;
+	      }
+	
+	      return getState;
+	    }(),
+	    setState: function () {
+	      function setState(currentState, nextState) {
+	        if (fn.isMutableObject(nextState)) {
+	          return fn.assign(currentState, nextState);
+	        }
+	        return nextState;
+	      }
+	
+	      return setState;
+	    }()
+	  }, globalConfig, StoreModel.config);
+	}
+	
+	function transformStore(transforms, StoreModel) {
+	  return transforms.reduce(function (Store, transform) {
+	    return transform(Store);
+	  }, StoreModel);
+	}
+	
+	function createStoreFromObject(alt, StoreModel, key) {
+	  var storeInstance = void 0;
+	
+	  var StoreProto = createPrototype({}, alt, key, fn.assign({
+	    getInstance: function () {
+	      function getInstance() {
+	        return storeInstance;
+	      }
+	
+	      return getInstance;
+	    }(),
+	    setState: function () {
+	      function setState(nextState) {
+	        doSetState(this, storeInstance, nextState);
+	      }
+	
+	      return setState;
+	    }()
+	  }, StoreModel));
+	
+	  // bind the store listeners
+	  /* istanbul ignore else */
+	  if (StoreProto.bindListeners) {
+	    _StoreMixin2['default'].bindListeners.call(StoreProto, StoreProto.bindListeners);
+	  }
+	  /* istanbul ignore else */
+	  if (StoreProto.observe) {
+	    _StoreMixin2['default'].bindListeners.call(StoreProto, StoreProto.observe(alt));
+	  }
+	
+	  // bind the lifecycle events
+	  /* istanbul ignore else */
+	  if (StoreProto.lifecycle) {
+	    fn.eachObject(function (eventName, event) {
+	      _StoreMixin2['default'].on.call(StoreProto, eventName, event);
+	    }, [StoreProto.lifecycle]);
+	  }
+	
+	  // create the instance and fn.assign the public methods to the instance
+	  storeInstance = fn.assign(new _AltStore2['default'](alt, StoreProto, StoreProto.state !== undefined ? StoreProto.state : {}, StoreModel), StoreProto.publicMethods, {
+	    displayName: key,
+	    config: StoreModel.config
+	  });
+	
+	  return storeInstance;
+	}
+	
+	function createStoreFromClass(alt, StoreModel, key) {
+	  var storeInstance = void 0;
+	  var config = StoreModel.config;
+	
+	  // Creating a class here so we don't overload the provided store's
+	  // prototype with the mixin behaviour and I'm extending from StoreModel
+	  // so we can inherit any extensions from the provided store.
+	
+	  var Store = function (_StoreModel) {
+	    _inherits(Store, _StoreModel);
+	
+	    function Store() {
+	      _classCallCheck(this, Store);
+	
+	      for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	        args[_key2] = arguments[_key2];
+	      }
+	
+	      return _possibleConstructorReturn(this, _StoreModel.call.apply(_StoreModel, [this].concat(args)));
+	    }
+	
+	    return Store;
+	  }(StoreModel);
+	
+	  createPrototype(Store.prototype, alt, key, {
+	    type: 'AltStore',
+	    getInstance: function () {
+	      function getInstance() {
+	        return storeInstance;
+	      }
+	
+	      return getInstance;
+	    }(),
+	    setState: function () {
+	      function setState(nextState) {
+	        doSetState(this, storeInstance, nextState);
+	      }
+	
+	      return setState;
+	    }()
+	  });
+	
+	  for (var _len = arguments.length, argsForClass = Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+	    argsForClass[_key - 3] = arguments[_key];
+	  }
+	
+	  var store = new (Function.prototype.bind.apply(Store, [null].concat(argsForClass)))();
+	
+	  /* istanbul ignore next */
+	  if (config.bindListeners) store.bindListeners(config.bindListeners);
+	  /* istanbul ignore next */
+	  if (config.datasource) store.registerAsync(config.datasource);
+	
+	  storeInstance = fn.assign(new _AltStore2['default'](alt, store, store.state !== undefined ? store.state : store, StoreModel), utils.getInternalMethods(StoreModel), config.publicMethods, { displayName: key });
+	
+	  return storeInstance;
+	}
+
+/***/ },
+/* 599 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports.getInternalMethods = getInternalMethods;
+	exports.getPrototypeChain = getPrototypeChain;
+	exports.warn = warn;
+	exports.uid = uid;
+	exports.formatAsConstant = formatAsConstant;
+	exports.dispatchIdentity = dispatchIdentity;
+	exports.fsa = fsa;
+	exports.dispatch = dispatch;
+	
+	var _functions = __webpack_require__(597);
+	
+	var fn = _interopRequireWildcard(_functions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	/*eslint-disable*/
+	var builtIns = Object.getOwnPropertyNames(NoopClass);
+	var builtInProto = Object.getOwnPropertyNames(NoopClass.prototype);
+	/*eslint-enable*/
+	
+	function getInternalMethods(Obj, isProto) {
+	  var excluded = isProto ? builtInProto : builtIns;
+	  var obj = isProto ? Obj.prototype : Obj;
+	  return Object.getOwnPropertyNames(obj).reduce(function (value, m) {
+	    if (excluded.indexOf(m) !== -1) {
+	      return value;
+	    }
+	
+	    value[m] = obj[m];
+	    return value;
+	  }, {});
+	}
+	
+	function getPrototypeChain(Obj) {
+	  var methods = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	
+	  return Obj === Function.prototype ? methods : getPrototypeChain(Object.getPrototypeOf(Obj), fn.assign(getInternalMethods(Obj, true), methods));
+	}
+	
+	function warn(msg) {
+	  /* istanbul ignore else */
+	  /*eslint-disable*/
+	  if (typeof console !== 'undefined') {
+	    console.warn(new ReferenceError(msg));
+	  }
+	  /*eslint-enable*/
+	}
+	
+	function uid(container, name) {
+	  var count = 0;
+	  var key = name;
+	  while (Object.hasOwnProperty.call(container, key)) {
+	    key = name + String(++count);
+	  }
+	  return key;
+	}
+	
+	function formatAsConstant(name) {
+	  return name.replace(/[a-z]([A-Z])/g, function (i) {
+	    return String(i[0]) + '_' + String(i[1].toLowerCase());
+	  }).toUpperCase();
+	}
+	
+	function dispatchIdentity(x) {
+	  if (x === undefined) return null;
+	
+	  for (var _len = arguments.length, a = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	    a[_key - 1] = arguments[_key];
+	  }
+	
+	  return a.length ? [x].concat(a) : x;
+	}
+	
+	function fsa(id, type, payload, details) {
+	  return {
+	    type: type,
+	    payload: payload,
+	    meta: _extends({
+	      dispatchId: id
+	    }, details),
+	
+	    id: id,
+	    action: type,
+	    data: payload,
+	    details: details
+	  };
+	}
+	
+	function dispatch(id, actionObj, payload, alt) {
+	  var data = actionObj.dispatch(payload);
+	  if (data === undefined) return null;
+	
+	  var type = actionObj.id;
+	  var namespace = type;
+	  var name = type;
+	  var details = { id: type, namespace: namespace, name: name };
+	
+	  var dispatchLater = function dispatchLater(x) {
+	    return alt.dispatch(type, x, details);
+	  };
+	
+	  if (fn.isFunction(data)) return data(dispatchLater, alt);
+	
+	  // XXX standardize this
+	  return alt.dispatcher.dispatch(fsa(id, type, data, details));
+	}
+	
+	/* istanbul ignore next */
+	function NoopClass() {}
+
+/***/ },
+/* 600 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _functions = __webpack_require__(597);
+	
+	var fn = _interopRequireWildcard(_functions);
+	
+	var _transmitter = __webpack_require__(601);
+	
+	var _transmitter2 = _interopRequireDefault(_transmitter);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var AltStore = function () {
+	  function AltStore(alt, model, state, StoreModel) {
+	    var _this = this;
+	
+	    _classCallCheck(this, AltStore);
+	
+	    var lifecycleEvents = model.lifecycleEvents;
+	    this.transmitter = (0, _transmitter2['default'])();
+	    this.lifecycle = function (event, x) {
+	      if (lifecycleEvents[event]) lifecycleEvents[event].publish(x);
+	    };
+	    this.state = state;
+	
+	    this.alt = alt;
+	    this.preventDefault = false;
+	    this.displayName = model.displayName;
+	    this.boundListeners = model.boundListeners;
+	    this.StoreModel = StoreModel;
+	    this.reduce = model.reduce || function (x) {
+	      return x;
+	    };
+	    this.subscriptions = [];
+	
+	    var output = model.output || function (x) {
+	      return x;
+	    };
+	
+	    this.emitChange = function () {
+	      return _this.transmitter.publish(output(_this.state));
+	    };
+	
+	    var handleDispatch = function handleDispatch(f, payload) {
+	      try {
+	        return f();
+	      } catch (e) {
+	        if (model.handlesOwnErrors) {
+	          _this.lifecycle('error', {
+	            error: e,
+	            payload: payload,
+	            state: _this.state
+	          });
+	          return false;
+	        }
+	
+	        throw e;
+	      }
+	    };
+	
+	    fn.assign(this, model.publicMethods);
+	
+	    // Register dispatcher
+	    this.dispatchToken = alt.dispatcher.register(function (payload) {
+	      _this.preventDefault = false;
+	
+	      _this.lifecycle('beforeEach', {
+	        payload: payload,
+	        state: _this.state
+	      });
+	
+	      var actionHandlers = model.actionListeners[payload.action];
+	
+	      if (actionHandlers || model.otherwise) {
+	        var result = void 0;
+	
+	        if (actionHandlers) {
+	          result = handleDispatch(function () {
+	            return actionHandlers.filter(Boolean).every(function (handler) {
+	              return handler.call(model, payload.data, payload.action) !== false;
+	            });
+	          }, payload);
+	        } else {
+	          result = handleDispatch(function () {
+	            return model.otherwise(payload.data, payload.action);
+	          }, payload);
+	        }
+	
+	        if (result !== false && !_this.preventDefault) _this.emitChange();
+	      }
+	
+	      if (model.reduce) {
+	        handleDispatch(function () {
+	          var value = model.reduce(_this.state, payload);
+	          if (value !== undefined) _this.state = value;
+	        }, payload);
+	        if (!_this.preventDefault) _this.emitChange();
+	      }
+	
+	      _this.lifecycle('afterEach', {
+	        payload: payload,
+	        state: _this.state
+	      });
+	    });
+	
+	    this.lifecycle('init');
+	  }
+	
+	  AltStore.prototype.listen = function () {
+	    function listen(cb) {
+	      var _this2 = this;
+	
+	      if (!fn.isFunction(cb)) throw new TypeError('listen expects a function');
+	
+	      var _transmitter$subscrib = this.transmitter.subscribe(cb);
+	
+	      var dispose = _transmitter$subscrib.dispose;
+	
+	      this.subscriptions.push({ cb: cb, dispose: dispose });
+	      return function () {
+	        _this2.lifecycle('unlisten');
+	        dispose();
+	      };
+	    }
+	
+	    return listen;
+	  }();
+	
+	  AltStore.prototype.unlisten = function () {
+	    function unlisten(cb) {
+	      this.lifecycle('unlisten');
+	      this.subscriptions.filter(function (subscription) {
+	        return subscription.cb === cb;
+	      }).forEach(function (subscription) {
+	        return subscription.dispose();
+	      });
+	    }
+	
+	    return unlisten;
+	  }();
+	
+	  AltStore.prototype.getState = function () {
+	    function getState() {
+	      return this.StoreModel.config.getState.call(this, this.state);
+	    }
+	
+	    return getState;
+	  }();
+	
+	  return AltStore;
+	}();
+	
+	exports['default'] = AltStore;
+	module.exports = exports['default'];
+
+/***/ },
+/* 601 */
+/***/ function(module, exports) {
+
+	module.exports = require("transmitter");
+
+/***/ },
+/* 602 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _transmitter = __webpack_require__(601);
+	
+	var _transmitter2 = _interopRequireDefault(_transmitter);
+	
+	var _functions = __webpack_require__(597);
+	
+	var fn = _interopRequireWildcard(_functions);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var StoreMixin = {
+	  waitFor: function () {
+	    function waitFor() {
+	      for (var _len = arguments.length, sources = Array(_len), _key = 0; _key < _len; _key++) {
+	        sources[_key] = arguments[_key];
+	      }
+	
+	      if (!sources.length) {
+	        throw new ReferenceError('Dispatch tokens not provided');
+	      }
+	
+	      var sourcesArray = sources;
+	      if (sources.length === 1) {
+	        sourcesArray = Array.isArray(sources[0]) ? sources[0] : sources;
+	      }
+	
+	      var tokens = sourcesArray.map(function (source) {
+	        return source.dispatchToken || source;
+	      });
+	
+	      this.dispatcher.waitFor(tokens);
+	    }
+	
+	    return waitFor;
+	  }(),
+	  exportAsync: function () {
+	    function exportAsync(asyncMethods) {
+	      this.registerAsync(asyncMethods);
+	    }
+	
+	    return exportAsync;
+	  }(),
+	  registerAsync: function () {
+	    function registerAsync(asyncDef) {
+	      var _this = this;
+	
+	      var loadCounter = 0;
+	
+	      var asyncMethods = fn.isFunction(asyncDef) ? asyncDef(this.alt) : asyncDef;
+	
+	      var toExport = Object.keys(asyncMethods).reduce(function (publicMethods, methodName) {
+	        var desc = asyncMethods[methodName];
+	        var spec = fn.isFunction(desc) ? desc(_this) : desc;
+	
+	        var validHandlers = ['success', 'error', 'loading'];
+	        validHandlers.forEach(function (handler) {
+	          if (spec[handler] && !spec[handler].id) {
+	            throw new Error(String(handler) + ' handler must be an action function');
+	          }
+	        });
+	
+	        publicMethods[methodName] = function () {
+	          for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	            args[_key2] = arguments[_key2];
+	          }
+	
+	          var state = _this.getInstance().getState();
+	          var value = spec.local && spec.local.apply(spec, [state].concat(args));
+	          var shouldFetch = spec.shouldFetch ? spec.shouldFetch.apply(spec, [state].concat(args))
+	          /*eslint-disable*/
+	          : value == null;
+	          /*eslint-enable*/
+	          var intercept = spec.interceptResponse || function (x) {
+	            return x;
+	          };
+	
+	          var makeActionHandler = function () {
+	            function makeActionHandler(action, isError) {
+	              return function (x) {
+	                var fire = function () {
+	                  function fire() {
+	                    loadCounter -= 1;
+	                    action(intercept(x, action, args));
+	                    if (isError) throw x;
+	                    return x;
+	                  }
+	
+	                  return fire;
+	                }();
+	                return _this.alt.trapAsync ? function () {
+	                  return fire();
+	                } : fire();
+	              };
+	            }
+	
+	            return makeActionHandler;
+	          }();
+	
+	          // if we don't have it in cache then fetch it
+	          if (shouldFetch) {
+	            loadCounter += 1;
+	            /* istanbul ignore else */
+	            if (spec.loading) spec.loading(intercept(null, spec.loading, args));
+	            return spec.remote.apply(spec, [state].concat(args)).then(makeActionHandler(spec.success), makeActionHandler(spec.error, 1));
+	          }
+	
+	          // otherwise emit the change now
+	          _this.emitChange();
+	          return value;
+	        };
+	
+	        return publicMethods;
+	      }, {});
+	
+	      this.exportPublicMethods(toExport);
+	      this.exportPublicMethods({
+	        isLoading: function () {
+	          function isLoading() {
+	            return loadCounter > 0;
+	          }
+	
+	          return isLoading;
+	        }()
+	      });
+	    }
+	
+	    return registerAsync;
+	  }(),
+	  exportPublicMethods: function () {
+	    function exportPublicMethods(methods) {
+	      var _this2 = this;
+	
+	      fn.eachObject(function (methodName, value) {
+	        if (!fn.isFunction(value)) {
+	          throw new TypeError('exportPublicMethods expects a function');
+	        }
+	
+	        _this2.publicMethods[methodName] = value;
+	      }, [methods]);
+	    }
+	
+	    return exportPublicMethods;
+	  }(),
+	  emitChange: function () {
+	    function emitChange() {
+	      this.getInstance().emitChange();
+	    }
+	
+	    return emitChange;
+	  }(),
+	  on: function () {
+	    function on(lifecycleEvent, handler) {
+	      if (lifecycleEvent === 'error') this.handlesOwnErrors = true;
+	      var bus = this.lifecycleEvents[lifecycleEvent] || (0, _transmitter2['default'])();
+	      this.lifecycleEvents[lifecycleEvent] = bus;
+	      return bus.subscribe(handler.bind(this));
+	    }
+	
+	    return on;
+	  }(),
+	  bindAction: function () {
+	    function bindAction(symbol, handler) {
+	      if (!symbol) {
+	        throw new ReferenceError('Invalid action reference passed in');
+	      }
+	      if (!fn.isFunction(handler)) {
+	        throw new TypeError('bindAction expects a function');
+	      }
+	
+	      // You can pass in the constant or the function itself
+	      var key = symbol.id ? symbol.id : symbol;
+	      this.actionListeners[key] = this.actionListeners[key] || [];
+	      this.actionListeners[key].push(handler.bind(this));
+	      this.boundListeners.push(key);
+	    }
+	
+	    return bindAction;
+	  }(),
+	  bindActions: function () {
+	    function bindActions(actions) {
+	      var _this3 = this;
+	
+	      fn.eachObject(function (action, symbol) {
+	        var matchFirstCharacter = /./;
+	        var assumedEventHandler = action.replace(matchFirstCharacter, function (x) {
+	          return 'on' + String(x[0].toUpperCase());
+	        });
+	
+	        if (_this3[action] && _this3[assumedEventHandler]) {
+	          // If you have both action and onAction
+	          throw new ReferenceError('You have multiple action handlers bound to an action: ' + (String(action) + ' and ' + String(assumedEventHandler)));
+	        }
+	
+	        var handler = _this3[action] || _this3[assumedEventHandler];
+	        if (handler) {
+	          _this3.bindAction(symbol, handler);
+	        }
+	      }, [actions]);
+	    }
+	
+	    return bindActions;
+	  }(),
+	  bindListeners: function () {
+	    function bindListeners(obj) {
+	      var _this4 = this;
+	
+	      fn.eachObject(function (methodName, symbol) {
+	        var listener = _this4[methodName];
+	
+	        if (!listener) {
+	          throw new ReferenceError(String(methodName) + ' defined but does not exist in ' + String(_this4.displayName));
+	        }
+	
+	        if (Array.isArray(symbol)) {
+	          symbol.forEach(function (action) {
+	            _this4.bindAction(action, listener);
+	          });
+	        } else {
+	          _this4.bindAction(symbol, listener);
+	        }
+	      }, [obj]);
+	    }
+	
+	    return bindListeners;
+	  }()
+	};
+	
+	exports['default'] = StoreMixin;
+	module.exports = exports['default'];
+
+/***/ },
+/* 603 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports['default'] = makeAction;
+	
+	var _functions = __webpack_require__(597);
+	
+	var fn = _interopRequireWildcard(_functions);
+	
+	var _AltUtils = __webpack_require__(599);
+	
+	var utils = _interopRequireWildcard(_AltUtils);
+	
+	var _isPromise = __webpack_require__(604);
+	
+	var _isPromise2 = _interopRequireDefault(_isPromise);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+	
+	function makeAction(alt, namespace, name, implementation, obj) {
+	  var id = utils.uid(alt._actionsRegistry, String(namespace) + '.' + String(name));
+	  alt._actionsRegistry[id] = 1;
+	
+	  var data = { id: id, namespace: namespace, name: name };
+	
+	  var dispatch = function dispatch(payload) {
+	    return alt.dispatch(id, payload, data);
+	  };
+	
+	  // the action itself
+	  var action = function action() {
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    var invocationResult = implementation.apply(obj, args);
+	    var actionResult = invocationResult;
+	
+	    // async functions that return promises should not be dispatched
+	    if (invocationResult !== undefined && !(0, _isPromise2['default'])(invocationResult)) {
+	      if (fn.isFunction(invocationResult)) {
+	        // inner function result should be returned as an action result
+	        actionResult = invocationResult(dispatch, alt);
+	      } else {
+	        dispatch(invocationResult);
+	      }
+	    }
+	
+	    if (invocationResult === undefined) {
+	      utils.warn('An action was called but nothing was dispatched');
+	    }
+	
+	    return actionResult;
+	  };
+	  action.defer = function () {
+	    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	      args[_key2] = arguments[_key2];
+	    }
+	
+	    return setTimeout(function () {
+	      return action.apply(null, args);
+	    });
+	  };
+	  action.id = id;
+	  action.data = data;
+	
+	  // ensure each reference is unique in the namespace
+	  var container = alt.actions[namespace];
+	  var namespaceId = utils.uid(container, name);
+	  container[namespaceId] = action;
+	
+	  // generate a constant
+	  var constant = utils.formatAsConstant(namespaceId);
+	  container[constant] = id;
+	
+	  return action;
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 604 */
+/***/ function(module, exports) {
+
+	module.exports = require("is-promise");
+
+/***/ },
+/* 605 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';exports.__esModule=true;var _classCallCheck2=__webpack_require__(177);var _classCallCheck3=_interopRequireDefault(_classCallCheck2);var _alt=__webpack_require__(593);var _alt2=_interopRequireDefault(_alt);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var GameListActions=function(){function GameListActions(){(0,_classCallCheck3.default)(this,GameListActions);this.generateActions('getGamesSuccess','getGamesFail');}GameListActions.prototype.getNextGames=function getNextGames(payload){var _this=this;var url='/api/nextgames';$.ajax({url:url}).done(function(data){console.log(_this);_this.getGamesSuccess(data);}).fail(function(jqXhr){_this.getGamesFail(jqXhr);});};return GameListActions;}();var _default=_alt2.default.createActions(GameListActions);exports.default=_default;;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(GameListActions,'GameListActions','C:/WIG/sportstats/src/actions/GameListActions.js');__REACT_HOT_LOADER__.register(_default,'default','C:/WIG/sportstats/src/actions/GameListActions.js');}();;
+
+/***/ },
+/* 606 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48507,17 +49841,17 @@ require('source-map-support').install({environment: 'node'});
 	
 	var _reactRouter = __webpack_require__(256);
 	
-	var _reactHotLoader = __webpack_require__(597);
+	var _reactHotLoader = __webpack_require__(607);
 	
-	var _reactRouterScroll = __webpack_require__(598);
+	var _reactRouterScroll = __webpack_require__(608);
 	
 	var _reactRouterScroll2 = _interopRequireDefault(_reactRouterScroll);
 	
-	var _onRouterSetup = __webpack_require__(604);
+	var _onRouterSetup = __webpack_require__(614);
 	
 	var _onRouterSetup2 = _interopRequireDefault(_onRouterSetup);
 	
-	var _checkScroll = __webpack_require__(606);
+	var _checkScroll = __webpack_require__(616);
 	
 	var _checkScroll2 = _interopRequireDefault(_checkScroll);
 	
@@ -48603,13 +49937,13 @@ require('source-map-support').install({environment: 'node'});
 	}
 
 /***/ },
-/* 597 */
+/* 607 */
 /***/ function(module, exports) {
 
 	module.exports = require("react-hot-loader");
 
 /***/ },
-/* 598 */
+/* 608 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48621,7 +49955,7 @@ require('source-map-support').install({environment: 'node'});
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ScrollBehaviorContainer = __webpack_require__(599);
+	var _ScrollBehaviorContainer = __webpack_require__(609);
 	
 	var _ScrollBehaviorContainer2 = _interopRequireDefault(_ScrollBehaviorContainer);
 	
@@ -48644,7 +49978,7 @@ require('source-map-support').install({environment: 'node'});
 	module.exports = exports['default'];
 
 /***/ },
-/* 599 */
+/* 609 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48655,7 +49989,7 @@ require('source-map-support').install({environment: 'node'});
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ScrollBehavior = __webpack_require__(600);
+	var _ScrollBehavior = __webpack_require__(610);
 	
 	var _ScrollBehavior2 = _interopRequireDefault(_ScrollBehavior);
 	
@@ -48736,7 +50070,7 @@ require('source-map-support').install({environment: 'node'});
 
 
 /***/ },
-/* 600 */
+/* 610 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48759,13 +50093,13 @@ require('source-map-support').install({environment: 'node'});
 	
 	var _scrollTop2 = _interopRequireDefault(_scrollTop);
 	
-	var _requestAnimationFrame = __webpack_require__(601);
+	var _requestAnimationFrame = __webpack_require__(611);
 	
 	var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
 	
-	var _Actions = __webpack_require__(602);
+	var _Actions = __webpack_require__(612);
 	
-	var _DOMStateStorage = __webpack_require__(603);
+	var _DOMStateStorage = __webpack_require__(613);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -48943,7 +50277,7 @@ require('source-map-support').install({environment: 'node'});
 	module.exports = exports['default'];
 
 /***/ },
-/* 601 */
+/* 611 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48994,7 +50328,7 @@ require('source-map-support').install({environment: 'node'});
 	module.exports = compatRaf;
 
 /***/ },
-/* 602 */
+/* 612 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -49021,7 +50355,7 @@ require('source-map-support').install({environment: 'node'});
 	var POP = exports.POP = 'POP';
 
 /***/ },
-/* 603 */
+/* 613 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49111,7 +50445,7 @@ require('source-map-support').install({environment: 'node'});
 	};
 
 /***/ },
-/* 604 */
+/* 614 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49125,7 +50459,7 @@ require('source-map-support').install({environment: 'node'});
 	
 	var _isBrowser2 = _interopRequireDefault(_isBrowser);
 	
-	__webpack_require__(605);
+	__webpack_require__(615);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -49190,7 +50524,7 @@ require('source-map-support').install({environment: 'node'});
 	}
 
 /***/ },
-/* 605 */
+/* 615 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49417,7 +50751,7 @@ require('source-map-support').install({environment: 'node'});
 	}
 
 /***/ },
-/* 606 */
+/* 616 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49431,11 +50765,11 @@ require('source-map-support').install({environment: 'node'});
 	
 	var _isBrowser2 = _interopRequireDefault(_isBrowser);
 	
-	var _onRouterUpdate = __webpack_require__(607);
+	var _onRouterUpdate = __webpack_require__(617);
 	
 	var _onRouterUpdate2 = _interopRequireDefault(_onRouterUpdate);
 	
-	var _ga = __webpack_require__(608);
+	var _ga = __webpack_require__(618);
 	
 	var _ga2 = _interopRequireDefault(_ga);
 	
@@ -49463,7 +50797,7 @@ require('source-map-support').install({environment: 'node'});
 	}
 
 /***/ },
-/* 607 */
+/* 617 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49509,7 +50843,7 @@ require('source-map-support').install({environment: 'node'});
 	}
 
 /***/ },
-/* 608 */
+/* 618 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49536,7 +50870,7 @@ require('source-map-support').install({environment: 'node'});
 	};
 
 /***/ },
-/* 609 */
+/* 619 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49584,6 +50918,24 @@ require('source-map-support').install({environment: 'node'});
 	var hostname = process.env.WP_HOST || "localhost";
 	var port = process.env.WP_PORT || 8079;
 	var static_path = 'http://' + hostname + ':' + port;
+
+/***/ },
+/* 620 */
+/***/ function(module, exports) {
+
+	module.exports = require("mongoose");
+
+/***/ },
+/* 621 */
+/***/ function(module, exports) {
+
+	'use strict';module.exports={database:'mongodb://localhost:27017/scrap'};;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}}();;
+
+/***/ },
+/* 622 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';var mongoose=__webpack_require__(620);var gameSchema=new mongoose.Schema({Competition:String,Date:Date,Hour:String,HomeTeam:String,AwayTeam:String,Result:String,Url:String,Scrapped:Boolean,gameId:String});module.exports=mongoose.model('Game',gameSchema);;var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}__REACT_HOT_LOADER__.register(gameSchema,'gameSchema','C:/WIG/sportstats/models/game.js');}();;
 
 /***/ }
 /******/ ]);

@@ -84,8 +84,10 @@
   },
   "dependencies": {
     "@sketchpixy/rubix": "^2.0.0",
+    "alt": "^0.18.6",
     "assert": "^1.4.1",
     "babel-cli": "^6.10.1",
+    "body-parser": "^1.15.2",
     "classnames": "^2.2.5",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",

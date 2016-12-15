@@ -1,124 +1,60 @@
-var repository = require('../data/repository');
-
 import React from 'react';
-import Game from './game'
+import GameListStore from '../stores/GameListStore';
+import GameListActions from '../actions/GameListActions';
 
-export default class NextGames extends React.Component {
-
-  constructor(props, context) {
-    super(props, context);
-
-
-    var emptyData = { homeTeam: '--', awayTeam: '--' };
-
-    this.state = {
-      nextGames: [<Game gameInfo={emptyData} />]
-    };
-
-  };
-
-  onChange(state) {
-    this.setState(state);
-  }
-
-  componentWillMount() {
-    console.log('componentDidMount');
-    setTimeout(function () {
-      var games = [
-        { homeTeam: 'Benfica', awayTeam: 'Sporting CP' },
-        { homeTeam: 'Moreirense', awayTeam: 'Porto' }];
-
-      this.setState({
-        nextGames: games
-      });
-      console.log('---------------------------------------------- setState! --------------------------------------------');
-    }.bind(this), 3000);
-    // repository.getAllGames(function (err, games) {
-    //   if (err)
-    //     console.log('error in NextGames ctor');
-    //   else {
-    //     var dbData = [];
-    //     for (var i = 0; i < games.length; i++) {
-    //       dbData.push(<Game gameInfo={games[i]} />);
-    //       this.setState({
-    //         nextGames: dbData
-    //       });
-    //       console.log('setState!');
-    //     }
-    //     render();
-    //   }
-    // });
+class GameList extends React.Component {
+  constructor(props) {
+    console.log('---- CTOR 1 ----');
+    super(props);
+    console.log('---- CTOR 2 ----');
+    this.state = GameListStore.getState();
+    console.log('---- CTOR 3 ----');
+    this.onChange = this.onChange.bind(this);
+    console.log('---- CTOR 4 ----');
   }
 
   componentDidMount() {
-    console.log('============================================ componentWillMount ===============================');
-  }
-
-  // componentDidMount() {
-  //   console.log('============================================ componentWillUpdate ===============================');
-  // }
-
-  componentWillReceiveProps(nextProps) {
-    console.log('============================================ componentWillReceiveProps ===============================');
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('============================================ shouldComponentUpdate ===============================');
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    console.log('============================================ componentWillUpdate ===============================');
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('============================================ componentDidUpdate ===============================');
+    console.log('---- componentDidMount ----');
+    GameListStore.listen(this.onChange);
+    GameListActions.getNextGames();
   }
 
   componentWillUnmount() {
-    console.log('============================================ componentWillUnmount ===============================');
+    console.log('---- componentWillUnmount ----');
+    GameListStore.unlisten(this.onChange);
   }
 
-  fetchData() {
-    setTimeout(function () {
-      var games = [
-        { homeTeam: 'Benfica', awayTeam: 'Sporting CP' },
-        { homeTeam: 'Moreirense', awayTeam: 'Porto' }];
+  componentDidUpdate(prevProps) {
+    // console.log('---- componentDidUpdate ----');
+    // GameListActions.getNextGames();
+  }
 
-      this.onChange({
-        nextGames: games
-      });
-      console.log('---------------------------------------------- setState! --------------------------------------------');
-    }, 3000);
+  onChange(state) {
+    console.log(state);
+    this.setState(state);
   }
 
   render() {
-    return (
-      <div>
-        <div className='row'>
-          <div className='col-md-12'>
-            <p>Next Game's OLA</p>
-          </div>
-        </div>
+    console.log('---- RENDER ----');
+    let gamesList = this.state.games.map((game, index) => {
+      return (
+        <div>
+          <h3>
+            {game.nextGame.HomeTeam} vs {game.nextGame.AwayTeam} ({game.nextGame.HomeScores.length})
 
-        <div className='row'>
-          <div className='col-md-4'>
-            <hr className='linha' />
-          </div>
-          <div className='col-md-2'>
-            <p>CASA</p>
-          </div>
-          <div className='col-md-2'>
-            <p>FORA</p>
-          </div>
-          <div className='col-md-4'>
-            <hr className='linha2'></hr>
-          </div>
-          <div>
-            {this.state.nextGames}
-          </div>
+          </h3>
+        </div>
+      );
+    });
+
+    return (
+      <div className='container'>
+        <div className='list-group'>
+          {gamesList}
         </div>
       </div>
     );
   }
 }
 
+export default GameList;

@@ -12,14 +12,13 @@ import RubixAssetMiddleware from '@sketchpixy/rubix/lib/node/RubixAssetMiddlewar
 
 var mongoose = require('mongoose');
 var config = require('./config');
-var Game = require('./models/game');
 
 const port = process.env.PORT || 8080;
 
 let app = express();
 
 mongoose.connect(config.database);
-mongoose.connection.on('error', function () {
+mongoose.connection.on('error', function() {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
 
@@ -41,58 +40,12 @@ function renderHTML(req, res) {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else {
-
       res.render('index', {
         content: html
       });
     }
   });
 }
-
-
-/**
- * GET /api/nextgames
- * 
- */
-app.get('/api/nextgames', function (req, res, next) {
-
-  console.log('Get ');
-  Game.find()
-    .limit(10)
-    .exec(function (err, games) {
-      if (err) {
-        console.log('Get error!!! ' + err);
-        return next(err);
-      }
-      console.log('Get returned!!! ' + games);
-      return res.send(games);
-    });
-
-});
-
-/**
- * POST /api/game
- * Adds new game to the database.
- */
-app.post('/api/game', function (req, res, next) {
-  try {
-
-    var game = new Game({
-      homeTeam: 'Benfica',
-      awayTeam: 'Sporting CP',
-      gameId: 'aasdasdsgasfasgfd'
-
-    });
-
-    game.save(function (err) {
-      if (err) return next(err);
-      res.send({ message: '[' + game.homeTeam + ' vs ' + game.awayTeam + '] has been added successfully!' });
-    });
-  } catch (e) {
-    res.status(404).send({ message: characterName + ' is not a registered citizen of New Eden.' });
-  }
-});
-
 
 app.get('*', RubixAssetMiddleware('ltr'), (req, res, next) => {
   renderHTML(req, res);
