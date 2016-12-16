@@ -13,17 +13,31 @@ import {
 class Chart extends React.Component {
 
   componentDidMount() {
+    var result = this.props.result;
+    var chartId = this.props.id;
+
+
+
+    var allValues = result.map(function (item) {
+      return Math.max(parseInt(item.homeResult), parseInt(item.awayResult));
+    });
+
+    console.log('All: ' +  allValues);
+    
+    
+    var baselineValue = Math.max.apply(null,allValues);
+
+    console.log('Baseline: ' + baselineValue);
+
     (() => {
-      var chart = new Rubix('#stacked-multi-series-bar-chart-negative', {
+      var chart = new Rubix('#' + chartId, {
         // title: 'Stacked bar chart with negative values',
         // subtitle: 'Profit/Expense chart',
-
         hideAxisAndGrid: true,
         hideLegend: true,
-
         titleColor: '#0080FF',
         subtitleColor: '#0080FF',
-        height: 300,
+        height: 250,
         axis: {
           x: {
             type: 'ordinal'
@@ -45,32 +59,29 @@ class Chart extends React.Component {
       });
 
       var profit = chart.bar_series({
-
         color: '#0080FF'
       });
 
       profit.addData([
-        { x: 'Jan', y: 30000 },
-        { x: 'Feb', y: 25000 },
-        { x: 'Mar', y: 25000 },
-        { x: 'Apr', y: 30000 },
-        { x: 'May', y: 65000 },
-        { x: 'Jun', y: 15000 }
+        { x: '1', y: (-0.1 - result[0].homeResult) / baselineValue },
+        // { x: 'Jan', y: -0.1 - result[1].homeResult },
+        { x: '2', y: (-0.1 - result[2].homeResult) / baselineValue },
+        { x: '3', y: (-0.1 - result[3].homeResult) / baselineValue },
+        { x: '4', y: (-0.1 - result[4].homeResult) / baselineValue }
       ]);
 
       var expenses = chart.bar_series({
-        name: 'Expense',
+        name: this.props.text,
         color: '#FF6666',
         marker: 'square'
       });
 
       expenses.addData([
-        { x: 'Jan', y: -35000 },
-        { x: 'Feb', y: -10000 },
-        { x: 'Mar', y: -10000 },
-        { x: 'Apr', y: -15000 },
-        { x: 'May', y: -15000 },
-        { x: 'Jun', y: -5000 }
+        { x: '1', y: (result[0].awayResult) / baselineValue },
+        // { x: 'Jan', y: result[1].awayResult },
+        { x: '2', y: (result[2].awayResult) / baselineValue },
+        { x: '3', y: (result[3].awayResult) / baselineValue },
+        { x: '4', y: (result[4].awayResult) / baselineValue },
       ]);
     })();
   }
@@ -79,14 +90,7 @@ class Chart extends React.Component {
 
 
     return (
-      // <PanelContainer>
-      //   <Panel>
-      //     <PanelBody style={{ padding: 25 }}>
-            
-      //     </PanelBody>
-      //   </Panel>
-      // </PanelContainer>
-      <div id='stacked-multi-series-bar-chart-negative'></div>
+      <div id={this.props.id}></div>
     );
   }
 }
@@ -123,12 +127,20 @@ class GameList extends React.Component {
       var matchInfoUrl = '/matchinfo/' + game.nextGame.gameId;
 
       var gamesBetween = [];
+      var gamesBetweenValues = [];
       var gamesBetweenInfo = [];
       for (var i = 0; i < game.nextGame.GamesBetweenTeams.length; i++) {
+        if (game.nextGame.GamesBetweenTeams[i].Result.indexOf('ET') > -1)
+          continue;
+
+        var resultValues = game.nextGame.GamesBetweenTeams[i].Result.split('-');
         gamesBetween.push(<p>{game.nextGame.GamesBetweenTeams[i].Result}</p>);
+        gamesBetweenValues.push({
+          homeResult: resultValues[0],
+          awayResult: resultValues[1]
+        });
         gamesBetweenInfo.push((game.nextGame.GamesBetweenTeams[i].SameHomeTeam) ? <p>Casa</p> : <p>Fora</p>);
       }
-
 
       return (
         <div key={game.nextGame.gameId}>
@@ -151,11 +163,11 @@ class GameList extends React.Component {
               </div>
 
               <div className='row'>
-                <div className='col-md-3'>
-                  <img src='/imgs/app/avatars/avatar.jpg' width='125px' />
+                <div className='col-md-2'>
+                  <img src={'/imgs/teams/' + game.nextGame.HomeTeam + '.png'} width='125px' />
                 </div>
 
-                <div className='col-md-6'>
+                <div className='col-md-8'>
                   <div className='row'>
                     <div className='col-md-1'>
                       <div className='dist'>
@@ -164,7 +176,7 @@ class GameList extends React.Component {
                     </div>
 
                     <div className='col-md-10'>
-                      <Chart id='stacked-multi-series-bar-chart-negative' />
+                      <Chart id='lastGames_1' result={gamesBetweenValues} />
                     </div>
 
                     <div className='col-md-1'>
@@ -175,8 +187,8 @@ class GameList extends React.Component {
                   </div>
                 </div>
 
-                <div className='col-md-3'>
-                  <img src='/imgs/app/avatars/avatar.jpg' width='125px' />
+                <div className='col-md-2'>
+                  <img src={'/imgs/teams/' + game.nextGame.AwayTeam + '.png'} width='125px' />
                 </div>
               </div>
 
