@@ -16,7 +16,7 @@ class Chart extends React.Component {
     var result = this.props.result;
     var chartId = this.props.id;
 
-
+    console.log(result);
 
     var allValues = result.map(function (item) {
       return Math.max(parseInt(item.homeResult), parseInt(item.awayResult));
@@ -64,10 +64,10 @@ class Chart extends React.Component {
 
       profit.addData([
         { x: '1', y: (-0.1 - result[0].homeResult) / baselineValue },
-        // { x: 'Jan', y: -0.1 - result[1].homeResult },
-        { x: '2', y: (-0.1 - result[2].homeResult) / baselineValue },
-        { x: '3', y: (-0.1 - result[3].homeResult) / baselineValue },
-        { x: '4', y: (-0.1 - result[4].homeResult) / baselineValue }
+        { x: '2', y: (-0.1 - result[1].homeResult) / baselineValue },
+        { x: '3', y: (-0.1 - result[2].homeResult) / baselineValue },
+        { x: '4', y: (-0.1 - result[3].homeResult) / baselineValue },
+        { x: '5', y: (-0.1 - result[4].homeResult) / baselineValue }
       ]);
 
       var expenses = chart.bar_series({
@@ -78,10 +78,10 @@ class Chart extends React.Component {
 
       expenses.addData([
         { x: '1', y: (result[0].awayResult) / baselineValue },
-        // { x: 'Jan', y: result[1].awayResult },
-        { x: '2', y: (result[2].awayResult) / baselineValue },
-        { x: '3', y: (result[3].awayResult) / baselineValue },
-        { x: '4', y: (result[4].awayResult) / baselineValue },
+        { x: '2', y: (result[1].awayResult) / baselineValue },
+        { x: '3', y: (result[2].awayResult) / baselineValue },
+        { x: '4', y: (result[3].awayResult) / baselineValue },
+        { x: '5', y: (result[4].awayResult) / baselineValue }
       ]);
     })();
   }
@@ -124,6 +124,7 @@ class GameList extends React.Component {
 
   render() {
     let gamesList = this.state.games.map((game, index) => {
+      
       var matchInfoUrl = '/matchinfo/' + game.nextGame.gameId;
 
       var gamesBetween = [];
@@ -134,6 +135,7 @@ class GameList extends React.Component {
           continue;
 
         var resultValues = game.nextGame.GamesBetweenTeams[i].Result.split('-');
+        console.log(resultValues);
         gamesBetween.push(<p>{game.nextGame.GamesBetweenTeams[i].Result}</p>);
         gamesBetweenValues.push({
           homeResult: resultValues[0],
@@ -143,7 +145,7 @@ class GameList extends React.Component {
       }
 
       return (
-        <div key={game.nextGame.gameId}>
+        <div >
           <li>
             <a href={matchInfoUrl}>
               <div className='row'>
@@ -176,7 +178,7 @@ class GameList extends React.Component {
                     </div>
 
                     <div className='col-md-10'>
-                      <Chart id='lastGames_1' result={gamesBetweenValues} />
+                      <Chart id={game._id} result={gamesBetweenValues} />
                     </div>
 
                     <div className='col-md-1'>
