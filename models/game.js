@@ -1,15 +1,22 @@
 var mongoose = require('mongoose');
 
 var gameSchema = new mongoose.Schema({
-  Competition: String,
-  Date: Date,
-  Hour: String,
-  HomeTeam: String,
-  AwayTeam: String,
-  Result: String,
-  Url: String,
-  Scrapped: Boolean,
-  gameId: String
+  sport: String,
+  competition: String,
+  
+  date: Date,
+  hour: String,
+  
+  homeTeam: String,
+  awayTeam: String,
+  result: String,
+  
+  url: String,
+  scrapped: Boolean,
+  gameId: String,
+  
+  nextGameStats: mongoose.Schema.Types.Mixed,
+  gameStats: mongoose.Schema.Types.Mixed
 });
 
 module.exports = mongoose.model('Game', gameSchema);

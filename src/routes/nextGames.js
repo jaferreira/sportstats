@@ -16,19 +16,15 @@ class Chart extends React.Component {
     var result = this.props.result;
     var chartId = this.props.id;
 
-    console.log(result);
+    // var allValues = result.map(function (item) {
+    //   return Math.max(parseInt(item.homeResult), parseInt(item.awayResult));
+    // });
 
-    var allValues = result.map(function (item) {
-      return Math.max(parseInt(item.homeResult), parseInt(item.awayResult));
-    });
+    // console.log('All: ' +  allValues);
+    // var baselineValue = Math.max.apply(null,allValues);
+    var baselineValue = 15;
 
-    console.log('All: ' +  allValues);
     
-    
-    var baselineValue = Math.max.apply(null,allValues);
-
-    console.log('Baseline: ' + baselineValue);
-
     (() => {
       var chart = new Rubix('#' + chartId, {
         // title: 'Stacked bar chart with negative values',
@@ -125,23 +121,23 @@ class GameList extends React.Component {
   render() {
     let gamesList = this.state.games.map((game, index) => {
       
-      var matchInfoUrl = '/matchinfo/' + game.nextGame.gameId;
+      var matchInfoUrl = '/matchinfo/' + game.gameId;
 
       var gamesBetween = [];
       var gamesBetweenValues = [];
       var gamesBetweenInfo = [];
-      for (var i = 0; i < game.nextGame.GamesBetweenTeams.length; i++) {
-        if (game.nextGame.GamesBetweenTeams[i].Result.indexOf('ET') > -1)
+      for (var i = 0; i < game.nextGameStats.gamesBetweenTeams.length; i++) {
+        if (game.nextGameStats.gamesBetweenTeams[i].Result.indexOf('ET') > -1)
           continue;
 
-        var resultValues = game.nextGame.GamesBetweenTeams[i].Result.split('-');
-        console.log(resultValues);
-        gamesBetween.push(<p>{game.nextGame.GamesBetweenTeams[i].Result}</p>);
+        var resultValues = game.nextGameStats.gamesBetweenTeams[i].Result.split('-');
+        console.log(game.awayTeam);
+        gamesBetween.push(<p>{game.nextGameStats.gamesBetweenTeams[i].Result}</p>);
         gamesBetweenValues.push({
           homeResult: resultValues[0],
           awayResult: resultValues[1]
         });
-        gamesBetweenInfo.push((game.nextGame.GamesBetweenTeams[i].SameHomeTeam) ? <p>Casa</p> : <p>Fora</p>);
+        gamesBetweenInfo.push((game.nextGameStats.gamesBetweenTeams[i].SameHomeTeam) ? <p>Casa</p> : <p>Fora</p>);
       }
 
       return (
@@ -151,7 +147,7 @@ class GameList extends React.Component {
               <div className='row'>
                 <div className='col-md-12'>
                   <div className='data'>
-                    {game.nextGame.MatchDate} ({game.nextGame.MatchHour}) – {game.nextGame.Competition.name}
+                    {game.date} ({game.hvour}) – 
                   </div>
                 </div>
               </div>
@@ -166,7 +162,7 @@ class GameList extends React.Component {
 
               <div className='row'>
                 <div className='col-md-2'>
-                  <img src={'/imgs/teams/' + game.nextGame.HomeTeam + '.png'} width='125px' />
+                  <img src={'/imgs/teams/' + game.homeTeam + '.png'} width='125px' />
                 </div>
 
                 <div className='col-md-8'>
@@ -190,14 +186,14 @@ class GameList extends React.Component {
                 </div>
 
                 <div className='col-md-2'>
-                  <img src={'/imgs/teams/' + game.nextGame.AwayTeam + '.png'} width='125px' />
+                  <img src={'/imgs/teams/' + game.awayTeam + '.png'} width='125px' />
                 </div>
               </div>
 
               <div className='row'>
                 <div className='col-md-3'>
                   <div className='equipa'>
-                    {game.nextGame.HomeTeam}
+                    {game.homeTeam}
                   </div>
                 </div>
 
@@ -206,7 +202,7 @@ class GameList extends React.Component {
 
                 <div className='col-md-3'>
                   <div className='equipa'>
-                    {game.nextGame.AwayTeam}
+                    {game.awayTeam}
                   </div>
                 </div>
               </div>
