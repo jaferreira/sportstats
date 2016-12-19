@@ -10,6 +10,7 @@ import Sidebar from './common/sidebar';
 
 import Home from './routes/home';
 import GameList from './routes/nextGames';
+import MatchInfo from './routes/matchInfo';
 
 class App extends React.Component {
   render() {
@@ -38,5 +39,6 @@ export default (
   <Route path='/' component={App}>
     <IndexRoute component={Home} />
     <Route path='nextgames' component={GameList}></Route>
+    <Route path='matchinfo/:perma' component={MatchInfo}></Route>
   </Route>
 );

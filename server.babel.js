@@ -93,6 +93,23 @@ app.post('/api/game', function (req, res, next) {
   }
 });
 
+/**
+ * GET /api/matchinfo
+ * 
+ */
+app.get('/api/matchinfo/:permaLink', function (req, res, next) {
+    var perma = req.params.permaLink;
+
+    console.log('calling: /api/matchinfo/' + perma);    
+
+    Game.findOne({ permaLink: perma })
+        .exec(function (err, game) {
+            if (err)
+                return next(err);
+            return res.send(game);
+        });
+});
+
 
 app.get('*', RubixAssetMiddleware('ltr'), (req, res, next) => {
   renderHTML(req, res);

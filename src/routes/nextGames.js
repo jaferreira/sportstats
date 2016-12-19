@@ -22,6 +22,7 @@ class Chart extends React.Component {
 
     // console.log('All: ' +  allValues);
     // var baselineValue = Math.max.apply(null,allValues);
+    var zeroBaseLine = 0.1;
     var baselineValue = 15;
 
     
@@ -54,30 +55,29 @@ class Chart extends React.Component {
         show_markers: false
       });
 
-      var profit = chart.bar_series({
+      var homeInfo = chart.bar_series({
         color: '#0080FF'
       });
-
-      profit.addData([
-        { x: '1', y: (-0.1 - result[0].homeResult) / baselineValue },
-        { x: '2', y: (-0.1 - result[1].homeResult) / baselineValue },
-        { x: '3', y: (-0.1 - result[2].homeResult) / baselineValue },
-        { x: '4', y: (-0.1 - result[3].homeResult) / baselineValue },
-        { x: '5', y: (-0.1 - result[4].homeResult) / baselineValue }
+      homeInfo.addData([
+        { x: '1', y: (-zeroBaseLine - result[0].homeResult) / baselineValue },
+        { x: '2', y: (-zeroBaseLine - result[1].homeResult) / baselineValue },
+        { x: '3', y: (-zeroBaseLine - result[2].homeResult) / baselineValue },
+        { x: '4', y: (-zeroBaseLine - result[3].homeResult) / baselineValue },
+        { x: '5', y: (-zeroBaseLine - result[4].homeResult) / baselineValue }
       ]);
 
-      var expenses = chart.bar_series({
+
+      var awayInfo = chart.bar_series({
         name: this.props.text,
         color: '#FF6666',
         marker: 'square'
       });
-
-      expenses.addData([
-        { x: '1', y: (result[0].awayResult) / baselineValue },
-        { x: '2', y: (result[1].awayResult) / baselineValue },
-        { x: '3', y: (result[2].awayResult) / baselineValue },
-        { x: '4', y: (result[3].awayResult) / baselineValue },
-        { x: '5', y: (result[4].awayResult) / baselineValue }
+      awayInfo.addData([
+        { x: '1', y: (zeroBaseLine + result[0].awayResult) / baselineValue },
+        { x: '2', y: (zeroBaseLine + result[1].awayResult) / baselineValue },
+        { x: '3', y: (zeroBaseLine + result[2].awayResult) / baselineValue },
+        { x: '4', y: (zeroBaseLine + result[3].awayResult) / baselineValue },
+        { x: '5', y: (zeroBaseLine + result[4].awayResult) / baselineValue }
       ]);
     })();
   }
@@ -121,7 +121,7 @@ class GameList extends React.Component {
   render() {
     let gamesList = this.state.games.map((game, index) => {
       
-      var matchInfoUrl = '/matchinfo/' + game.gameId;
+      var matchInfoUrl = '/matchinfo/' + game.permaLink;
 
       var gamesBetween = [];
       var gamesBetweenValues = [];
@@ -147,7 +147,7 @@ class GameList extends React.Component {
               <div className='row'>
                 <div className='col-md-12'>
                   <div className='data'>
-                    {game.date} ({game.hvour}) – 
+                    {game.date} ({game.hour}) 
                   </div>
                 </div>
               </div>
