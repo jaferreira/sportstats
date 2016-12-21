@@ -16,7 +16,7 @@ if (process.env.SOURCEMAP === 'true') {
 }
 
 var wds = {
-  hostname: process.env.WP_HOST || "localhost",
+  hostname: process.env.WP_HOST || "127.0.0.1",
   port: process.env.WP_PORT || 8079
 };
 

@@ -38,5 +38,5 @@ public/bower_components
 .node_repl_history
 
 
-tmp/bundle.js
+tmp/bundle.js+6+
 tmp/bundle.js.map
