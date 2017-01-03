@@ -9,6 +9,7 @@ import {
     Tab,
     Icon,
     Grid,
+    Table,
     Panel,
     NavItem,
     MenuItem,
@@ -39,7 +40,7 @@ class MyPanel extends React.Component {
                                 Fora
                             </NavItem>
                             <NavItem eventKey="cog">
-                                Confronto Directo
+                                C. Directo
                             </NavItem>
                         </Nav>
                     </PanelHeader>
@@ -51,10 +52,147 @@ class MyPanel extends React.Component {
                                         <Tab.Pane eventKey="home">
                                             <p>Gráfico</p>
                                             <p>últimos jogos em casa do HomeTeam</p>
+                                            <div className="row fundo">
+                                                <div className="col-sm-12 top">
+                                                    <table className="todo">
+                                                        <tbody>
+                                                            <tr className="padtr">
+                                                                <td> Vitórias </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Empates </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Derrotas </td>
+                                                                <td className='dir' d> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Não ganha há.. </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Não empata há... </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Não perde há... </td>
+                                                                <td className='dir' d> X </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="user">
                                             <p>Gráfico</p>
                                             <p>últimos jogos fora do HomeTeam</p>
+                                            <div className="row fundo">
+                                                <div className="col-sm-12 top">
+                                                    <table className="todo">
+                                                        <tbody>
+                                                            <tr className="padtr">
+                                                                <td> Vitórias </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Empates </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Derrotas </td>
+                                                                <td className='dir' d> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Não ganha há.. </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Não empata há... </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Não perde há... </td>
+                                                                <td className='dir' d> X </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey="cog">
+                                            <table className='todo'>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home'>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                            </table>
+
+                                            <div className="row fundo">
+                                                <div className="col-sm-12 top">
+                                                    <table className="todo">
+                                                        <tbody>
+                                                            <tr className="padtr">
+                                                                <td> Vitórias </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Empates </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Derrotas </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Col>
@@ -80,7 +218,7 @@ class MyPanel2 extends React.Component {
                                 Fora
                             </NavItem>
                             <NavItem eventKey="cog">
-                                Confronto Directo
+                                C. Directo
                             </NavItem>
                         </Nav>
                     </PanelHeader>
@@ -92,21 +230,136 @@ class MyPanel2 extends React.Component {
                                         <Tab.Pane eventKey="home">
                                             <p>Gráfico</p>
                                             <p>últimos jogos em casa do AwayTeam</p>
+                                            <div className="row fundo">
+                                                <div className="col-sm-12 top">
+                                                    <table className="todo">
+                                                        <tbody>
+                                                            <tr className="padtr">
+                                                                <td> Vitórias </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Empates </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Derrotas </td>
+                                                                <td className='dir' d> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Não ganha há.. </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Não empata há... </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Não perde há... </td>
+                                                                <td className='dir' d> X </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="user">
                                             <p>Gráfico</p>
                                             <p>últimos jogos fora do AwayTeam</p>
+                                            <div className="row fundo">
+                                                <div className="col-sm-12 top">
+                                                    <table className="todo">
+                                                        <tbody>
+                                                            <tr className="padtr">
+                                                                <td> Vitórias </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Empates </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Derrotas </td>
+                                                                <td className='dir' d> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Não ganha há.. </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Não empata há... </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Não perde há... </td>
+                                                                <td className='dir' d> X </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="cog">
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                            <tr>
-                                                                <td className=''>29/12/16</td>
-                                                                <td className=''>Taça da Liga</td>
-                                                                <td className='result'>Braga</td>
-                                                                <td className=''>Rio Ave</td>
-                                                                <td className='result'>1-2</td>
+                                            <table className='todo'>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home'>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                            </table>
+                                            <div className="row fundo">
+                                                <div className="col-sm-12 top">
+                                                    <table className="todo">
+                                                        <tbody>
+                                                            <tr className="padtr">
+                                                                <td> Vitórias </td>
+                                                                <td className='dir'> X </td>
                                                             </tr>
+
+                                                            <tr className="padtr">
+                                                                <td> Empates </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                            <tr className="padtr">
+                                                                <td> Derrotas </td>
+                                                                <td className='dir'> X </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </Tab.Pane>
@@ -122,6 +375,33 @@ class MyPanel2 extends React.Component {
 }
 
 class Menu extends React.Component {
+
+    constructor(...args) {
+        super(...args);
+
+        this.state = {
+            activeTab: ''
+        };
+    }
+
+    handleActiveState(eventKey) {
+        this.setState({
+            activeTab: eventKey
+        });
+    }
+
+    getItemProps(eventKey) {
+        return {
+            eventKey,
+            active: this.state.activeTab === eventKey
+        };
+    }
+
+    componentDidMount() {
+        $('.tablesaw').table();
+    }
+
+
     render() {
         return (
             <PanelTabContainer id='panel-body-header-footer-normal-tab' defaultActiveKey="home">
@@ -143,6 +423,7 @@ class Menu extends React.Component {
                         <Grid>
                             <Row>
                                 <Col xs={12}>
+
                                     <Tab.Content animation={false}>
                                         <Tab.Pane eventKey="home">
                                             <div className='imagemestadio'>
@@ -150,197 +431,439 @@ class Menu extends React.Component {
                                             </div>
 
                                         </Tab.Pane>
+
                                         <Tab.Pane eventKey="user">
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <div className='ola'>
-                                                        <div className='ultimos'>
-                                                            <p className='ult'>Últimos 5 Jogos</p>
+
+                                            <PanelTabContainer id='pills-basic' defaultActiveKey="home">
+
+                                                <PanelBody>
+                                                    <Grid>
+                                                        <Row>
+                                                            <Col sm={12}>
+                                                                <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='tab-orange'>
+                 <NavItem eventKey="home">Últimos 5 Jogos</NavItem>
+                                                                <NavItem eventKey="user">Próximos 5 Jogos</NavItem>
+                                                               
+               </Nav>
+                                                            <Tab.Content>
+                                                                <Tab.Pane eventKey="home">
+                                                                    <div className='row'>
+                                                                        <div className='col-sm-12'>
+                                                                            <div className='ola'>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>29 DEZ '16</td>
+                                                                                        <td className='competicao'>Taça da Liga</td>
+                                                                                        <td>Braga</td>
+                                                                                        <td className='result padr'>Rio Ave</td>
+                                                                                        <td>1-2</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>22 DEZ '16</td>
+                                                                                        <td className='competicao'>Primeira Liga</td>
+                                                                                        <td>Chaves</td>
+                                                                                        <td className='result'>Estoril</td>
+                                                                                        <td className='result'>1-0</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='row'>
+                                                                        <div className='col-sm-12'>
+                                                                            <div className='ola'>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>29 DEZ '16</td>
+                                                                                        <td className='competicao'>Taça da Liga</td>
+                                                                                        <td>Braga</td>
+                                                                                        <td className='result padr'>Rio Ave</td>
+                                                                                        <td>1-2</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>22 DEZ '16</td>
+                                                                                        <td className='competicao'>Primeira Liga</td>
+                                                                                        <td>Chaves</td>
+                                                                                        <td className='result'>Estoril</td>
+                                                                                        <td className='result'>1-0</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='row'>
+                                                                        <div className='col-sm-12'>
+                                                                            <div className='ola'>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>29 DEZ '16</td>
+                                                                                        <td className='competicao'>Taça da Liga</td>
+                                                                                        <td>Braga</td>
+                                                                                        <td className='result padr'>Rio Ave</td>
+                                                                                        <td>1-2</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>22 DEZ '16</td>
+                                                                                        <td className='competicao'>Primeira Liga</td>
+                                                                                        <td>Chaves</td>
+                                                                                        <td className='result'>Estoril</td>
+                                                                                        <td className='result'>1-0</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='row'>
+                                                                        <div className='col-sm-12'>
+                                                                            <div className='ola'>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>29 DEZ '16</td>
+                                                                                        <td className='competicao'>Taça da Liga</td>
+                                                                                        <td>Braga</td>
+                                                                                        <td className='result padr'>Rio Ave</td>
+                                                                                        <td>1-2</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>22 DEZ '16</td>
+                                                                                        <td className='competicao'>Primeira Liga</td>
+                                                                                        <td>Chaves</td>
+                                                                                        <td className='result'>Estoril</td>
+                                                                                        <td className='result'>1-0</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </Tab.Pane>
+                                                                <Tab.Pane eventKey="user">
+                                                                    <div className='row'>
+                                                                        <div className='col-sm-12'>
+                                                                            <div className='ola'>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>29 DEZ '16</td>
+                                                                                        <td className='competicao'>Taça da Liga</td>
+                                                                                        <td>Braga</td>
+                                                                                        <td className='result padr'>Rio Ave</td>
+                                                                                        <td>1-2</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>22 DEZ '16</td>
+                                                                                        <td className='competicao'>Primeira Liga</td>
+                                                                                        <td>Chaves</td>
+                                                                                        <td className='result'>Estoril</td>
+                                                                                        <td className='result'>1-0</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className='row'>
+                                                                        <div className='col-sm-12'>
+                                                                            <div className='ola'>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>29 DEZ '16</td>
+                                                                                        <td className='competicao'>Taça da Liga</td>
+                                                                                        <td>Braga</td>
+                                                                                        <td className='result padr'>Rio Ave</td>
+                                                                                        <td>1-2</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>22 DEZ '16</td>
+                                                                                        <td className='competicao'>Primeira Liga</td>
+                                                                                        <td>Chaves</td>
+                                                                                        <td className='result'>Estoril</td>
+                                                                                        <td className='result'>1-0</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div className='row'>
+                                                                        <div className='col-sm-12'>
+                                                                            <div className='ola'>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>29 DEZ '16</td>
+                                                                                        <td className='competicao'>Taça da Liga</td>
+                                                                                        <td>Braga</td>
+                                                                                        <td className='result padr'>Rio Ave</td>
+                                                                                        <td>1-2</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                                <div className='resultados'>
+                                                                                    <tr>
+                                                                                        <td className='qua'>22 DEZ '16</td>
+                                                                                        <td className='competicao'>Primeira Liga</td>
+                                                                                        <td>Chaves</td>
+                                                                                        <td className='result'>Estoril</td>
+                                                                                        <td className='result'>1-0</td>
+                                                                                    </tr>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </Tab.Pane>
+
+                                                            </Tab.Content>
+             </Col>
+           </Row>
+         </Grid>
+       </PanelBody>
+     </PanelTabContainer>
+
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <div className='ola'>
+                                                    <div className='ultimos'>
+                                                        <p className='ult'>Últimos 5 Jogos</p>
+                                                    </div>
+                                                    <div className='ultimos'>
+                                                        <p className='prox'>Próximos 5 Jogos</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <div className='ola'>
+                                                    <div className='resultados'>
+                                                        <p className='win'>V</p>
+                                                        <p className='los'>D</p>
+                                                        <p className='emp'>E</p>
+                                                        <p className='win'>V</p>
+                                                        <p className='emp'>E</p>
+                                                    </div>
+                                                    <div className='resultados'>
+                                                        <p className='win'>V</p>
+                                                        <p className='los'>D</p>
+                                                        <p className='emp'>E</p>
+                                                        <p className='win'>V</p>
+                                                        <p className='emp'>E</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='row'>
+                                            <div className='col-sm-12 ola2'>
+                                                <div className='padr'>
+                                                    <MyPanel />
+                                                </div>
+
+                                                <MyPanel2 />
+
+                                            </div>
+                                        </div>
+
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <p className='golos'> Golos </p>
+                                                <hr className='goloslinha'></hr>
+                                            </div>
+                                        </div>
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <div className='ola'>
+                                                    <div className='ultimos'>
+                                                        <p className='ult'>Primeira Liga</p>
+                                                    </div>
+                                                    <div className='ultimos'>
+                                                        <p className='prox'>Últimos 10 Jogos</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <div className='ola'>
+                                                    <div className='graf'>
+                                                        <div className='graf1'>
+                                                            <p>Gráfico 1</p>
                                                         </div>
-                                                        <div className='ultimos'>
-                                                            <p className='prox'>Próximos 5 Jogos</p>
+                                                    </div>
+                                                    <div className='graf'>
+                                                        <div className='graf1'>
+                                                            <p>Gráfico 2</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <div className='ola'>
-                                                        <div className='resultados'>
-                                                            <tr>
-                                                                <td className='qua'>29 DEZ '16</td>
-                                                                <td className='competicao'>Taça da Liga</td>
-                                                                <td>Braga</td>
-                                                                <td className='result padr'>Rio Ave</td>
-                                                                <td>1-2</td>
-                                                            </tr>
+                                        </div>
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <div className='ola'>
+                                                    <div className='graf'>
+                                                        <div className='graf1'>
+                                                            <p>Gráfico 1</p>
                                                         </div>
-                                                        <div className='resultados'>
-                                                            <tr>
-                                                                <td className='qua'>22 DEZ '16</td>
-                                                                <td className='competicao'>Primeira Liga</td>
-                                                                <td>Chaves</td>
-                                                                <td className='result'>Estoril</td>
-                                                                <td className='result'>1-0</td>
-                                                            </tr>
+                                                    </div>
+                                                    <div className='graf'>
+                                                        <div className='graf1'>
+                                                            <p>Gráfico 2</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <div className='ola'>
-                                                        <div className='resultados'>
-                                                            <tr>
-                                                                <td className='qua'>29 DEZ '16</td>
-                                                                <td className='competicao'>Taça da Liga</td>
-                                                                <td>Braga</td>
-                                                                <td className='result padr'>Rio Ave</td>
-                                                                <td>1-2</td>
-                                                            </tr>
-                                                        </div>
-                                                        <div className='resultados'>
-                                                            <tr>
-                                                                <td className='qua'>22 DEZ '16</td>
-                                                                <td className='competicao'>Primeira Liga</td>
-                                                                <td>Chaves</td>
-                                                                <td className='result'>Estoril</td>
-                                                                <td className='result'>1-0</td>
-                                                            </tr>
+                                        </div>
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <div className='ola'>
+                                                    <div className='graf'>
+                                                        <div className='graf1'>
+                                                            <p>Gráfico 1</p>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>   
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <div className='ola'>
-                                                        <div className='resultados'>
-                                                            <tr>
-                                                                <td className='qua'>29 DEZ '16</td>
-                                                                <td className='competicao'>Taça da Liga</td>
-                                                                <td>Braga</td>
-                                                                <td className='result padr'>Rio Ave</td>
-                                                                <td>1-2</td>
-                                                            </tr>
-                                                        </div>
-                                                        <div className='resultados'>
-                                                            <tr>
-                                                                <td className='qua'>22 DEZ '16</td>
-                                                                <td className='competicao'>Primeira Liga</td>
-                                                                <td>Chaves</td>
-                                                                <td className='result'>Estoril</td>
-                                                                <td className='result'>1-0</td>
-                                                            </tr>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>   
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <div className='ola'>
-                                                        <div className='resultados'>
-                                                            <tr>
-                                                                <td className='qua'>29 DEZ '16</td>
-                                                                <td className='competicao'>Taça da Liga</td>
-                                                                <td>Braga</td>
-                                                                <td className='result padr'>Rio Ave</td>
-                                                                <td>1-2</td>
-                                                            </tr>
-                                                        </div>
-                                                        <div className='resultados'>
-                                                            <tr>
-                                                                <td className='qua'>22 DEZ '16</td>
-                                                                <td className='competicao'>Primeira Liga</td>
-                                                                <td>Chaves</td>
-                                                                <td className='result'>Estoril</td>
-                                                                <td className='result'>1-0</td>
-                                                            </tr>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>   
-
-
-
-
-
-
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <div className='ola'>
-                                                        <div className='resultados'>
-                                                            <p className='win'>V</p>
-                                                            <p className='los'>D</p>
-                                                            <p className='emp'>E</p>
-                                                            <p className='win'>V</p>
-                                                            <p className='emp'>E</p>
-                                                        </div>
-                                                        <div className='resultados'>
-                                                            <p className='win'>V</p>
-                                                            <p className='los'>D</p>
-                                                            <p className='emp'>E</p>
-                                                            <p className='win'>V</p>
-                                                            <p className='emp'>E</p>
+                                                    <div className='graf'>
+                                                        <div className='graf1'>
+                                                            <p>Gráfico 2</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <div className='ola'>
-                                                        <div className='estilo1 padr'>
-                                                            <MyPanel />
-                                                        </div>
-                                                        <div className='estilo1'>
-                                                            <MyPanel2 />
+                                        </div>
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <div className='ola'>
+                                                    <div className='casa'></div>Casa
+                                                            <div className='fora'></div>Fora
+                                                            <div className='global'></div>Global
+                                                    </div>
+                                            </div>
+                                        </div>
 
-                                                        </div>
+                                        <div className="row">
+                                            <Col xs={12}>
+                                            <Table bordered striped className='tablesaw' data-tablesaw-mode='swipe'>
+                                                <thead>
+                                                    <tr>
+                                                        <th data-tablesaw-priority='persist'>Name</th>
+                                                        <th>Rank</th>
+                                                        <th>Money</th>
+                                                        <th>Money</th>
+                                                        <th>A (1&ndash;5)</th>
+                                                        <th>B (1&ndash;5)</th>
+                                                        <th>C (%)</th>
+                                                        <th>D (1&ndash;5)</th>
+                                                        <th>E (1&ndash;5)</th>
+                                                        <th>F (1&ndash;5)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th className='ranked-name'><a href='#'>Amanda</a></th>
+                                                        <td className='current-ranking'>1</td>
+                                                        <td>19.45</td>
+                                                        <td>18.72</td>
+                                                        <td>5</td>
+                                                        <td>5</td>
+                                                        <td>98</td>
+                                                        <td>5</td>
+                                                        <td>4</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th className='ranked-name'><a href='#'>Dave</a></th>
+                                                        <td>2</td>
+                                                        <td>36.32</td>
+                                                        <td>20.52</td>
+                                                        <td>4</td>
+                                                        <td>3</td>
+                                                        <td>87</td>
+                                                        <td>5</td>
+                                                        <td>4</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th className='ranked-name'><a href='#'>Kristen</a></th>
+                                                        <td>3</td>
+                                                        <td>35.23</td>
+                                                        <td>21.36</td>
+                                                        <td>2</td>
+                                                        <td>5</td>
+                                                        <td>89</td>
+                                                        <td>5</td>
+                                                        <td>4</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th className='ranked-name'><a href='#'>Kenny</a></th>
+                                                        <td>4</td>
+                                                        <td>34.65</td>
+                                                        <td>27.15</td>
+                                                        <td>4</td>
+                                                        <td>4</td>
+                                                        <td>98</td>
+                                                        <td>5</td>
+                                                        <td>4</td>
+                                                        <td>3</td>
+                                                    </tr>
+                                                </tbody>
+                                            </Table>
+                                            </Col>
+                                        </div>
+
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <p className='golos'> Resultados </p>
+                                                <hr className='goloslinha'></hr>
+                                            </div>
+                                        </div>
+
+                                        <div className='row'>
+                                            <div className='col-sm-12'>
+                                                <div className='ola'>
+                                                    <div className='ultimos'>
+                                                        <p className='ult'>Primeira Liga</p>
+                                                    </div>
+                                                    <div className='ultimos'>
+                                                        <p className='prox'>Últimos 10 Jogos</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <p className='golos'> Golos </p>
-                                                    <hr className='goloslinha'></hr>
-                                                </div>
-                                            </div>
-                                            <div className='row'>
-                                                <div className='col-sm-12'>
-                                                    <div className='ola'>
-                                                        <div className='ultimos'>
-                                                            <p className='ult'>Primeira Liga</p>
-                                                        </div>
-                                                        <div className='ultimos'>
-                                                            <p className='prox'>Últimos 10 Jogos</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        </div>
+
                                         </Tab.Pane>
-                                        <Tab.Pane eventKey="cog">
-                                            <h3>Cog (header)</h3>
-                                            <p><LoremIpsum query='4s' /></p>
-                                        </Tab.Pane>
-                                        <Tab.Pane eventKey="home-1">
-                                            <h3>Home (footer)</h3>
-                                            <p><LoremIpsum query='4s' /></p>
-                                        </Tab.Pane>
-                                        <Tab.Pane eventKey="user-1">
-                                            <h3>User (footer)</h3>
-                                            <p><LoremIpsum query='4s' /></p>
-                                        </Tab.Pane>
-                                        <Tab.Pane eventKey="cog-1">
-                                            <h3>Cog (footer)</h3>
-                                            <p><LoremIpsum query='4s' /></p>
-                                        </Tab.Pane>
+                                    <Tab.Pane eventKey="cog">
+                                        <h3>Cog (header)</h3>
+                                        <p><LoremIpsum query='4s' /></p>
+                                    </Tab.Pane>
+                                    <Tab.Pane eventKey="home-1">
+                                        <h3>Home (footer)</h3>
+                                        <p><LoremIpsum query='4s' /></p>
+                                    </Tab.Pane>
+                                    <Tab.Pane eventKey="user-1">
+                                        <h3>User (footer)</h3>
+                                        <p><LoremIpsum query='4s' /></p>
+                                    </Tab.Pane>
+                                    <Tab.Pane eventKey="cog-1">
+                                        <h3>Cog (footer)</h3>
+                                        <p><LoremIpsum query='4s' /></p>
+                                    </Tab.Pane>
                                     </Tab.Content>
                                 </Col>
                             </Row>
                         </Grid>
                     </PanelBody>
                 </Panel>
-            </PanelTabContainer>
+            </PanelTabContainer >
         );
     }
 }
@@ -395,7 +918,7 @@ class MatchInfo extends React.Component {
                 );
             });
 
-            let homeScores = matchInfo.nextGameStats.homeScores.slice(0,5).map((game, index) => {
+            let homeScores = matchInfo.nextGameStats.homeScores.slice(0, 5).map((game, index) => {
                 return (
                     <tr>
                         <td>{game.Date}</td>
@@ -407,7 +930,7 @@ class MatchInfo extends React.Component {
                 );
             });
 
-            let awayScores = matchInfo.nextGameStats.awayScores.slice(0,5).map((game, index) => {
+            let awayScores = matchInfo.nextGameStats.awayScores.slice(0, 5).map((game, index) => {
                 return (
                     <tr>
                         <td>{game.Date}</td>
@@ -604,46 +1127,16 @@ class MatchInfo extends React.Component {
                             <Menu />
                         </div>
                     </div>
-                    <div className='row pad2'>
-                        <div className='col-sm-12'>
-                            <div className='row'>
-                                <div className='col-sm-12'>
-                                    <div className='ola'>
-                                        <div className='ultimos'>
-                                            <p className='ult'>Últimos 5 Jogos</p>
-                                        </div>
-                                        <div className='ultimos'>
-                                            <p className='prox'>Próximos 5 Jogos</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         
-                            <div className='row'>
-                                <div className='col-sm-12'>
-                                    <p className='golos'> Golos </p>
-                                    <hr className='goloslinha'></hr>
-                                </div>
-                            </div>
-                            <div className='row'>
-                                <div className='col-sm-12'>
-                                    <div className='ola'>
-                                        <div className='ultimos'>
-                                            <p className='ult'>Primeira Liga</p>
-                                        </div>
-                                        <div className='ultimos'>
-                                            <p className='prox'>Últimos 10 Jogos</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
 
 
 
-                        </div>
 
-                    </div>
+
+
+
+
+
 
 
 
