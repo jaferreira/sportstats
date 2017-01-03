@@ -379,6 +379,7 @@ Rubix.prototype._setupOpts = function() {
     this.opts.tooltip = this.opts.tooltip || {};
     this.opts.tooltip.format = this.opts.tooltip.format || {};
     this.opts.tooltip.abs = this.opts.tooltip.abs || {};
+    this.opts.tooltip.label = this.opts.tooltip.label || {};
     this.tooltipFormatter = {
         format: {
             x: this.opts.tooltip.format.x || '',
@@ -389,6 +390,10 @@ Rubix.prototype._setupOpts = function() {
             y: (this.opts.tooltip.abs.hasOwnProperty('y')) ? this.opts.tooltip.abs.y : false
         }
     }
+    this.tooltipLabels = {
+        x: this.opts.tooltip.label.x || 'x',
+        y: this.opts.tooltip.label.y || 'y'
+    };
 
     if(this.opts.invertAxes) {
         var temp = this.axis.x;
@@ -1897,8 +1902,8 @@ Rubix.prototype.move_tooltip_x = function(dx, ys, points) {
         _x = this.tooltipFormatter.abs.x ? Math.abs(_x) : _x;
         _y = this.tooltipFormatter.abs.y ? Math.abs(_y) : _y;
         var series = "<div style='color: "+points[name].opts.color+"; margin-bottom: 2px; line-height: 22px;'><b style='position:relative; top: -5px; left: -2px;'><span style='font-size: 22px;'>■ </span><span style='position:relative; top: -3px; left: -2px;'>"+name+"</span></b></div>";
-        var x = "<div style='font-size: 10px; margin-top: -10px;'>x : " + _x + " </div>";
-        var y = "<div style='font-size: 10px; margin-top: -5px;'>y : " + _y + " </div><br>";
+        var x = "<div style='font-size: 10px; margin-top: -10px;'>"+this.tooltipLabels.x+" : " + _x + " </div>";
+        var y = "<div style='font-size: 10px; margin-top: -5px;'>"+this.tooltipLabels.y+" : " + _y + " </div><br>";
         html = (series+x+y) + html;
     }
 
@@ -2004,8 +2009,8 @@ Rubix.prototype.move_tooltip_y = function(dy, yx, points) {
         _x = this.tooltipFormatter.abs.x ? Math.abs(_x) : _x;
         _y = this.tooltipFormatter.abs.y ? Math.abs(_y) : _y;
         var series = "<div style='color: "+points[name].opts.color+"; margin-bottom: 2px'><b style='position:relative; top: -5px; left: -2px;'><span style='font-size: 22px;'>■ </span><span style='position:relative; top: -3px; left: -2px;'>"+name+"</span></b></div>";
-        var x = "<div style='font-size: 10px; margin-top: -10px;'>x : " + _x + " </div>";
-        var y = "<div style='font-size: 10px; margin-top: -5px;'>y : " + _y + " </div><br>";
+        var x = "<div style='font-size: 10px; margin-top: -10px;'>"+this.tooltipLabels.x+" : " + _x + " </div>";
+        var y = "<div style='font-size: 10px; margin-top: -5px;'>"+this.tooltipLabels.y+" : " + _y + " </div><br>";
         html = (series+x+y) + html;
     }
 
@@ -3481,6 +3486,7 @@ Rubix.PieDonut.prototype._setupOpts = function() {
             y: this.opts.tooltip.format.y || ''
         }
     }
+    
 
     this.resize = this.opts.resize || 'throttled';
 

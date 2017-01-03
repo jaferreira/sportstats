@@ -145,7 +145,7 @@ class GameList extends React.Component {
           <li>
             <a href={matchInfoUrl}>
               <div className='row'>
-                <div className='col-md-12'>
+                <div className='col-sm-12'>
                   <div className='data'>
                     {game.date} ({game.hour}) 
                   </div>
@@ -153,87 +153,54 @@ class GameList extends React.Component {
               </div>
 
               <div className='row'>
-                <div className='col-md-12'>
+                <div className='col-sm-12'>
                   <div className='conf'>
                     Confronto Directo - Últimos
                   </div>
                 </div>
               </div>
 
-              <div className='row'>
-                <div className='col-md-2'>
-                  <img src={'/imgs/teams/' + game.homeTeam + '.png'} width='125px' />
-                </div>
-
-                <div className='col-md-8'>
-                  <div className='row'>
-                    <div className='col-md-1'>
-                      <div className='dist'>
-                        {gamesBetweenInfo.slice(0, 5)}
+              <div className='row pad'>                 
+                <div className='col-sm-12'>                   
+                  <div className='ola'>                     
+                    <div className='imagem'>                       
+                      <img src={'/imgs/teams/' + game.homeTeam + '.png'} width='65%' />                       
+                      <div className='equipa'>                         
+                        {game.homeTeam}                       
+                      </div>                    
+                    </div>                     
+                    <div className='grafico'>                       
+                      <Chart id={game._id} result={gamesBetweenValues} />                     
+                    </div>                     
+                    <div className='imagem2'>                       
+                      <img src={'/imgs/teams/' + game.awayTeam + '.png'} width='65%' />                       
+                      <div className='equipa'>                         
+                        {game.awayTeam} 
                       </div>
                     </div>
-
-                    <div className='col-md-10'>
-                      <Chart id={game._id} result={gamesBetweenValues} />
-                    </div>
-
-                    <div className='col-md-1'>
-                      <div className='res'>
-                        {gamesBetween.slice(0, 5)}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className='col-md-2'>
-                  <img src={'/imgs/teams/' + game.awayTeam + '.png'} width='125px' />
-                </div>
-              </div>
-
-              <div className='row'>
-                <div className='col-md-3'>
-                  <div className='equipa'>
-                    {game.homeTeam}
-                  </div>
-                </div>
-
-                <div className='col-md-6'>
-                </div>
-
-                <div className='col-md-3'>
-                  <div className='equipa'>
-                    {game.awayTeam}
                   </div>
                 </div>
               </div>
             </a>
           </li>
-          <br />
-          <br />
           <hr className='separar' />
         </div>
       );
     });
 
     return (
-      <div className='container'>
+      <div className='container-fluid'>
         <div className='row'>
-          <div className='col-md-12'>
-            <p className='titulo'> Next Game's OLA</p>
+          <div className='col-sm-12'>
+            <p className='titulo'> Next Game´s </p>
           </div>
         </div>
         <div className='row'>
-          <div className='col-md-4'>
-            <hr className='linha' />
-          </div>
-          <div className='col-md-2'>
-            <p className='casa'> CASA</p>
-          </div>
-          <div className='col-md-2'>
-            <p className='casa'> FORA</p>
-          </div>
-          <div className='col-md-4'>
-            <hr className='linha2' />
+          <div className='col-sm-12'>         
+           <div className='conteudo'>               
+            <hr className='linha' />               
+            <hr className='linha2' />             
+           </div>           
           </div>
           {gamesList}
         </div>
