@@ -23,6 +23,8 @@ mongoose.connection.on('error', function () {
   console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?'.red);
 });
 
+// Prerender.io Token: yjZdSf0mVOQSPLsXPVm4
+app.use(require('prerender-node').set('prerenderToken', 'yjZdSf0mVOQSPLsXPVm4'));
 
 app.use(compression());
 app.use(cookieParser());
