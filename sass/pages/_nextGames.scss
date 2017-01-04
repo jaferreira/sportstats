@@ -40,7 +40,7 @@ body {
   display: inline-flex;
 }
 .ola2{
-  display: flex;
+  display: inline-flex;
 }
 .imagem{
   width: 20%;
@@ -55,6 +55,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 55%;
+  
 }
 .resultados{
   width: 50%;
@@ -67,6 +68,7 @@ body {
 
 .imagemestadio{
   width: 20%;
+  background-color: red;
 }
 .imagem2{
   width: 20%;
@@ -95,6 +97,12 @@ body {
     margin-right: auto;
     width: 50%;
     margin-left: auto;
+}
+.botao1{
+  width: 49%;
+}
+.botao2{
+  width: 49%;
 }
 .ult{
   @extend .botao;
@@ -127,8 +135,25 @@ body {
 .padr{
   padding-right: 4%;
 }
-
-
+.todo{
+  width: 100%;
+  font-size: 88%;
+  margin-bottom: 4%;
+}
+.fundo{
+  background: #DBE5B1;
+}
+.sempad{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.clicmenu{
+    margin-bottom: 20px;
+    width: 100%;
+}
+a#pills-basic-tab-home{
+  float: right;
+}
 
 .esq{
   text-align: left;
@@ -196,9 +221,6 @@ body {
 .top{
   padding-top: 7px;
 }
-.result{
-  text-align: right;
-}
 .competicao{
   padding-left: 4%;
   width: 34%;
@@ -222,7 +244,6 @@ body {
   padding-left: 2%;
 }
 .home{
-  width: 25%;
   padding-right: 3%;
 }
 .home2{
@@ -236,6 +257,19 @@ body {
     padding-bottom: 2%
 }
 
+.padtr{
+      line-height: 225%;
+}
+.graf{
+  width:50%;
+}
+.graf1{
+    
+    margin-right: 10%;
+    margin-left: 10%;
+    height: 242px;
+    margin-bottom: 10%;
+}
 
 a {
   text-decoration: none !important;
@@ -244,7 +278,49 @@ li{
   list-style-type: none;
 }
 
+.casa{
+  background-color: #D8E5B0;
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  margin-left: 10px;
+}
+.fora{
+  background-color: #F2D7CD;
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  margin-left: 10px;
+}
+.global{
+  background-color: #BEC9D5;
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  margin-left: 10px;
+}
+.nav-pills > li.active > a {
+    background: #D8E5B0;
+    color: white;
+}
+.nav-pills > li > a{
+        width: 175px;
+        text-align: center;
+}
 
+.rubix-panel-container {
+    background-color: transparent;
+}
+.bg-greend{
+  background: #D8E5B0 ;
+}
+
+.grafgolo{
+  width: 215px;
+}
+.rubix-panel-controls{
+  display: none;
+}
 
 
 li#draw{
@@ -259,8 +335,8 @@ li#win{
 }
 
 
-@media (max-width: 670px) {
+@media (max-width: 740px) {
 body{
-  font-size: 80%;
+  font-size: 90%;
 }
 }

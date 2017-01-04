@@ -78,14 +78,10 @@ class GoalsChart extends React.Component {
 
   render() {
     return (
-      <PanelContainer>
-        <Panel>
-          <PanelBody style={{ padding: 25 }}>
+      
             <div id={this.props.id}></div>
-          </PanelBody>
-        </Panel>
-      </PanelContainer>
-    );
+      
+    ); 
   }
 }
 
