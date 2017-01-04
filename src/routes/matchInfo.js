@@ -84,6 +84,7 @@ class HomeTeamGamesPanel extends React.Component {
                                             <AwayTab id='a1' />
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="cog">
+                                        <Progress label='' className="progbar" value={50} color='#D8E5B0' min={0} max={100} />
                                             <table className='todo'>
                                                 <tr className='ent'>
                                                     <td className=''>29/12/16</td>
@@ -208,6 +209,7 @@ class AwayTeamGamesPanel extends React.Component {
                                             <AwayTab id='a2' />
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="cog">
+                                        <Progress label='' className="progbar" value={50} color='#D8E5B0' min={0} max={100} />
                                             <table className='todo'>
                                                 <tr className='ent'>
                                                     <td className=''>29/12/16</td>
@@ -838,7 +840,7 @@ class Menu extends React.Component {
                                                 <Row>
                                                     <Col sm={12} className="sempad">
                                                         <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
-                                                                <NavItem eventKey="home">Primeira Liga</NavItem>
+                                                                <NavItem eventKey="home">Nesta Competição</NavItem>
                                                         <NavItem eventKey="user">Últimos 10 Jogos</NavItem>
                                                             </Nav>
                                     
@@ -847,14 +849,14 @@ class Menu extends React.Component {
                                                             <div className='row'>
                                                                 <div className='col-sm-12'>
                                                                     <div className='ola'>
-                                                                        Primeira Liga_ Casa Global
+                                                                        Nesta Competição_ Casa Global
                                                                          </div>
                                                                 </div>
                                                             </div>
                                                             <div className='row'>
                                                                 <div className='col-sm-12'>
                                                                     <div className='ola'>
-                                                                        Primeira Liga_ Fora Global
+                                                                        Nesta Competição_ Fora Global
                                                                         </div>
                                                                 </div>
                                                             </div>
