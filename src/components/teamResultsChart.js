@@ -83,11 +83,11 @@ class TeamResultsChart extends React.Component {
       // ]);
 
       homeInfo.addData([
-        { x: '1', y: 0 - (result[0].homeResult / max) },
-        { x: '2', y: 0 - (result[1].homeResult / max) },
-        { x: '3', y: 0 - (result[2].homeResult / max) },
-        { x: '4', y: 0 - (result[3].homeResult / max) },
-        { x: '5', y: 0 - (result[4].homeResult / max) },
+        { x: '1', y: 0.1 - (result[0].homeResult / max) },
+        { x: '2', y: 0.1 - (result[1].homeResult / max) },
+        { x: '3', y: 0.1 - (result[2].homeResult / max) },
+        { x: '4', y: 0.1 - (result[3].homeResult / max) },
+        { x: '5', y: 0.1 - (result[4].homeResult / max) },
         { x: '6', y: 0 - (max/max) }
       ]);
 
@@ -103,11 +103,11 @@ class TeamResultsChart extends React.Component {
       //   { x: '5', y: (zeroBaseLine + result[4].awayResult) / baselineValue }
       // ]);
       awayInfo.addData([
-        { x: '1', y: (result[0].awayResult / max) },
-        { x: '2', y: (result[1].awayResult / max) },
-        { x: '3', y: (result[2].awayResult / max) },
-        { x: '4', y: (result[3].awayResult / max) },
-        { x: '5', y: (result[4].awayResult / max) },
+        { x: '1', y: 0.1 + (result[0].awayResult / max) },
+        { x: '2', y: 0.1 + (result[1].awayResult / max) },
+        { x: '3', y: 0.1 + (result[2].awayResult / max) },
+        { x: '4', y: 0.1 + (result[3].awayResult / max) },
+        { x: '5', y: 0.1 + (result[4].awayResult / max) },
         { x: '6', y: max/max }
       ]);
 

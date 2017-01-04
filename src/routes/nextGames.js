@@ -10,6 +10,9 @@ import {
   PanelContainer,
 } from '@sketchpixy/rubix';
 
+import TeamResultsChart from '../components/teamResultsChart'
+
+
 class Chart extends React.Component {
 
   componentDidMount() {
@@ -170,7 +173,7 @@ class GameList extends React.Component {
                       </div>                    
                     </div>                     
                     <div className='grafico'>                       
-                      <Chart id={game._id} result={gamesBetweenValues} />                     
+                      <TeamResultsChart id={game._id} result={gamesBetweenValues} />                     
                     </div>                     
                     <div className='imagem2'>                       
                       <img src={'/imgs/teams/' + game.awayTeam + '.png'} width='65%' />                       
