@@ -26,7 +26,7 @@ import {
 } from '@sketchpixy/rubix';
 
 import TeamResultsChart from '../components/teamResultsChart'
-import ResultsChart from '../components/resultsChart'
+
 import GoalsChart from '../components/goalsChart'
 import GameTimeGoalsChart from '../components/gameTimeGoalsChart'
 
@@ -396,24 +396,15 @@ class Menu extends React.Component {
 
 
     render() {
-        var homeGoals = [
-            { x: 'Média de golos marcados por jogo', y: 5 },
-            { x: 'Média de golos sofridos por jogo', y: 1 },
-            { x: 'Média de golos marcados+sofridos', y: 3 }
-        ];
 
-        var awayGoals = [
-            { x: 'Média de golos marcados por jogo', y: 3 },
-            { x: 'Média de golos sofridos por jogo', y: 1 },
-            { x: 'Média de golos marcados+sofridos', y: 2 }
-        ];
 
-        var globalGoals = [
-            { x: 'Média de golos marcados por jogo', y: 3 },
-            { x: 'Média de golos sofridos por jogo', y: 2 },
-            { x: 'Média de golos marcados+sofridos', y: 3 }
-        ];
 
+
+        var goalsHomeChartData = this.props.goalsHomeChartData;
+        var goalsAwayChartData = this.props.goalsAwayChartData;
+
+        console.log('-->');
+        console.log(goalsHomeChartData);
         var wins = [0, 1, 2, 0, 1];
 
         return (
@@ -702,12 +693,12 @@ class Menu extends React.Component {
                                                                 <div className='ola'>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GoalsChart id='goals1' home={homeGoals} away={awayGoals} global={globalGoals} />
+                                                                            <GoalsChart id='goalsHome1' type={1} goalsData={this.props.goalsHomeChartData} />
                                                                         </div>
                                                                     </div>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GoalsChart id='goals2' home={homeGoals} away={awayGoals} global={globalGoals} />
+                                                                            <GoalsChart id='goalsAway1' type={1} goalsData={this.props.goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -718,12 +709,12 @@ class Menu extends React.Component {
                                                                 <div className='ola'>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GoalsChart id='goals3' home={homeGoals} away={awayGoals} global={globalGoals} />
+                                                                            <GoalsChart id='goalsHome3' type={2} goalsData={goalsHomeChartData} />
                                                                         </div>
                                                                     </div>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GoalsChart id='goals4' home={homeGoals} away={awayGoals} global={globalGoals} />
+                                                                            <GoalsChart id='goalsAway3' type={2} goalsData={goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -734,14 +725,14 @@ class Menu extends React.Component {
                                                                 <div className='ola'>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GameTimeGoalsChart id='goals5' home={homeGoals} away={awayGoals} global={globalGoals} />
+                                                                            <GameTimeGoalsChart id='g_1' goalsData={goalsHomeChartData} />
                                                                         </div>
                                                                     </div>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GameTimeGoalsChart id='goals6' home={homeGoals} away={awayGoals} global={globalGoals} />
+                                                                            <GameTimeGoalsChart id='g_2' goalsData={goalsAwayChartData} />
                                                                         </div>
-                                                                    </div>
+                                                                    </div> 
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -754,12 +745,12 @@ class Menu extends React.Component {
                                                                 <div className='ola'>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GoalsChart id='goals7' home={homeGoals} away={awayGoals} global={globalGoals} />
+<GoalsChart id='goalsHome2' type={1} goalsData={this.props.goalsHomeChartData} />
                                                                         </div>
                                                                     </div>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GoalsChart id='goals8' home={homeGoals} away={awayGoals} global={globalGoals} />
+<GoalsChart id='goalsAway2' type={1} goalsData={this.props.goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -770,12 +761,12 @@ class Menu extends React.Component {
                                                                 <div className='ola'>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GoalsChart id='goals9' home={homeGoals} away={awayGoals} global={globalGoals} />
+<GoalsChart id='goalsHome4' type={2} goalsData={goalsHomeChartData} />
                                                                         </div>
                                                                     </div>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GoalsChart id='goals10' home={homeGoals} away={awayGoals} global={globalGoals} />
+<GoalsChart id='goalsAway4' type={2} goalsData={goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -786,18 +777,18 @@ class Menu extends React.Component {
                                                                 <div className='ola'>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GameTimeGoalsChart id='goals11' home={homeGoals} away={awayGoals} global={globalGoals} />
+<GameTimeGoalsChart id='g_3' goalsData={goalsHomeChartData} />
                                                                         </div>
                                                                     </div>
                                                                     <div className='graf'>
                                                                         <div className='graf1'>
-                                                                            <GameTimeGoalsChart id='goals12' home={homeGoals} away={awayGoals} global={globalGoals} />
+<GameTimeGoalsChart id='g_4' goalsData={goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    
+
                                                     </Tab.Pane>
 
                                                 </Tab.Content>
@@ -1219,7 +1210,7 @@ class MatchInfo extends React.Component {
 
                     <div className='row'>
                         <div className='col-sm-12'>
-                            <Menu tableContent={goalMomentsHome} />
+                            <Menu tableContent={goalMomentsHome} goalsHomeChartData={matchInfo.nextGameStats.goalsHome} goalsAwayChartData={matchInfo.nextGameStats.goalsAway} />
                         </div>
                     </div>
 
