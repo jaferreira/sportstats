@@ -84,6 +84,7 @@ class HomeTeamGamesPanel extends React.Component {
                                             <AwayTab id='a1' />
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="cog">
+                                        <Progress label='' className="progbar" value={50} color='#D8E5B0' min={0} max={100} />
                                             <table className='todo'>
                                                 <tr className='ent'>
                                                     <td className=''>29/12/16</td>
@@ -208,6 +209,7 @@ class AwayTeamGamesPanel extends React.Component {
                                             <AwayTab id='a2' />
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="cog">
+                                        <Progress label='' className="progbar" value={50} color='#D8E5B0' min={0} max={100} />
                                             <table className='todo'>
                                                 <tr className='ent'>
                                                     <td className=''>29/12/16</td>
@@ -829,26 +831,22 @@ class Menu extends React.Component {
                                                 <Row>
                                                     <Col sm={12} className="sempad">
                                                         <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
-                                                                <NavItem eventKey="home">Primeira Liga</NavItem>
+                                                                <NavItem eventKey="home">Nesta Competição</NavItem>
                                                         <NavItem eventKey="user">Últimos 10 Jogos</NavItem>
                                                             </Nav>
                                     
                                                     <Tab.Content>
                                                         <Tab.Pane eventKey="home">
                                                             <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        Primeira Liga_ Casa Global
+                                                                <div className='col-sm-12 ola2'>
+                                                                    <div className='padr'>
+                                                                        <HomeTeamResultPanel/>
                                                                          </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        Primeira Liga_ Fora Global
+                                                           
+                                                                            <HomeTeamResultPanel/>
                                                                         </div>
                                                                 </div>
-                                                            </div>
+                                                         
                                                         </Tab.Pane>
                                                         <Tab.Pane eventKey="user">
                                                             <div className='row'>
@@ -899,6 +897,210 @@ class Menu extends React.Component {
                     </PanelBody >
                 </Panel >
             </PanelTabContainer >
+        );
+    }
+}
+class HomeTeamResultPanel extends React.Component {
+    render() {
+
+        var homeResults = [
+            { x: '3-0', y: 3 },
+            { x: '2-0', y: 2 },
+            { x: '2-1', y: 2 },
+            { x: '0-2', y: 0 },
+            { x: '3-1', y: 3 },
+            { x: '2-5', y: 2 }
+        ];
+        var awayResults = [
+            { x: '3-0', y: 0 },
+            { x: '2-0', y: 0 },
+            { x: '2-1', y: -1 },
+            { x: '0-2', y: -2 },
+            { x: '3-1', y: -1 },
+            { x: '2-5', y: -5 }
+        ];
+
+        return (
+            <PanelTabContainer id='panel-body-header-footer-tab' defaultActiveKey="user">
+                <Panel className='cor'>
+                    <PanelHeader className='bg-greend fg-white'>
+                        <Nav bsStyle="tabs">
+                            <NavItem eventKey="casa">
+                                Casa
+                            </NavItem>
+                            <NavItem eventKey="global">
+                                Global
+                            </NavItem>
+                        </Nav>
+                    </PanelHeader>
+                    <PanelBody>
+                        <Grid>
+                            <Row>
+                                <Col xs={12}>
+                                    <Tab.Content animation={false}>
+                                        <Tab.Pane eventKey="casa">
+                                            <HomeTab id='h1' />
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey="global">
+                                            <AwayTab id='a1' />
+                                        </Tab.Pane>
+                                        
+                                    </Tab.Content>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </PanelBody>
+                    <PanelFooter>
+                        <div className="container-fluid">
+                            <div className="row fundo">
+                                <div className="col-sm-12 top">
+                                    <table className="todo">
+                                        <tbody>
+                                            <tr className="padtr">
+                                                <td> Vitórias </td>
+                                                <td className='dir'> X </td>
+                                            </tr>
+
+                                            <tr className="padtr">
+                                                <td> Empates </td>
+                                                <td className='dir'> X </td>
+                                            </tr>
+                                            <tr className="padtr">
+                                                <td> Derrotas </td>
+                                                <td className='dir'> X </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </PanelFooter>
+                </Panel>
+            </PanelTabContainer>
+        );
+    }
+}
+class AwayTeamResultPanel extends React.Component {
+    render() {
+
+        var homeResults = [
+            { x: '3-0', y: 3 },
+            { x: '2-0', y: 2 },
+            { x: '2-1', y: 2 },
+            { x: '0-2', y: 0 },
+            { x: '3-1', y: 3 },
+            { x: '2-5', y: 2 }
+        ];
+        var awayResults = [
+            { x: '3-0', y: 0 },
+            { x: '2-0', y: 0 },
+            { x: '2-1', y: -1 },
+            { x: '0-2', y: -2 },
+            { x: '3-1', y: -1 },
+            { x: '2-5', y: -5 }
+        ];
+
+
+        return (
+            <PanelTabContainer id='panel-body-header-footer-tab' defaultActiveKey="home">
+                <Panel className='cor'>
+                    <PanelHeader className='bg-greend fg-white'>
+                        <Nav bsStyle="tabs">
+                            <NavItem eventKey="home">
+                                Casa
+                            </NavItem>
+                            <NavItem eventKey="user">
+                                Fora
+                            </NavItem>
+                            <NavItem eventKey="cog">
+                                C. Directo
+                            </NavItem>
+                        </Nav>
+                    </PanelHeader>
+                    <PanelBody>
+                        <Grid>
+                            <Row>
+                                <Col xs={12}>
+                                    <Tab.Content animation={false}>
+                                        <Tab.Pane eventKey="home">
+                                            <HomeTab id='h2' />
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey="user">
+                                            <AwayTab id='a2' />
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey="cog">
+                                        <Progress label='' className="progbar" value={50} color='#D8E5B0' min={0} max={100} />
+                                            <table className='todo'>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home'>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                                <tr className='ent'>
+                                                    <td className=''>29/12/16</td>
+                                                    <td className=''>Taça da Liga</td>
+                                                    <td className='dir home '>Braga</td>
+                                                    <td className=''> Ave</td>
+                                                    <td className='dir'>1-2</td>
+                                                </tr>
+                                            </table>
+
+                                        </Tab.Pane>
+                                    </Tab.Content>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </PanelBody>
+                    <PanelFooter>
+                        <div className="container-fluid">
+                            <div className="row fundo">
+                                <div className="col-sm-12 top">
+                                    <table className="todo">
+                                        <tbody>
+                                            <tr className="padtr">
+                                                <td> Vitórias </td>
+                                                <td className='dir'> X </td>
+                                            </tr>
+
+                                            <tr className="padtr">
+                                                <td> Empates </td>
+                                                <td className='dir'> X </td>
+                                            </tr>
+                                            <tr className="padtr">
+                                                <td> Derrotas </td>
+                                                <td className='dir'> X </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </PanelFooter>
+                </Panel>
+            </PanelTabContainer>
         );
     }
 }
