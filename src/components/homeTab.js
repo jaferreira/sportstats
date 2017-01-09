@@ -60,16 +60,16 @@ class HomeTab extends React.Component {
                         <table className="todo">
                             <tbody>
                                 
-                                <tr className="padtr">
+                                <tr className="ent">
                                     <td> Não ganha há.. </td>
                                     <td className='dir'> X </td>
                                 </tr>
 
-                                <tr className="padtr">
+                                <tr className="ent">
                                     <td> Não empata há... </td>
                                     <td className='dir'> X </td>
                                 </tr>
-                                <tr className="padtr">
+                                <tr className="ent">
                                     <td> Não perde há... </td>
                                     <td className='dir' d> X </td>
                                 </tr>

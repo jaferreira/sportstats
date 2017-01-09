@@ -7,17 +7,21 @@ body {
   color: limegreen;
   margin-bottom: 5%;
 }
-.linha{
+.linhas{
   margin-top: 0px;
-  border-top: 3px solid yellowgreen;
-  float: left;
   width: 30%;
 }
+.linha{
+  @extend .linhas;
+  border-top: 3px solid yellowgreen;
+  float: left;
+
+}
 .linha2{
-  margin-top: 0px;
+  @extend .linhas;
   border-top: 3px solid red;
   float: right;
-  width: 30%;
+
 }
 .data{
   margin-top: 25px;
@@ -99,10 +103,11 @@ body {
     margin-left: auto;
 }
 .botao1{
-  width: 49%;
+  width: 50%;
 }
 .botao2{
-  width: 49%;
+  width: 50%;
+  margin-left: 0 !important;
 }
 .ult{
   @extend .botao;
@@ -116,6 +121,9 @@ body {
 .estilo1{
   width: 50%;
 }
+.bo{
+  padding-bottom: 3em;
+}
 .golos{
   padding-top: 7%;
     padding-left: 5%;
@@ -128,12 +136,23 @@ body {
   border-bottom: none;
 
 }
+
+hr{
+      margin-bottom: -10px !important;
+}
 .pad2{
   margin-right: 2%;
   margin-left: 2%;
 }
 .padr{
   padding-right: 4%;
+}
+.padlinha{
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.nav > li > a, .nav > rubix-nav-item > li > a, .nav > rubix-menu > li > a {
+    padding: 4px 6px;
 }
 .todo{
   width: 100%;
@@ -176,12 +195,12 @@ a#pills-basic-tab-home{
 .estilo2{
   font-size: 10px;
 }
-.qua{
-  border-radius: 4px;
-  background: orange;
-  text-align: center;
-  color: white;
-  width: 6%;
+.qua2{
+    border-radius: 4px;
+    background: orange;
+    text-align: center;
+    color: white;
+    width: 30px;
 }
 .ali{
   display: inline-flex;
@@ -195,10 +214,7 @@ a#pills-basic-tab-home{
     display: inline-block;
     color: white;
     text-align: center;
-    padding-top: 2%;
-    padding-right: 2%;
-    padding-bottom: 2%;
-    padding-left: 2%;
+    padding: 2%;
     margin-top: 4%;
   
 }
@@ -207,7 +223,7 @@ a#pills-basic-tab-home{
   background-color: #A1BC31;
 }
 .los{
-  @extend .todos;
+   @extend .todos;
   background-color: #A01127;
 }
 .emp{
@@ -254,12 +270,9 @@ a#pills-basic-tab-home{
   width:24%;
 }
 .ent{
-    padding-bottom: 2%
+    height: 20px;
 }
 
-.padtr{
-      line-height: 225%;
-}
 .graf{
   width:50%;
 }
@@ -270,6 +283,11 @@ a#pills-basic-tab-home{
     height: 242px;
     margin-bottom: 10%;
 }
+.progbar2{
+    height: 12px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
 
 a {
   text-decoration: none !important;
@@ -277,34 +295,36 @@ a {
 li{
   list-style-type: none;
 }
-
-.casa{
-  background-color: #D8E5B0;
+.colleg{
+  width: 318px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.legenda{
   width: 20px;
   height: 20px;
   margin-left: 20px;
-  margin-left: 10px;
+  margin-right: 10px;
+  border: solid 2px;
+}
+.casa{
+  background-color: #D8E5B0;
+  @extend .legenda;
 }
 .fora{
   background-color: #F2D7CD;
-  width: 20px;
-  height: 20px;
-  margin-left: 20px;
-  margin-left: 10px;
+  @extend .legenda;
 }
 .global{
   background-color: #BEC9D5;
-  width: 20px;
-  height: 20px;
-  margin-left: 20px;
-  margin-left: 10px;
+  @extend .legenda;
 }
 .nav-pills > li.active > a {
     background: #D8E5B0;
     color: white;
 }
 .nav-pills > li > a{
-        width: 175px;
+        width: 200px;
         text-align: center;
 }
 
@@ -323,6 +343,9 @@ li{
 }
 .progbar{
   height:11px;
+}
+.mt{
+  margin-top: 35px;
 }
 
 
