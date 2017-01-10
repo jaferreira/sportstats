@@ -28,7 +28,7 @@ class ResultsChart extends React.Component {
     var homeData = this.props.home;
     var awayData = this.props.away;
 
-    console.log('id: ' + this.props.id);
+    
 
     (() => {
       var chart = new Rubix('#' + this.props.id, {
