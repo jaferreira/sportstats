@@ -26,7 +26,7 @@ import {
 } from '@sketchpixy/rubix';
 
 import TeamResultsChart from '../components/teamResultsChart'
-import ResultsChart from '../components/resultsChart'
+
 import GoalsChart from '../components/goalsChart'
 import GameTimeGoalsChart from '../components/gameTimeGoalsChart'
 
@@ -209,7 +209,7 @@ class AwayTeamGamesPanel extends React.Component {
                                             <AwayTab id='a2' />
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="cog">
-                                        <Progress label='' className="progbar" value={50} color='#D8E5B0' min={0} max={100} />
+                                            <Progress label='' className="progbar" value={50} color='#D8E5B0' min={0} max={100} />
                                             <table className='todo'>
                                                 <tr className='ent'>
                                                     <td className=''>29/12/16</td>
@@ -327,56 +327,58 @@ class GoalPeriodPanel extends React.Component {
                                 <Col sm={6}>
                                     <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
                                         <NavItem eventKey="home">Casa</NavItem>
-                                        <NavItem eventKey="user">Global</NavItem>
+                                    <NavItem eventKey="user">Global</NavItem>
                                     </Nav>
                                 </Col>
-                                <Col sm={6}>
-                                    <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
+                            <Col sm={6}>
+                                <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
                                         <NavItem eventKey="home">Fora</NavItem>
-                                        <NavItem eventKey="user">Global</NavItem>
+                                <NavItem eventKey="user">Global</NavItem>
                                     </Nav>
                                 </Col>
                             </Row>
-                            <Row>
-                                <Col sm={12}>
-                                    <Tab.Content>
-                                        <Tab.Pane eventKey="home">
-                                            <Grid>
-                                                <Row>
-                                                    <Col xs={12} className="sempad">
-                                                        <Table bordered striped className='table table-bordered' data-tablesaw-mode='swipe'>
-                                                            <tbody>
-                                                                {this.props.data}
-                                                            </tbody>
-                                                        </Table>
-                                                    </Col>
-                                                </Row>
-                                            </Grid>
-                                        </Tab.Pane>
+                    <Row>
+                        <Col sm={12}>
+                            <Tab.Content>
+                                <Tab.Pane eventKey="home">
+                                    <Grid>
+                                        <Row>
+                                            <Col xs={12} className="sempad">
+                                                <Table bordered striped className='table table-bordered' data-tablesaw-mode='swipe'>
+                                                    <tbody>
+                                                        {this.props.data}
+                                                    </tbody>
+                                                </Table>
+                                            </Col>
+                                        </Row>
+                                    </Grid>
+                                </Tab.Pane>
 
-                                        <Tab.Pane eventKey="user">
-                                            <Grid>
-                                                <Row>
-                                                    <Col xs={12} className="sempad">
-                                                        <Table bordered striped className='table table-bordered' data-tablesaw-mode='swipe'>
-                                                            <tbody>
-                                                                {this.props.data}
-                                                            </tbody>
-                                                        </Table>
-                                                    </Col>
-                                                </Row>
-                                            </Grid>
-                                        </Tab.Pane>
-                                    </Tab.Content>
-                                </Col>
-                            </Row>
+                                <Tab.Pane eventKey="user">
+                                    <Grid>
+                                        <Row>
+                                            <Col xs={12} className="sempad">
+                                                <Table bordered striped className='table table-bordered' data-tablesaw-mode='swipe'>
+                                                    <tbody>
+                                                        {this.props.data}
+                                                    </tbody>
+                                                </Table>
+                                            </Col>
+                                        </Row>
+                                    </Grid>
+                                </Tab.Pane>
+                            </Tab.Content>
+                        </Col>
+                    </Row>
                         </Grid>
                     </PanelBody>
-                </Panel>
+                </Panel >
             </PanelTabContainer >
         );
     }
 }
+
+
 
 class Menu extends React.Component {
 
@@ -406,29 +408,22 @@ class Menu extends React.Component {
 
 
     render() {
-        var homeGoals = [
-            { x: 'Média de golos marcados por jogo', y: 5 },
-            { x: 'Média de golos sofridos por jogo', y: 1 },
-            { x: 'Média de golos marcados+sofridos', y: 3 }
-        ];
 
-        var awayGoals = [
-            { x: 'Média de golos marcados por jogo', y: 3 },
-            { x: 'Média de golos sofridos por jogo', y: 1 },
-            { x: 'Média de golos marcados+sofridos', y: 2 }
-        ];
 
-        var globalGoals = [
-            { x: 'Média de golos marcados por jogo', y: 3 },
-            { x: 'Média de golos sofridos por jogo', y: 2 },
-            { x: 'Média de golos marcados+sofridos', y: 3 }
-        ];
 
+
+        var goalsHomeChartData = this.props.goalsHomeChartData;
+        var goalsAwayChartData = this.props.goalsAwayChartData;
+
+        console.log('-->');
+        console.log(goalsHomeChartData);
         var wins = [0, 1, 2, 0, 1];
 
         return (
             <PanelTabContainer id='panel-body-header-footer-normal-tab' defaultActiveKey="user">
                 <Panel>
+
+
                     <PanelHeader className='bg-grayishcyan fg-white'>
                         <Nav bsStyle="tabs">
                             <NavItem eventKey="home">
@@ -445,19 +440,21 @@ class Menu extends React.Component {
 
                     <PanelBody>
                         <Grid>
-                            <Row>
-                                <Col xs={12}>
-                                    <Tab.Content animation={false}>
-                                        <Tab.Pane eventKey="home">
-                                            <div className='imagemestadio'>
-                                                <h3>Imagem Estádio</h3>
-                                            </div>
-                                        </Tab.Pane>
 
-                                        <Tab.Pane eventKey="user">
-                                            <PanelTabContainer id='pills-basic' defaultActiveKey="home">
-                                                <PanelBody>
-                                                    <Grid>
+                            <Tab.Content animation={false}>
+                                <Tab.Pane eventKey="home">
+                                    <div className='imagemestadio'>
+                                        <h3>Imagem Estádio</h3>
+                                    </div>
+
+                                </Tab.Pane>
+
+                                <Tab.Pane eventKey="user">
+
+                                    <PanelTabContainer id='pills-basic' defaultActiveKey="home">
+
+                                        <PanelBody>
+                                             <Grid>
                                                         <div className='row'>
                                                             <div className='col-sm-12'>
                                                                 <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
@@ -467,8 +464,9 @@ class Menu extends React.Component {
                                                                 </Nav>
                                                             </div>
                                                         </div>
+
                
-                                                        <Tab.Content>
+                                                    <Tab.Content>
                                                             <Tab.Pane eventKey="home">
                                                                 <div className='row'>
                                                                     <div className='col-sm-12'>
@@ -646,21 +644,29 @@ class Menu extends React.Component {
                                                                 </div>
                                                             </Tab.Pane>
                                                         </Tab.Content>
-                                                    </Grid>
-                                                </PanelBody>
-                                            </PanelTabContainer>
+                                                    
+             
+         </Grid>
+       </PanelBody>
+     </PanelTabContainer>
 
+                                        
+
+
+                                        
                                         <div className='row'>
                                             <div className='col-sm-12 ola2'>
                                                 <div className='padr'>
                                                     <HomeTeamGamesPanel />
                                                 </div>
-                                                    <AwayTeamGamesPanel />
+
+                                                <AwayTeamGamesPanel />
+
                                             </div>
                                         </div>
 
                                         <div className='row'>
-                                            <div className='col-sm-12 padlinha'>
+                                            <div className='col-sm-12'>
                                                 <p className='golos'> Golos </p>
                                                 <hr className='goloslinha'></hr>
                                             </div>
@@ -674,213 +680,221 @@ class Menu extends React.Component {
                                                         <div className='col-sm-12 sempad'>
 
                                                             <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
-                                                                <NavItem eventKey="home" className='col-sm-6 botao1'>Últimos 5 Jogos</NavItem>
 
-                                                                <NavItem eventKey="user" className='col-sm-6 botao2'>Próximos 5 Jogos</NavItem>
-                                                            </Nav>
-                                                        </div>
-                                                    </div> 
+                                                                        <NavItem eventKey="home" className='col-sm-6 botao1'>Últimos 5 Jogos</NavItem>
+
+                                                            <NavItem eventKey="user" className='col-sm-6 botao2'>Próximos 5 Jogos</NavItem>
+                                         
+                                                                    </Nav>
+                                                    </div>
+                                                        </div> 
                                                                 
-                                                    <Tab.Content>
-                                                        <Tab.Pane eventKey="home">
+                                                <Tab.Content>
+                                                    <Tab.Pane eventKey="home">
 
 
-                                                            <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GoalsChart id='goals1' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                        <div className='row'>
+                                                            <div className='col-sm-12'>
+                                                                <div className='ola'>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GoalsChart id='goalsHome1' type={1} goalsData={this.props.goalsHomeChartData} />
                                                                         </div>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GoalsChart id='goals2' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                                    </div>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GoalsChart id='goalsAway1' type={1} goalsData={this.props.goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GoalsChart id='goals3' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                        </div>
+                                                        <div className='row'>
+                                                            <div className='col-sm-12'>
+                                                                <div className='ola'>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GoalsChart id='goalsHome3' type={2} goalsData={goalsHomeChartData} />
                                                                         </div>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GoalsChart id='goals4' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                                    </div>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GoalsChart id='goalsAway3' type={2} goalsData={goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GameTimeGoalsChart id='goals5' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                        </div>
+                                                        <div className='row'>
+                                                            <div className='col-sm-12'>
+                                                                <div className='ola'>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GameTimeGoalsChart id='g_1' goalsData={goalsHomeChartData} />
                                                                         </div>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GameTimeGoalsChart id='goals6' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                                    </div>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GameTimeGoalsChart id='g_2' goalsData={goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
 
-                                                        </Tab.Pane>
-                                                        <Tab.Pane eventKey="user">
+                                                    </Tab.Pane>
+                                                    <Tab.Pane eventKey="user">
 
-                                                            <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GoalsChart id='goals7' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                        <div className='row'>
+                                                            <div className='col-sm-12'>
+                                                                <div className='ola'>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GoalsChart id='goalsHome2' type={1} goalsData={this.props.goalsHomeChartData} />
                                                                         </div>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GoalsChart id='goals8' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                                    </div>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GoalsChart id='goalsAway2' type={1} goalsData={this.props.goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GoalsChart id='goals9' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                        </div>
+                                                        <div className='row'>
+                                                            <div className='col-sm-12'>
+                                                                <div className='ola'>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GoalsChart id='goalsHome4' type={2} goalsData={goalsHomeChartData} />
                                                                         </div>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GoalsChart id='goals10' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                                    </div>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GoalsChart id='goalsAway4' type={2} goalsData={goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GameTimeGoalsChart id='goals11' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                        </div>
+                                                        <div className='row'>
+                                                            <div className='col-sm-12'>
+                                                                <div className='ola'>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GameTimeGoalsChart id='g_3' goalsData={goalsHomeChartData} />
                                                                         </div>
-                                                                        <div className='graf'>
-                                                                            <div className='graf1'>
-                                                                                <GameTimeGoalsChart id='goals12' home={homeGoals} away={awayGoals} global={globalGoals} />
-                                                                            </div>
+                                                                    </div>
+                                                                    <div className='graf'>
+                                                                        <div className='graf1'>
+                                                                            <GameTimeGoalsChart id='g_4' goalsData={goalsAwayChartData} />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </Tab.Pane>
-                                                    </Tab.Content>    
-                                                </Grid>
-                                            </PanelBody>
-                                        </PanelTabContainer>
+                                                        </div>
+
+                                                    </Tab.Pane>
+
+                                                </Tab.Content>
+                                                
+                                                    </Grid>
+                                                </PanelBody>
+                                    </PanelTabContainer>
 
 
-                                        <div className='row colleg'>
-                                            <div className='col-sm-12 ola2'>
-                                    
-                                                    <div className='casa'></div>Casa
+                                    <div className='row colleg'>
+                                        <div className='col-sm-12 ola2'>
+
+                                            <div className='casa'></div>Casa
                                                     <div className='fora'></div>Fora
                                                     <div className='global'></div>Global
-             
+
                                             </div>
+                                    </div>
+
+                                    <div className="row mt">
+                                        <div className='col-sm-12'>
+                                            <GoalPeriodPanel data={this.props.tableContent} />
                                         </div>
+                                    </div>
 
-                                        <div className="row mt">
-                                            <div className='col-sm-12'>
-                                                <GoalPeriodPanel data={this.props.tableContent} />
-                                            </div>
+                                    <div className='row'>
+                                        <div className='col-sm-12 padlinha'>
+                                            <p className='golos'> Resultados </p>
+                                            <hr className='goloslinha'></hr>
                                         </div>
+                                    </div>
 
-                                        <div className='row'>
-                                            <div className='col-sm-12 padlinha'>
-                                                <p className='golos'> Resultados </p>
-                                                <hr className='goloslinha'></hr>
-                                            </div>
-                                        </div>
 
-                                        <PanelTabContainer id='pills-basic' defaultActiveKey="home">
-                                            <PanelBody>
-                                                <Grid>
-                                                    <div className='row'>
-                                                        <div className='col-sm-12 sempad'>
-                                                            <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
-                                                                <NavItem eventKey="home" className='col-sm-6 botao1'>Nesta Competição</NavItem>
 
-                                                                <NavItem eventKey="user" className='col-sm-6 botao2'>Próximos 10 Jogos</NavItem>
-                                            
+                                    <PanelTabContainer id='pills-basic' defaultActiveKey="home">
+                                        <PanelBody>
+                                            <Grid>
+                                                <Row>
+                                                    <Col sm={12} className="sempad">
+                                                        <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
+                                                                <NavItem eventKey="home">Nesta Competição</NavItem>
+                                                        <NavItem eventKey="user">Últimos 10 Jogos</NavItem>
                                                             </Nav>
-                                                        </div>
-                                                    </div>
-                                        
+                                    
                                                     <Tab.Content>
                                                         <Tab.Pane eventKey="home">
                                                             <div className='row'>
                                                                 <div className='col-sm-12 ola2'>
                                                                     <div className='padr'>
-                                                                        <HomeTeamResultPanel/>
-                                                                    </div>                                                      
-                                                                        <AwayTeamResultPanel/>
+                                                                        <HomeTeamResultPanel />
+                                                                    </div>
+
+                                                                    <AwayTeamResultPanel />
                                                                 </div>
                                                             </div>
-                                                            
+
                                                         </Tab.Pane>
                                                         <Tab.Pane eventKey="user">
                                                             <div className='row'>
                                                                 <div className='col-sm-12'>
                                                                     <div className='ola'>
                                                                         Últimos 10 Jogos_ Casa Global
-                                                                    </div>
+                                                                        </div>
                                                                 </div>
                                                             </div>
                                                             <div className='row'>
                                                                 <div className='col-sm-12'>
                                                                     <div className='ola'>
                                                                         Últimos 10 Jogos_ Fora Global
-                                                                    </div>
+                                                                        </div>
                                                                 </div>
                                                             </div>
+
+
                                                         </Tab.Pane>
                                                     </Tab.Content>
+                                                        </Col>
+                                                    </Row>
                                                 </Grid>
                                             </PanelBody>
                                         </PanelTabContainer>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="cog">
-                                        <h3>Cog (header)</h3>
-                                        <p><LoremIpsum query='4s' /></p>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="home-1">
-                                        <h3>Home (footer)</h3>
-                                        <p><LoremIpsum query='4s' /></p>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="user-1">
-                                        <h3>User (footer)</h3>
-                                        <p><LoremIpsum query='4s' /></p>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="cog-1">
-                                        <h3>Cog (footer)</h3>
-                                        <p><LoremIpsum query='4s' /></p>
-                                    </Tab.Pane>
+
+                                        </Tab.Pane>
+                            <Tab.Pane eventKey="cog">
+                                <h3>Cog (header)</h3>
+                                <p><LoremIpsum query='4s' /></p>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="home-1">
+                                <h3>Home (footer)</h3>
+                                <p><LoremIpsum query='4s' /></p>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="user-1">
+                                <h3>User (footer)</h3>
+                                <p><LoremIpsum query='4s' /></p>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="cog-1">
+                                <h3>Cog (footer)</h3>
+                                <p><LoremIpsum query='4s' /></p>
+                            </Tab.Pane>
                                     </Tab.Content>
-                                </Col>
-                            </Row>
+                            
                         </Grid>
                     </PanelBody >
                 </Panel >
@@ -961,7 +975,7 @@ class HomeTeamResultPanel extends React.Component {
                                             </table>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="global">
-                                           <table className="todo">
+                                            <table className="todo">
                                                 <thead>
                                                     <tr className="ent">
                                                         <th colSpan="2">Resultado ao Intervalo</th>
@@ -988,7 +1002,7 @@ class HomeTeamResultPanel extends React.Component {
                                                         <td> 20%</td>
                                                     </tr>
                                                     <tr className="ent">
-    
+
                                                         <td>1 - 1</td>
                                                         <td> 20%</td>
                                                         <td></td>
@@ -997,7 +1011,7 @@ class HomeTeamResultPanel extends React.Component {
                                                 </tbody>
                                             </table>
                                         </Tab.Pane>
-                                        
+
                                     </Tab.Content>
                                 </Col>
                             </Row>
@@ -1053,14 +1067,14 @@ class AwayTeamResultPanel extends React.Component {
                     <PanelHeader className='bg-greend fg-white'>
                         <Nav bsStyle="tabs">
                             <NavItem eventKey="fora">
-                               Fora
+                                Fora
                             </NavItem>
                             <NavItem eventKey="global">
                                 Global
                             </NavItem>
                         </Nav>
                     </PanelHeader>
-                   <PanelBody>
+                    <PanelBody>
                         <Grid>
                             <Row>
                                 <Col xs={12}>
@@ -1415,6 +1429,7 @@ class MatchInfo extends React.Component {
                 }
             });
 
+
             // ------------------------------------------
 
             return (
@@ -1456,7 +1471,7 @@ class MatchInfo extends React.Component {
                                         {matchInfo.homeTeam}
                                     </div>
                                 </div>
-                                <div className='grafico'>
+                                <div className='grafico2'>
                                     <TeamResultsChart id='teamResultsChart' result={resultsBetweenTeams} />
                                 </div>
                                 <div className='imagem2'>
@@ -1471,7 +1486,7 @@ class MatchInfo extends React.Component {
 
                     <div className='row'>
                         <div className='col-sm-12'>
-                            <Menu tableContent={goalMomentsHome} />
+                            <Menu tableContent={goalMomentsHome} goalsHomeChartData={matchInfo.nextGameStats.goalsHome} goalsAwayChartData={matchInfo.nextGameStats.goalsAway} />
                         </div>
                     </div>
 
