@@ -53,7 +53,7 @@ class HomeTab extends React.Component {
         
         return (
             <div>
-                <p>últimos jogos em casa do HomeTeam</p>
+                <p>Nesta Competição</p>
                 <ResultsChart id={this.props.id} home={homeResults} away={awayResults} />
                 <div className="row fundo">
                     <div className="col-sm-12 top">

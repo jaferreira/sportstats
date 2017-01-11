@@ -285,7 +285,6 @@ class AwayTeamGamesPanel extends React.Component {
     }
 }
 
-
 class GoalPeriodPanel extends React.Component {
     constructor(...args) {
         super(...args);
@@ -324,52 +323,52 @@ class GoalPeriodPanel extends React.Component {
                     <PanelBody>
                         <Grid>
                             <Row>
-                                <Col sm={6}>
+                                <Col xs={6}>
                                     <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
                                         <NavItem eventKey="home">Casa</NavItem>
-                                    <NavItem eventKey="user">Global</NavItem>
+                                        <NavItem eventKey="user">Global</NavItem>
                                     </Nav>
                                 </Col>
-                            <Col sm={6}>
-                                <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
+                                <Col xs={6}>
+                                    <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
                                         <NavItem eventKey="home">Fora</NavItem>
-                                <NavItem eventKey="user">Global</NavItem>
+                                        <NavItem eventKey="user">Global</NavItem>
                                     </Nav>
                                 </Col>
                             </Row>
-                    <Row>
-                        <Col sm={12}>
-                            <Tab.Content>
-                                <Tab.Pane eventKey="home">
-                                    <Grid>
-                                        <Row>
-                                            <Col xs={12} className="sempad">
-                                                <Table bordered striped className='table table-bordered' data-tablesaw-mode='swipe'>
-                                                    <tbody>
-                                                        {this.props.data}
-                                                    </tbody>
-                                                </Table>
-                                            </Col>
-                                        </Row>
-                                    </Grid>
-                                </Tab.Pane>
+                            <Row>
+                                <Col sm={12}>
+                                    <Tab.Content className="tabela">
+                                        <Tab.Pane eventKey="home">
+                                            <Grid>
+                                                <Row>
+                                                    <Col xs={12} className="sempad">
+                                                        <Table bordered striped className='table table-bordered' data-tablesaw-mode='swipe'>
+                                                            <tbody>
+                                                                {this.props.data}
+                                                            </tbody>
+                                                        </Table>
+                                                    </Col>
+                                                </Row>
+                                            </Grid>
+                                        </Tab.Pane>
 
-                                <Tab.Pane eventKey="user">
-                                    <Grid>
-                                        <Row>
-                                            <Col xs={12} className="sempad">
-                                                <Table bordered striped className='table table-bordered' data-tablesaw-mode='swipe'>
-                                                    <tbody>
-                                                        {this.props.data}
-                                                    </tbody>
-                                                </Table>
-                                            </Col>
-                                        </Row>
-                                    </Grid>
-                                </Tab.Pane>
-                            </Tab.Content>
-                        </Col>
-                    </Row>
+                                        <Tab.Pane eventKey="user">
+                                            <Grid>
+                                                <Row>
+                                                    <Col xs={12} className="sempad">
+                                                        <Table bordered striped className='table table-bordered' data-tablesaw-mode='swipe'>
+                                                            <tbody>
+                                                                {this.props.data}
+                                                            </tbody>
+                                                        </Table>
+                                                    </Col>
+                                                </Row>
+                                            </Grid>
+                                        </Tab.Pane>
+                                    </Tab.Content>
+                                </Col>
+                            </Row>
                         </Grid>
                     </PanelBody>
                 </Panel >
@@ -377,8 +376,6 @@ class GoalPeriodPanel extends React.Component {
         );
     }
 }
-
-
 
 class Menu extends React.Component {
 
@@ -450,20 +447,18 @@ class Menu extends React.Component {
                                 </Tab.Pane>
 
                                 <Tab.Pane eventKey="user">
-
                                     <PanelTabContainer id='pills-basic' defaultActiveKey="home">
-
                                         <PanelBody>
                                              <Grid>
-                                                        <div className='row'>
-                                                            <div className='col-sm-12'>
-                                                                <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
-                                                                    <NavItem eventKey="home" className='col-sm-6 botao1'>Últimos 5 Jogos</NavItem>
+                                                <div className='row'>
+                                                    <div className='col-sm-12'>
+                                                        <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
+                                                            <NavItem eventKey="home" className='col-sm-6 botao1'>Últimos 5 Jogos</NavItem>
 
-                                                                    <NavItem eventKey="user" className='col-sm-6 botao2'>Próximos 5 Jogos</NavItem>
-                                                                </Nav>
-                                                            </div>
-                                                        </div>
+                                                            <NavItem eventKey="user" className='col-sm-6 botao2'>Próximos 5 Jogos</NavItem>
+                                                        </Nav>
+                                                    </div>
+                                                </div>
 
                
                                                     <Tab.Content>
@@ -473,36 +468,36 @@ class Menu extends React.Component {
                                                                         <div className='ola'>
                                                                             <table className='resultados'>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Taça da Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className=' bo'>Braga</td>
                                                                                     <td className='dir padr bo'>Rio Ave</td>
                                                                                     <td className=' bo'>1-2</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo'>1-0</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Taça da Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Braga</td>
                                                                                     <td className='dir padr bo'>Rio Ave</td>
                                                                                     <td className='bo'>1-2</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo'>1-0</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo'>1-0</td>
@@ -510,37 +505,36 @@ class Menu extends React.Component {
                                                                             </table>
                                                                             <table className='resultados'>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    
-                                                                                    <td className=' bo'>Taça da Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className=' bo'>Braga</td>
                                                                                     <td className='dir padr bo'>Rio Ave</td>
                                                                                     <td className='dir bo'>1-2</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo dir'>1-0</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Taça da Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Braga</td>
                                                                                     <td className='dir padr bo'>Rio Ave</td>
                                                                                     <td className='bo dir'>1-2</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo dir'>1-0</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo dir'>1-0</td>
@@ -565,37 +559,36 @@ class Menu extends React.Component {
                                                                         <div className='ola'>
                                                                             <table className='resultados'>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    
-                                                                                    <td className=' bo'>Taça da Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className=' bo'>Braga</td>
                                                                                     <td className='dir padr bo'>Rio Ave</td>
                                                                                     <td className=' bo'>1-2</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo'>1-0</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Taça da Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Braga</td>
                                                                                     <td className='dir padr bo'>Rio Ave</td>
                                                                                     <td className='bo'>1-2</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo'>1-0</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
                                                                                     <td className='bo'>1-0</td>
@@ -603,40 +596,39 @@ class Menu extends React.Component {
                                                                             </table>
                                                                             <table className='resultados'>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    
-                                                                                    <td className=' bo'>Taça da Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className=' bo'>Braga</td>
                                                                                     <td className='dir padr bo'>Rio Ave</td>
-                                                                                    <td className=' bo'>1-2</td>
+                                                                                    <td className='dir bo'>1-2</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
-                                                                                    <td className='bo'>1-0</td>
+                                                                                    <td className='dir bo'>1-0</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Taça da Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Braga</td>
                                                                                     <td className='dir padr bo'>Rio Ave</td>
-                                                                                    <td className='bo'>1-2</td>
+                                                                                    <td className='dir bo'>1-2</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
-                                                                                    <td className='bo'>1-0</td>
+                                                                                    <td className='dir bo'>1-0</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td><p className="qua2">22 DEZ '16</p></td>
-                                                                                    <td className=' bo'>Primeira Liga</td>
+                                                                                    <td className=' qua'><p className="qua2">22 DEZ '16</p></td>
+                                                                                    <td className=' bo padl'>Primeira Liga</td>
                                                                                     <td className='bo'>Chaves</td>
                                                                                     <td className='dir padr bo'>Estoril</td>
-                                                                                    <td className='bo'>1-0</td>
+                                                                                    <td className='dir bo'>1-0</td>
                                                                                 </tr>
                                                                             </table>
                                                                         </div>
@@ -644,11 +636,9 @@ class Menu extends React.Component {
                                                                 </div>
                                                             </Tab.Pane>
                                                         </Tab.Content>
-                                                    
-             
-         </Grid>
-       </PanelBody>
-     </PanelTabContainer>
+                                                    </Grid>
+                                                </PanelBody>
+                                            </PanelTabContainer>
 
                                         
 
@@ -659,15 +649,13 @@ class Menu extends React.Component {
                                                 <div className='padr'>
                                                     <HomeTeamGamesPanel />
                                                 </div>
-
-                                                <AwayTeamGamesPanel />
-
+                                                    <AwayTeamGamesPanel />
                                             </div>
                                         </div>
 
                                         <div className='row'>
                                             <div className='col-sm-12'>
-                                                <p className='golos'> Golos </p>
+                                                <p className='golos'> Golos</p>
                                                 <hr className='goloslinha'></hr>
                                             </div>
                                         </div>
@@ -681,17 +669,15 @@ class Menu extends React.Component {
 
                                                             <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
 
-                                                                        <NavItem eventKey="home" className='col-sm-6 botao1'>Últimos 5 Jogos</NavItem>
-
-                                                            <NavItem eventKey="user" className='col-sm-6 botao2'>Próximos 5 Jogos</NavItem>
+                                                                <NavItem eventKey="home" className='col-sm-6 botao1'>Últimos 5 Jogos</NavItem>
+                                                                <NavItem eventKey="user" className='col-sm-6 botao2'>Próximos 5 Jogos</NavItem>
                                          
-                                                                    </Nav>
-                                                    </div>
-                                                        </div> 
+                                                            </Nav>
+                                                        </div>
+                                                    </div> 
                                                                 
                                                 <Tab.Content>
                                                     <Tab.Pane eventKey="home">
-
 
                                                         <div className='row'>
                                                             <div className='col-sm-12'>
@@ -793,24 +779,27 @@ class Menu extends React.Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </Tab.Pane>
-
                                                 </Tab.Content>
-                                                
-                                                    </Grid>
-                                                </PanelBody>
+                                            </Grid>
+                                        </PanelBody>
                                     </PanelTabContainer>
 
 
-                                    <div className='row colleg'>
-                                        <div className='col-sm-12 ola2'>
+                                    <div className='row'>
+                                        <div className='col-sm-12 ola'>
+                                        <table className="colleg">
+                                            <tr>
+                                                <td className='casa'></td>
+                                                <td className="text"> Casa </td>
+                                                <td className='fora'></td>
+                                                <td className="text">Fora</td>
+                                                <td className='global'></td>
+                                                <td className="text">Global</td>
+                                            </tr>
+                                            </table>
 
-                                            <div className='casa'></div>Casa
-                                                    <div className='fora'></div>Fora
-                                                    <div className='global'></div>Global
-
-                                            </div>
+                                        </div>
                                     </div>
 
                                     <div className="row mt">
@@ -820,7 +809,7 @@ class Menu extends React.Component {
                                     </div>
 
                                     <div className='row'>
-                                        <div className='col-sm-12 padlinha'>
+                                        <div className='col-sm-12'>
                                             <p className='golos'> Resultados </p>
                                             <hr className='goloslinha'></hr>
                                         </div>
@@ -831,12 +820,14 @@ class Menu extends React.Component {
                                     <PanelTabContainer id='pills-basic' defaultActiveKey="home">
                                         <PanelBody>
                                             <Grid>
-                                                <Row>
-                                                    <Col sm={12} className="sempad">
+                                                <div className='row'>
+                                                    <div className='col-sm-12 sempad'>
                                                         <Nav bsStyle="pills" onSelect={::this.handleActiveState} className='clicmenu'>
-                                                                <NavItem eventKey="home">Nesta Competição</NavItem>
-                                                        <NavItem eventKey="user">Últimos 10 Jogos</NavItem>
-                                                            </Nav>
+                                                            <NavItem eventKey="home" className='col-sm-6 botao1'>Nesta Competição</NavItem>
+                                                            <NavItem eventKey="user" className='col-sm-6 botao2'>Últimos 10 Jogos</NavItem>
+                                                        </Nav>
+                                                    </div>
+                                                </div>
                                     
                                                     <Tab.Content>
                                                         <Tab.Pane eventKey="home">
@@ -845,38 +836,28 @@ class Menu extends React.Component {
                                                                     <div className='padr'>
                                                                         <HomeTeamResultPanel />
                                                                     </div>
-
-                                                                    <AwayTeamResultPanel />
+                                                                        <AwayTeamResultPanel />
                                                                 </div>
                                                             </div>
 
                                                         </Tab.Pane>
                                                         <Tab.Pane eventKey="user">
                                                             <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        Últimos 10 Jogos_ Casa Global
-                                                                        </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className='row'>
-                                                                <div className='col-sm-12'>
-                                                                    <div className='ola'>
-                                                                        Últimos 10 Jogos_ Fora Global
-                                                                        </div>
+                                                                <div className='col-sm-12 ola2'>
+                                                                    <div className='padr'>
+                                                                        <HomeTeamResultPanel2 />
+                                                                    </div>
+                                                                        <AwayTeamResultPanel2 />
                                                                 </div>
                                                             </div>
 
 
                                                         </Tab.Pane>
                                                     </Tab.Content>
-                                                        </Col>
-                                                    </Row>
                                                 </Grid>
                                             </PanelBody>
                                         </PanelTabContainer>
-
-                                        </Tab.Pane>
+                                    </Tab.Pane>
                             <Tab.Pane eventKey="cog">
                                 <h3>Cog (header)</h3>
                                 <p><LoremIpsum query='4s' /></p>
@@ -893,7 +874,7 @@ class Menu extends React.Component {
                                 <h3>Cog (footer)</h3>
                                 <p><LoremIpsum query='4s' /></p>
                             </Tab.Pane>
-                                    </Tab.Content>
+                            </Tab.Content>
                             
                         </Grid>
                     </PanelBody >
@@ -902,6 +883,7 @@ class Menu extends React.Component {
         );
     }
 }
+
 class HomeTeamResultPanel extends React.Component {
     render() {
 
@@ -1040,7 +1022,285 @@ class HomeTeamResultPanel extends React.Component {
         );
     }
 }
+
 class AwayTeamResultPanel extends React.Component {
+    render() {
+
+        var homeResults = [
+            { x: '3-0', y: 3 },
+            { x: '2-0', y: 2 },
+            { x: '2-1', y: 2 },
+            { x: '0-2', y: 0 },
+            { x: '3-1', y: 3 },
+            { x: '2-5', y: 2 }
+        ];
+        var awayResults = [
+            { x: '3-0', y: 0 },
+            { x: '2-0', y: 0 },
+            { x: '2-1', y: -1 },
+            { x: '0-2', y: -2 },
+            { x: '3-1', y: -1 },
+            { x: '2-5', y: -5 }
+        ];
+
+
+        return (
+            <PanelTabContainer id='panel-body-header-footer-tab' defaultActiveKey="fora">
+                <Panel className='cor'>
+                    <PanelHeader className='bg-greend fg-white'>
+                        <Nav bsStyle="tabs">
+                            <NavItem eventKey="fora">
+                                Fora
+                            </NavItem>
+                            <NavItem eventKey="global">
+                                Global
+                            </NavItem>
+                        </Nav>
+                    </PanelHeader>
+                    <PanelBody>
+                        <Grid>
+                            <Row>
+                                <Col xs={12}>
+                                    <Tab.Content animation={false}>
+                                        <Tab.Pane eventKey="fora">
+                                            <table className="todo">
+                                                <thead>
+                                                    <tr className="ent">
+                                                        <th colSpan="2">Resultado ao Intervalo</th>
+                                                        <th colSpan="2">Resultado Final</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr className="ent">
+                                                        <td>1 - 0</td>
+                                                        <td> 80%</td>
+                                                        <td>0 - 1 </td>
+                                                        <td>40%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>0 - 0</td>
+                                                        <td> 20%</td>
+                                                        <td>0 - 0</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>0 - 2</td>
+                                                        <td> 80%</td>
+                                                        <td>3 - 3</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>3 - 0</td>
+                                                        <td> 20%</td>
+                                                        <td>3 - 1</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey="global">
+                                            <table className="todo">
+                                                <thead>
+                                                    <tr className="ent">
+                                                        <th colSpan="2">Resultado ao Intervalo</th>
+                                                        <th colSpan="2">Resultado Final</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr className="ent">
+                                                        <td>1 - 0</td>
+                                                        <td> 80%</td>
+                                                        <td>0 - 1</td>
+                                                        <td> 40%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>0 - 0</td>
+                                                        <td> 20%</td>
+                                                        <td>0 - 0</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>0 - 2</td>
+                                                        <td> 80%</td>
+                                                        <td>3 - 3</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>3 - 0</td>
+                                                        <td> 20%</td>
+                                                        <td>3 - 1</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </Tab.Pane>
+                                    </Tab.Content>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </PanelBody>
+                    <PanelFooter>
+                        <div className="container-fluid">
+                            <div className="row fundo">
+                                <div className="col-sm-12 top">
+                                    <table className="todo">
+                                        <tbody>
+                                            <tr className="ent">
+                                                <td> Total 100%</td>
+                                                <td className=''> Total 100% </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </PanelFooter>
+                </Panel>
+            </PanelTabContainer>
+        );
+    }
+}
+
+class HomeTeamResultPanel2 extends React.Component {
+    render() {
+
+        var homeResults = [
+            { x: '3-0', y: 3 },
+            { x: '2-0', y: 2 },
+            { x: '2-1', y: 2 },
+            { x: '0-2', y: 0 },
+            { x: '3-1', y: 3 },
+            { x: '2-5', y: 2 }
+        ];
+        var awayResults = [
+            { x: '3-0', y: 0 },
+            { x: '2-0', y: 0 },
+            { x: '2-1', y: -1 },
+            { x: '0-2', y: -2 },
+            { x: '3-1', y: -1 },
+            { x: '2-5', y: -5 }
+        ];
+
+        return (
+            <PanelTabContainer id='panel-body-header-footer-tab' defaultActiveKey="casa">
+                <Panel className='cor'>
+                    <PanelHeader className='bg-greend fg-white'>
+                        <Nav bsStyle="tabs">
+                            <NavItem eventKey="casa">
+                                Casa
+                            </NavItem>
+                            <NavItem eventKey="global">
+                                Global
+                            </NavItem>
+                        </Nav>
+                    </PanelHeader>
+                    <PanelBody>
+                        <Grid>
+                            <Row>
+                                <Col xs={12}>
+                                    <Tab.Content animation={false}>
+                                        <Tab.Pane eventKey="casa">
+                                            <table className="todo">
+                                                <thead>
+                                                    <tr className="ent">
+                                                        <th colSpan="2">Resultado ao Intervalo</th>
+                                                        <th colSpan="2">Resultado Final</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr className="ent">
+                                                        <td>3 - 1</td>
+                                                        <td> 80%</td>
+                                                        <td>2 - 0</td>
+                                                        <td> 40%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>1 - 1</td>
+                                                        <td> 20%</td>
+                                                        <td>4 - 0</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>2 - 1</td>
+                                                        <td> 20%</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>1 - 2</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </Tab.Pane>
+                                        <Tab.Pane eventKey="global">
+                                            <table className="todo">
+                                                <thead>
+                                                    <tr className="ent">
+                                                        <th colSpan="2">Resultado ao Intervalo</th>
+                                                        <th colSpan="2">Resultado Final</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr className="ent">
+                                                        <td>2 - 0 </td>
+                                                        <td>70%</td>
+                                                        <td>3 - 1</td>
+                                                        <td> 40%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>1 - 1 </td>
+                                                        <td> 20%</td>
+                                                        <td>4 - 0 </td>
+                                                        <td>20%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+                                                        <td>1 - 1</td>
+                                                        <td> 10%</td>
+                                                        <td>3 - 1</td>
+                                                        <td> 20%</td>
+                                                    </tr>
+                                                    <tr className="ent">
+
+                                                        <td>1 - 1</td>
+                                                        <td> 20%</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </Tab.Pane>
+
+                                    </Tab.Content>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </PanelBody>
+                    <PanelFooter>
+                        <div className="container-fluid">
+                            <div className="row fundo">
+                                <div className="col-xs-12 top">
+                                    <table className="todo">
+                                        <tbody>
+                                            <tr className="ent">
+                                                <td> Total</td>
+                                                <td> 100%</td>
+                                                <td> Total </td>
+                                                <td> 100% </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </PanelFooter>
+                </Panel>
+            </PanelTabContainer>
+        );
+    }
+}
+
+class AwayTeamResultPanel2 extends React.Component {
     render() {
 
         var homeResults = [

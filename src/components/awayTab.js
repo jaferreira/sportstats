@@ -52,7 +52,7 @@ class AwayTab extends React.Component {
 
         return (
             <div>
-                <p>últimos jogos fora do HomeTeam</p>
+            <p>Nesta Competição</p>
                 <ResultsChart id={this.props.id} home={homeResults} away={awayResults} />
                 <div className="row fundo">
                     <div className="col-sm-12 top">
